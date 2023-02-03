@@ -140,10 +140,6 @@ const MealCalendar = () => {
     setShowModal(true);
   };
 
-  const handleAddRecipe = (arg) => {
-    setShowModal(false);
-    setEvents([...events, { title: "New Event", date: arg.dateStr}]);
-  }
 
   // OPEN RECIPE DETAIL
   const [showRecipeModal, setShowRecipeModal] = useState(false);
@@ -174,61 +170,20 @@ const MealCalendar = () => {
   return (
     <div>
       {/* RECIPE DETAIL */}
-      {showRecipeModal ? <RecipeModal onCancel={handleCancelRecipe}/> : null}
+      {showRecipeModal ? <RecipeModal onCancel={handleCancelRecipe} /> : null}
 
-
-      {showModal && (
-          <div className="Modal-blanket" >
-            <div className="Modal">
-              <h3>New recipe</h3>
-              <input
-                type="text"
-                placeholder="Name"
-                value={recipeName}
-                onChange={(event) => setRecipeName(event.target.value)}
-                className="Form-input"
-              />
-              <RichTextEditor/>
-
-              {/* <input
-                type="text"
-                placeholder="Name"
-                value={recipeName}
-                onChange={(event) => setRecipeName(event.target.value)}
-                className="Form-input"
-              />
-              <input
-                type="text"
-                placeholder="Ingredients"
-                value={recipeIngredients}
-                onChange={(event) => setRecipeIngredients(event.target.value)}
-                className="Form-input"
-              />
-              <input
-                type="text"
-                placeholder="Instructions"
-                value={recipeInstructions}
-                onChange={(event) => setRecipeInstructions(event.target.value)}
-                className="Form-input"
-              /> */}
-              
-              <button onClick={handleAddRecipe} className="Button-primary">Save</button>
-              <button onClick={() => setShowModal(false)} className="Button-default">Cancel</button>
-            </div>
-          </div>
-        )}
-         <FullCalendar
-          plugins={[dayGridPlugin, interactionPlugin]}
-          initialView="dayGridWeek"
-          events={events}
-          dateClick={handleDateClick}
-          eventContent={renderEventContent}
-          header={{
-            left: "prev,next,today",
-            center: "title",
-            right: "dayGridMonth,dayGridWeek,dayGridDay",
-          }}
-        />
+      <FullCalendar
+        plugins={[dayGridPlugin, interactionPlugin]}
+        initialView="dayGridWeek"
+        events={events}
+        dateClick={handleDateClick}
+        eventContent={renderEventContent}
+        header={{
+          left: "prev,next,today",
+          center: "title",
+          right: "dayGridMonth,dayGridWeek,dayGridDay",
+        }}
+      />
     </div>
    
   );

@@ -11,7 +11,7 @@ const RecipeModal = (props) => {
     <div>
         {showRecipeModal ? 
         <Modal 
-            title="Recipe" 
+            title={props.recipeName}
             open={showRecipeModal} 
             onOk={props.onCancel} 
             onCancel={props.onCancel}
@@ -26,6 +26,7 @@ const RecipeModal = (props) => {
                 className="Form-input"
             />
             <h4>Ingredients</h4>
+            <p>{props.recipeIngredients}</p>
             <RichTextEditor/>
             <h4>Instructions</h4>
             <RichTextEditor/>

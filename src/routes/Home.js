@@ -50,10 +50,6 @@ const Home = () => {
     });
   };
 
-  const getData = (data) => {
-    console.log("Coming from somewhere", data)
-    alert('bla', data)
-  }
 
   return (
     <div className='Page-container'>
@@ -72,9 +68,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      
-        <Form onSubmit={getData}/>
-        
+
         <div className="Section">
           <div className='Section-content-text'>
             <h5>Discover</h5>
@@ -128,9 +122,18 @@ const Home = () => {
           </div>
         </div>
 
-        {/* <div className="Section-hero">
-          <img src={require("../images/dine-together-family.png")}/>
-        </div> */}
+        <div className='Section'>
+          <div className='Section-content-text'>
+            <h5>Personalise</h5>
+            <h2>Taste personal, taste together</h2>
+            <p>Our AI powered algorithm takes into account not just your taste, preferences, and allergies, but also the weather, season, time of the day, and special occassions to help you discover new recipe</p>
+            <br></br>
+            <Button name="Create list" appearance="default" onClick={navigateToGroceries}/>
+          </div>
+          <div className='Section-content-image'>
+            <img src={require("../images/character-grocery.png")}/>
+          </div>
+        </div>
       </div>
     </div>
   );

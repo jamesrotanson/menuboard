@@ -59,13 +59,16 @@ const Recipes = () => {
 
   // OPEN RECIPE MODAL
   const [showRecipeModal, setShowRecipeModal] = useState(false)
+  const [activeRecipe, setActiveRecipe] = useState({});
+  
 
-  const handleOpenRecipe = () => {
-    setShowRecipeModal(true)
+  const handleOpenRecipe = (recipe) => {
+    setShowRecipeModal(true);    
+    setActiveRecipe(recipe);
   }
 
   const handleCancelRecipe = () => {
-    setShowRecipeModal(false)
+    setShowRecipeModal(false);
   }
 
   return (
@@ -74,10 +77,6 @@ const Recipes = () => {
         <img src={require("../images/food-illos.png")}/>
       </div>
       <div className="Page-small">
-        {/* <div className="Page-header">
-          <h2 className="Page-title">Recipes</h2>
-          <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button>
-        </div> */}
         <div className='Section-hero'>
           <div className='Section-hero-content'>
             <h1>Recipes</h1>
@@ -90,7 +89,7 @@ const Recipes = () => {
           <input type="text" placeholder="Search recipes or ingredients" onChange={handleSearch} className="Search-input" />
         </div>
 
-        {showRecipeModal ? <RecipeModal onCancel={handleCancelRecipe}/> : null}
+        
         
         {showModal && (
             <div className="Modal-blanket" >
@@ -128,9 +127,10 @@ const Recipes = () => {
               </div>
             </div>
         )}
+
         <ul className="Recipe-card-list">
           {filteredRecipes.map((recipe) => (
-            <li key={recipe.id} className="Recipe-card" onClick={handleOpenRecipe}>
+            <li key={recipe.id} className="Recipe-card" onClick={() => handleOpenRecipe(recipe)}>
               <img src={require("../images/food-illos.png")} className="Recipe-thumbnail"/>
               <h3>{recipe.name}</h3>
               <p>{recipe.ingredients}</p>
@@ -148,6 +148,14 @@ const Recipes = () => {
             </li>
           ))}
         </ul>
+
+        {showRecipeModal ? 
+          <RecipeModal onCancel={handleCancelRecipe} 
+            recipeName={activeRecipe.name}
+            recipeIngredients={activeRecipe.ingredients}
+          />
+        : null}
+
       </div>
     </div>
   );
