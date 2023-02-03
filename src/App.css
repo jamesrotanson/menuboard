@@ -193,6 +193,7 @@ img {
   display: flex;
   list-style-type: none;
   flex-flow: row wrap;
+  align-items: center;
   align-content: space-between;
   justify-content: space-around;
   background-color: #FFF;
@@ -297,6 +298,7 @@ img {
   align-items: center;
   border:2px solid white;
   margin: 2px;
+  cursor: pointer;
 }
 
 .Avatar-xLarge {

@@ -73,7 +73,7 @@ const Home = () => {
           </div>
         </div>
       
-        
+        <Form onSubmit={getData}/>
         
         <div className="Section">
           <div className='Section-content-text'>
