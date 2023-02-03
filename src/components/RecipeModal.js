@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import RichTextEditor from './RichTextEditor'
 import Button from './Button'
 import { Modal } from 'antd';
+import IngredientsList from './IngredientsList';
 
 const RecipeModal = (props) => {
     
@@ -30,13 +31,29 @@ const RecipeModal = (props) => {
                         onChange={(event) => setRecipeName(event.target.value)}
                         className="Form-input"
                     /> */}
+                    <div className="Recipe-time-tabs-container">
+                        <div className="Recipe-time-tabs">
+                            <h5>Prep time</h5>
+                            <p>10 mins</p>
+                        </div>
+                        <div className="Recipe-time-tabs">
+                            <h5>Cook time</h5>
+                            <p>20 mins</p>
+                        </div>
+                        <div className="Recipe-time-tabs">
+                            <h5>Total time</h5>
+                            <p>30 mins</p>
+                        </div>
+                    </div>
+                    
                     <h4>Ingredients</h4>
+                    <IngredientsList/>
                     <p>{props.recipeIngredients}</p>
-                    <RichTextEditor content={props.recipeIngredients}/>
-
+                    {/* <RichTextEditor content={props.recipeIngredients}/> */}
+                    
                     <h4>Instructions</h4>
                     <p>{props.recipeInstructions}</p>
-                    <RichTextEditor/>
+                    {/* <RichTextEditor/> */}
                 </div>
             </div>            
         </Modal> 

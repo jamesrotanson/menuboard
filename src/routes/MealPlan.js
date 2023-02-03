@@ -1,7 +1,7 @@
 import React from 'react';
 import MealCalendar from '../components/MealCalendar';
 import Button from '../components/Button';
-import { CaretRight } from 'phosphor-react';
+import { Export } from 'phosphor-react';
 
 
 const MealPlan = () => {
@@ -15,7 +15,7 @@ const MealPlan = () => {
               <p>Plan your weekly meals by drag and dropping recipes, food delivery, and dining out options for the week</p>
             </div>
           </div>
-          <Button appearance="primary" name="Share" iconBefore="<CaretRight/>"/>
+          <Button appearance="primary" name="Share" iconBefore={<Export/>}/>
         </div>
         <MealCalendar/>
       </div>
