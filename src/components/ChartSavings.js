@@ -9,7 +9,7 @@ const data = [
 ];
 
 const ChartSavings = () => (
-  <BarChart width={424} height={320} data={data}
+  <BarChart width={424} height={240} data={data}
     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
     <XAxis dataKey="name" />
     <YAxis />

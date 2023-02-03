@@ -20,6 +20,7 @@ h1 {
 }
 
 h2 {
+  font-size: 2em;
   margin-top: 0;
   margin-bottom: 8px;
 }
@@ -137,6 +138,7 @@ img {
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
+  margin-top: 124px;
 }
 
 .Page-title {
@@ -155,7 +157,7 @@ img {
   object-fit: contain;
   pointer-events: none;
   width: 120px;
-  
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -707,7 +709,7 @@ button {
   align-items: center;
   padding: 24px 8px;
   gap: 8px;
-  width: 152px;
+  width: 114px;
   cursor: pointer;
 }
 

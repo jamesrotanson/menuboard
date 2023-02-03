@@ -32,7 +32,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 
-
 const AppRouter = () => {
   return (
     <BrowserRouter>

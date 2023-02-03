@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Twemoji from 'react-twemoji';
 import { IconContext, MagnifyingGlass, ShoppingCart, } from 'phosphor-react';
+import Button from '../components/Button';
 
 
 const Groceries = () => {
@@ -65,16 +66,17 @@ const Groceries = () => {
 
   return (
     <div className='Page-container'>
-      <div className="Page-cover-container">
-        <img src={require("../images/food-illos.png")}/>
-      </div>
-      <div className="Page-medium">
-        <div className='Section-hero'>
-          <div className='Section-hero-content'>
-            <h1>Groceries</h1>
-            <h2>Automatically create grocery list based on your planned meals and favourite recipes</h2>
+      <div className="Page-small">
+
+        <div className="Page-header">
+          <div className="Page-title">
+            <div>
+              <h2>Groceries</h2>
+              <p>Automatically create grocery list based on your planned meals and favourite recipes</p>
+            </div>
           </div>
         </div>
+
         <div className='flex'>
 
           {/* GROCERY AREA */}

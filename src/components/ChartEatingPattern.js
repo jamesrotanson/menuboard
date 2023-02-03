@@ -11,7 +11,7 @@ const data = [
 const COLORS = ['#FB6174', '#FFAE4F', '#22BCAA', '#558FFF'];
 
 const ChartEatingPattern = () => (
-    <PieChart width={400} height={264}>
+    <PieChart width={400} height={240}>
         <Pie
             data={data}
             // cx={"50%"}

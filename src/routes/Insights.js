@@ -10,19 +10,17 @@ const Insights = () => {
 
   return (
     <div className='Page-container'>
-      <div className="Page-cover-container">
-        <img src={require("../images/food-illos.png")}/>
-      </div>
       <div className="Page-small">
-        <div className='Section-hero'>
-          <div className='Section-hero-content'>
-            <h1>Insights</h1>
-            <h2>Understand your eating patterns and behaviour to eat better meals, save money, and reach your health goals</h2>
+        <div className="Page-header">
+          <div className="Page-title">
+            <div>
+              <h2>Insights</h2>
+              <p>Understand your eating patterns and behaviour to eat better meals, save money, and reach your health goals</p>
+            </div>
           </div>
         </div>
         <br></br>
         <div className='Card-group'>
-
           <div className='Card Chart-tile half'>
             <div className='flex Chart-title'>
               <ForkKnife size={24} />

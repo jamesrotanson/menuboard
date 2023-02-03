@@ -75,17 +75,17 @@ const Recipes = () => {
 
   return (
     <div className="Page-container">
-      <div className="Page-cover-container">
-        <img src={require("../images/food-illos.png")}/>
-      </div>
       <div className="Page-small">
-        <div className='Section-hero'>
-          <div className='Section-hero-content'>
-            <h1>Recipes</h1>
-            <h2>Discover tasty recipes designed to suit your taste, preferences, allergies, body condition, and habits.</h2>
-            <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button>
+        <div className="Page-header">
+          <div className="Page-title">
+            <div>
+              <h2>Recipes</h2>
+              <p>Discover tasty recipes designed to suit your taste, preferences, allergies, body condition, and habits.</p>
+            </div>
           </div>
+          <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button>
         </div>
+        
         <div className="Search-bar">
           <MagnifyingGlass/>
           <input type="text" placeholder="Search recipes or ingredients" onChange={handleSearch} className="Search-input" />
@@ -142,9 +142,9 @@ const Recipes = () => {
                 <button className="Button-default">
                   <PlusCircle size={16}/>Add
                 </button>
-                <button onClick={() => handleUpdateRecipe({ ...recipe, name: "Updated Recipe" })} className="Button-default">
+                {/* <button onClick={() => handleUpdateRecipe({ ...recipe, name: "Updated Recipe" })} className="Button-default">
                   <Pencil/>Edit
-                </button>
+                </button> */}
                 <button onClick={() => handleDeleteRecipe(recipe.id)} className="Button-delete"><Trash/>Delete</button>
               </div>
             </li>

@@ -131,7 +131,7 @@ const Home = () => {
             <Button name="Create list" appearance="default" onClick={navigateToGroceries}/>
           </div>
           <div className='Section-content-image'>
-            <img src={require("../images/character-grocery.png")}/>
+            <img src={require("../images/character-plan.png")}/>
           </div>
         </div>
       </div>

@@ -76,16 +76,15 @@ const Preferences = () => {
 
   return (
     <div className='Page-container'>
-      <div className="Page-cover-container">
-        <img src={require("../images/food-illos.png")}/>
-      </div>
-      <div className='Section-hero'>
-        <div className='Section-hero-content'>
-          <h1>Preferences</h1>
-          <h2>Get personal recommendations based on you and your loved ones' taste</h2>
-        </div>
-      </div>
       <div className="Page-small">
+        <div className="Page-header">
+          <div className="Page-title">
+            <div>
+              <h2>Preferences</h2>
+              <p>Get personal recommendations based on you and your loved ones' taste</p>
+            </div>
+          </div>
+        </div>
         <div className='Preferences-card-list'>
           {preferencesCard}          
         </div>
