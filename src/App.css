@@ -930,10 +930,9 @@ button {
 
 /* RECIPE DETAIL */
 .Recipe-cover {
-  max-width: 320px;
-  max-height: 320px;
-  width: 32vw;
-  height: 32vw;
   background-size: cover;
   border-radius: 8px;
+  width: 100%;
+  height: 480px;
+  margin-top: 40px;
 }

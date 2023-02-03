@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import '../App.css';
-import { IconContext, MagnifyingGlass, X, Trash, NotePencil, PlusCircle, Pencil,} from 'phosphor-react';
+import { IconContext, MagnifyingGlass, X, Trash, NotePencil, PlusCircle, Pencil, Notepad,} from 'phosphor-react';
 import Modal from 'react-modal';
 import RichTextEditor from "../components/RichTextEditor";
 import RecipeModal from "../components/RecipeModal";
@@ -10,9 +10,10 @@ const Recipes = () => {
   const [recipes, setRecipes] = useState(
     // JSON.parse(localStorage.getItem("recipes")) ||
     [
-      { id: 1, name: "Pizza", ingredients: "Dough, Tomato Sauce, Cheese", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg"},
-      { id: 2, name: "Pasta", ingredients: "Pasta, Tomato Sauce, Parmesan", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Aglio_e_olio.jpg" },
-      { id: 3, name: "Salad", ingredients: "Lettuce, Tomato, Cucumber, Salad Dressing", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg" },
+      { id: 1, name: "Sushi", ingredients: "Rice, salmon, nori, soy sauce", instructions: 'Roll everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"},
+      { id: 2, name: "Ramen", ingredients: "Noodles, chashu, egg, soup, garnish", instructions: 'Boil everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/99/TonkotsuRamen.jpg"},
+      { id: 3, name: "Pasta", ingredients: "Pasta, Tomato Sauce, Parmesan", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Aglio_e_olio.jpg" },
+      { id: 4, name: "Salad", ingredients: "Lettuce, Tomato, Cucumber, Salad Dressing", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg" },
     ]
   );
   const [searchTerm, setSearchTerm] = useState("");
@@ -140,7 +141,7 @@ const Recipes = () => {
               <small>{recipe.instructions}</small>
               <div className="Button-group">
                 <button className="Button-default">
-                  <PlusCircle size={16}/>Add
+                  <Notepad size={16}/>Add
                 </button>
                 {/* <button onClick={() => handleUpdateRecipe({ ...recipe, name: "Updated Recipe" })} className="Button-default">
                   <Pencil/>Edit

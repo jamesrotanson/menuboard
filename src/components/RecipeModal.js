@@ -20,10 +20,8 @@ const RecipeModal = (props) => {
         >   
             <div className="Modal-content-wrapper">
                 <div className="Modal-content-container">
-                    <div className="Page-header">
-                        <h1 className="Page-title">{props.recipeName}</h1>
-                        <img src={require("../images/food-illos.png")} className="Recipe-cover"/>
-                    </div>
+                    <h1 className="Page-title">{props.recipeName}</h1>
+                    <img src={require("../images/miso-ramen.jpeg")} className="Recipe-cover"/>
                     
                     {/* <input
                         type="text"
