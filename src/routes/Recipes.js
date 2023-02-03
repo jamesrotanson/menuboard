@@ -3,6 +3,8 @@ import '../App.css';
 import { IconContext, MagnifyingGlass, X, Trash, NotePencil, PlusCircle, Pencil,} from 'phosphor-react';
 import Modal from 'react-modal';
 import RichTextEditor from "../components/RichTextEditor";
+import RecipeModal from "../components/RecipeModal";
+import Button from "../components/Button";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState(
@@ -14,8 +16,6 @@ const Recipes = () => {
     ]
   );
   const [searchTerm, setSearchTerm] = useState("");
-
-
   const [showModal, setShowModal] = useState(false);
   const [recipeName, setRecipeName] = useState("");
   const [recipeIngredients, setRecipeIngredients] = useState("");
@@ -54,6 +54,18 @@ const Recipes = () => {
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const [showRecipeModal, setShowRecipeModal] = useState(false)
+
+  const handleOpenRecipe = () => {
+    setShowRecipeModal(true)
+    console.log('open')
+  }
+
+  const handleCancelRecipe = () => {
+    setShowRecipeModal(false)
+    console.log('cancel')
+  }
+
   return (
     <div className="Page-container">
       <div className="Page-cover-container">
@@ -75,6 +87,12 @@ const Recipes = () => {
           <MagnifyingGlass/>
           <input type="text" placeholder="Search recipes or ingredients" onChange={handleSearch} className="Search-input" />
         </div>
+
+        <Button name="Open modal" appearance="default" onClick={handleOpenRecipe}/>
+        {showRecipeModal ? <RecipeModal onCancel={handleCancelRecipe}/> : null}
+
+        {/* {showRecipeModal && (<RecipeModal/>)} */}
+        
         {showModal && (
             <div className="Modal-blanket" >
               <div className="Modal">
