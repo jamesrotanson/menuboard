@@ -38,6 +38,21 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+##Menuboard
+Organise all your meals in one place
+Menuboard helps you and your loved ones plan, organise, and manage your meals in a quick and easy way
+
+###Recipes without the stress
+Discover new and classic recipes designed to suit your taste, preferences, allergies, body condition, and habits. No more arguing over what to eat when.
+
+###Meal plans simplified
+Whether you're cooking at home, taking away, or dining out with friends, Menuboard helps you and your loved ones to always know what's on the table.
+
+###Groceries in an instant
+Automatic grocery list based on your planned meals. Reduce food waste and save money.
+
+###Insights to live smarter
+Get in-depth insights on nutritions, savings, and eating habits to help you and your loved ones live a more well-balanced life. Now that's thought for food.
 
 ## Learn More
 
