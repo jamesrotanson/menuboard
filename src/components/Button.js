@@ -1,12 +1,13 @@
 import React from "react";
+import { CaretRight } from "phosphor-react";
 
 const Button = (props) => {
     
     return (
         <button className={`Button-${props.appearance}`} onClick={props.onClick} type={props.type}>
-            <div iconBefore={props.iconBefore}></div>
+            {props.iconBefore}
             {props.name}
-            <div iconAfter={props.iconAfter}></div>
+            {props.iconAfter}
         </button>
     )
 }
