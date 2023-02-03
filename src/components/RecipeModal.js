@@ -10,8 +10,14 @@ const RecipeModal = (props) => {
     return (
     <div>
         {showRecipeModal ? 
-        <Modal title="Basic modal" open={showRecipeModal} onOk={props.onCancel} onCancel={props.onCancel}>
-            <h2>New recipe</h2>
+        <Modal 
+            title="Recipe" 
+            open={showRecipeModal} 
+            onOk={props.onCancel} 
+            onCancel={props.onCancel}
+            width="800px"
+            // style={{ top: 20 }}
+        >
             <input
                 type="text"
                 placeholder="Name"

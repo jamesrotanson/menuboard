@@ -46,6 +46,8 @@ const Recipes = () => {
     setRecipes(recipes.filter((recipe) => recipe.id !== id));
   };
 
+
+  // SEARCH RECIPES
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -54,16 +56,16 @@ const Recipes = () => {
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+
+  // OPEN RECIPE MODAL
   const [showRecipeModal, setShowRecipeModal] = useState(false)
 
   const handleOpenRecipe = () => {
     setShowRecipeModal(true)
-    console.log('open')
   }
 
   const handleCancelRecipe = () => {
     setShowRecipeModal(false)
-    console.log('cancel')
   }
 
   return (
@@ -88,10 +90,7 @@ const Recipes = () => {
           <input type="text" placeholder="Search recipes or ingredients" onChange={handleSearch} className="Search-input" />
         </div>
 
-        <Button name="Open modal" appearance="default" onClick={handleOpenRecipe}/>
         {showRecipeModal ? <RecipeModal onCancel={handleCancelRecipe}/> : null}
-
-        {/* {showRecipeModal && (<RecipeModal/>)} */}
         
         {showModal && (
             <div className="Modal-blanket" >
@@ -131,7 +130,7 @@ const Recipes = () => {
         )}
         <ul className="Recipe-card-list">
           {filteredRecipes.map((recipe) => (
-            <li key={recipe.id} className="Recipe-card">
+            <li key={recipe.id} className="Recipe-card" onClick={handleOpenRecipe}>
               <img src={require("../images/food-illos.png")} className="Recipe-thumbnail"/>
               <h3>{recipe.name}</h3>
               <p>{recipe.ingredients}</p>

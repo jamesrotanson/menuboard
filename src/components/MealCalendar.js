@@ -8,6 +8,7 @@ import Avatar from "./Avatar";
 import Avatar1 from "../images/memoji-01.png"
 import Avatar2 from "../images/memoji-02.png"
 import AvatarGroup from "./AvatarGroup";
+import RecipeModal from "./RecipeModal";
 
 const MealCalendar = () => {
   const [events, setEvents] = useState(
@@ -144,9 +145,21 @@ const MealCalendar = () => {
     setEvents([...events, { title: "New Event", date: arg.dateStr}]);
   }
 
+  // OPEN RECIPE DETAIL
+  const [showRecipeModal, setShowRecipeModal] = useState(false);
+  const handleOpenRecipe = () => {
+    setShowRecipeModal(true)
+  }
+
+  const handleCancelRecipe = () => {
+    setShowRecipeModal(false)
+  }
+
+  
+
   const renderEventContent = (eventInfo) => {
     return (
-      <div className="Calendar-event">
+      <div className="Calendar-event" onClick={handleOpenRecipe}>
         <img className="Calendar-event-thumbnail" src={eventInfo.event.extendedProps.imageUrl}/>
         <div className="Calendar-event-info">
           <h4>{eventInfo.event.title}</h4>
@@ -160,6 +173,10 @@ const MealCalendar = () => {
 
   return (
     <div>
+      {/* RECIPE DETAIL */}
+      {showRecipeModal ? <RecipeModal onCancel={handleCancelRecipe}/> : null}
+
+
       {showModal && (
           <div className="Modal-blanket" >
             <div className="Modal">
