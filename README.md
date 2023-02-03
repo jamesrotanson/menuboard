@@ -1,5 +1,5 @@
 # Menuboard
-Organise all your meals in one place
+Organise all your meals in one place.
 Menuboard helps you and your loved ones plan, organise, and manage your meals in a quick and easy way
 
 ### Recipes without the stress
