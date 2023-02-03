@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-const RichTextEditor = () => {
+const RichTextEditor = (props) => {
   const [content, setContent] = useState('');
 
   const handleChange = (value) => {
@@ -10,7 +10,7 @@ const RichTextEditor = () => {
   };
 
   return (
-    <ReactQuill value={content} onChange={handleChange} />
+    <ReactQuill value={content} placeholder={props.content} onChange={handleChange} />
   );
 };
 

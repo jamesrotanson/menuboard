@@ -30,6 +30,7 @@ const MainNavigation = () => {
                     // id="nav-list"
                     className="Main-nav-container"
                 >
+                    <li className="Main-nav-tab"><a href="./home"><img src={require("../images/menuboard.png")} className="Logo"/> </a></li>
                     <li className="Main-nav-tab"><a href="./home"><House/> Home </a></li>
                     <li className="Main-nav-tab"><a href="./recipes"> <CookingPot/> Recipes </a></li>
                     <li className="Main-nav-tab"><a href="./plan"> <Notepad/> Plan </a></li>

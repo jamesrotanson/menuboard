@@ -1,0 +1,23 @@
+[
+    { 
+        "id": "1",
+        "name": "Pizza", 
+        "ingredients": "Dough, Tomato Sauce, Cheese", 
+        "instructions": "Mix everything", 
+        "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg"
+    },
+    {
+        "id": "2", 
+        "name": "Pasta", 
+        "ingredients": "Pasta, Tomato Sauce, Parmesan", 
+        "instructions": "Mix everything",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Aglio_e_olio.jpg"
+    },
+    {
+        "id": "3", 
+        "name": "Salad",
+        "ingredients": "Lettuce, Tomato, Cucumber, Salad Dressing", 
+        "instructions": "Mix everything",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg"
+    }
+]

@@ -11,25 +11,36 @@ const RecipeModal = (props) => {
     <div>
         {showRecipeModal ? 
         <Modal 
-            title={props.recipeName}
+            // title={props.recipeName}
             open={showRecipeModal} 
             onOk={props.onCancel} 
             onCancel={props.onCancel}
-            width="800px"
-            // style={{ top: 20 }}
-        >
-            <input
-                type="text"
-                placeholder="Name"
-                // value={recipeName}
-                // onChange={(event) => setRecipeName(event.target.value)}
-                className="Form-input"
-            />
-            <h4>Ingredients</h4>
-            <p>{props.recipeIngredients}</p>
-            <RichTextEditor/>
-            <h4>Instructions</h4>
-            <RichTextEditor/>
+            width="100%"
+            style={{ top: 16 }}
+        >   
+            <div className="Modal-content-wrapper">
+                <div className="Modal-content-container">
+                    <div className="Page-header">
+                        <h1 className="Page-title">{props.recipeName}</h1>
+                        <img src={require("../images/food-illos.png")} className="Recipe-cover"/>
+                    </div>
+                    
+                    {/* <input
+                        type="text"
+                        placeholder="Name"
+                        value={recipeName}
+                        onChange={(event) => setRecipeName(event.target.value)}
+                        className="Form-input"
+                    /> */}
+                    <h4>Ingredients</h4>
+                    <p>{props.recipeIngredients}</p>
+                    <RichTextEditor content={props.recipeIngredients}/>
+
+                    <h4>Instructions</h4>
+                    <p>{props.recipeInstructions}</p>
+                    <RichTextEditor/>
+                </div>
+            </div>            
         </Modal> 
         : null }
     </div>

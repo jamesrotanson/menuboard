@@ -151,9 +151,11 @@ img {
   gap: 8px;
 }
 
-.App-logo {
-  height: 40vmin;
+.Logo {
+  object-fit: contain;
   pointer-events: none;
+  width: 120px;
+  
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -428,6 +430,16 @@ button {
   top: 0;
   left: 0;
   z-index: 98;
+}
+
+.Modal-content-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.Modal-content-container {
+  width: 800px;
 }
 
 
@@ -912,3 +924,14 @@ button {
 }
 
 
+
+
+/* RECIPE DETAIL */
+.Recipe-cover {
+  max-width: 320px;
+  max-height: 320px;
+  width: 32vw;
+  height: 32vw;
+  background-size: cover;
+  border-radius: 8px;
+}

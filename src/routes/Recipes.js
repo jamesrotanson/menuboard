@@ -8,11 +8,11 @@ import Button from "../components/Button";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState(
-    JSON.parse(localStorage.getItem("recipes")) ||
+    // JSON.parse(localStorage.getItem("recipes")) ||
     [
-      { id: 1, name: "Pizza", ingredients: "Dough, Tomato Sauce, Cheese", instructions: 'Mix everything', image: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg"},
-      { id: 2, name: "Pasta", ingredients: "Pasta, Tomato Sauce, Parmesan", instructions: 'Mix everything', image: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Aglio_e_olio.jpg" },
-      { id: 3, name: "Salad", ingredients: "Lettuce, Tomato, Cucumber, Salad Dressing", instructions: 'Mix everything', image: "https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg" },
+      { id: 1, name: "Pizza", ingredients: "Dough, Tomato Sauce, Cheese", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg"},
+      { id: 2, name: "Pasta", ingredients: "Pasta, Tomato Sauce, Parmesan", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Aglio_e_olio.jpg" },
+      { id: 3, name: "Salad", ingredients: "Lettuce, Tomato, Cucumber, Salad Dressing", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg" },
     ]
   );
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,6 +20,7 @@ const Recipes = () => {
   const [recipeName, setRecipeName] = useState("");
   const [recipeIngredients, setRecipeIngredients] = useState("");
   const [recipeInstructions, setRecipeInstructions] = useState("");
+  const [recipeImageUrl, setRecipeImageUrl] = useState("");
 
   useEffect(() => {
     localStorage.setItem("recipes", JSON.stringify(recipes));
@@ -27,11 +28,12 @@ const Recipes = () => {
 
 
   const handleAddRecipe = (recipe) => {
-    setRecipes([...recipes, { id: recipes.length + 1, name: recipeName, ingredients: recipeIngredients, instructions: recipeInstructions }]);
+    setRecipes([...recipes, { id: recipes.length + 1, name: recipeName, ingredients: recipeIngredients, instructions: recipeInstructions, imageUrl: recipeImageUrl }]);
     setShowModal(false);
     setRecipeName("");
     setRecipeIngredients("");
     setRecipeInstructions("");
+    setRecipeImageUrl("");
   };
 
   const handleUpdateRecipe = (updatedRecipe) => {
@@ -153,6 +155,8 @@ const Recipes = () => {
           <RecipeModal onCancel={handleCancelRecipe} 
             recipeName={activeRecipe.name}
             recipeIngredients={activeRecipe.ingredients}
+            recipeInstructions={activeRecipe.instructions}
+            recipeImageUrl={activeRecipe.imageUrl}
           />
         : null}
 
