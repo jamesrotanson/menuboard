@@ -134,10 +134,10 @@ const Recipes = () => {
         <ul className="Recipe-card-list">
           {filteredRecipes.map((recipe) => (
             <li key={recipe.id} className="Recipe-card" onClick={() => handleOpenRecipe(recipe)}>
-              <img src={require("../images/food-illos.png")} className="Recipe-thumbnail"/>
+              {/* <img src={require("../images/food-illos.png")} className="Recipe-thumbnail"/> */}
+              <img src={recipe.imageUrl} className="Recipe-thumbnail"/>
               <h3>{recipe.name}</h3>
               <p>{recipe.ingredients}</p>
-              {/* <p>{recipe.image}</p> */}
               <small>{recipe.instructions}</small>
               <div className="Button-group">
                 <button className="Button-default">

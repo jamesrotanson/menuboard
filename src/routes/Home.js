@@ -3,7 +3,6 @@ import '../App.css';
 import { CaretRight} from 'phosphor-react';
 import { useNavigate} from 'react-router-dom';
 import Button from '../components/Button';
-import Form from '../components/Form';
 
 
 const Home = () => {
