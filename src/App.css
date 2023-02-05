@@ -292,6 +292,14 @@ img {
   outline: none;
 }
 
+.Search-input-default {
+  padding: 4px 8px;
+}
+
+.Search-input-large {
+  padding: 8px 16px;
+}
+
 /* INPUTS */
 .Form-input {
   border: 1px solid rgba(0, 0, 0, 0.08);
