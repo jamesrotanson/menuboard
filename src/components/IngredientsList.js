@@ -19,7 +19,7 @@ const IngredientsList = () => {
     const [addIngredientActive, setAddIngredientActive] = useState(false);
     
     const handleClick = (event) => {
-        setAddIngredientActive(true)
+        setAddIngredientActive(true);
         event.currentTarget.classList.toggle('Button-active');
     }
 

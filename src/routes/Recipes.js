@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import RichTextEditor from "../components/RichTextEditor";
 import RecipeModal from "../components/RecipeModal";
 import Button from "../components/Button";
-import RecipeData from "../data/RecipeData.json";  
+import SearchBar from "../components/SearchBar";
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState(
@@ -88,12 +88,7 @@ const Recipes = () => {
           <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button>
         </div>
         
-        <div className="Search-bar">
-          <MagnifyingGlass/>
-          <input type="text" placeholder="Search recipes or ingredients" onChange={handleSearch} className="Search-input" />
-        </div>
-
-        
+        <SearchBar placeholder="Search recipes or ingredients" onChange={handleSearch}/>   
         
         {showModal && (
             <div className="Modal-blanket" >

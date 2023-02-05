@@ -48,12 +48,12 @@ const RecipeModal = (props) => {
                         </div>
                     </div>
                     
-                    <h4>Ingredients</h4>
+                    <h3>Ingredients</h3>
                     <IngredientsList/>
                     <p>{props.recipeIngredients}</p>
                     {/* <RichTextEditor content={props.recipeIngredients}/> */}
                     
-                    <h4>Instructions</h4>
+                    <h3>Instructions</h3>
                     <p>{props.recipeInstructions}</p>
                     {/* <RichTextEditor/> */}
                 </div>
