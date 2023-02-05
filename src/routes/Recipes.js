@@ -156,7 +156,8 @@ const Recipes = () => {
         </ul>
 
         {showRecipeModal ? 
-          <RecipeModal onCancel={handleCancelRecipe} 
+          <RecipeModal 
+            onCancel={handleCancelRecipe} 
             recipeName={activeRecipe.name}
             recipeIngredients={activeRecipe.ingredients}
             recipeInstructions={activeRecipe.instructions}

@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../components/Button';
 import Twemoji from 'react-twemoji';
 import SearchBar from '../components/SearchBar';
+import RecipeCardGallery from '../components/RecipeCardGallery';
 
 const AppHome = () => {
   return (
@@ -41,6 +42,7 @@ const AppHome = () => {
 
             <div>
                 <h3>Popular recipes</h3>
+                <RecipeCardGallery/>
                 <div>Recipe card list</div>
             </div>
 
