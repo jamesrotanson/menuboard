@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Twemoji from 'react-twemoji';
 import { IconContext, MagnifyingGlass, ShoppingCart, } from 'phosphor-react';
 import Button from '../components/Button';
+import SearchBar from '../components/SearchBar';
 
 
 const Groceries = () => {
@@ -77,8 +78,9 @@ const Groceries = () => {
           </div>
         </div>
 
-        <div className='flex'>
+        <SearchBar placeholder="Search ingredients for grocery list" onChange={""} appearance="default"/>  
 
+        <div className='flex'>
           {/* GROCERY AREA */}
           <div className='Grocery-area'>
             <h3>Shop popular categories</h3>

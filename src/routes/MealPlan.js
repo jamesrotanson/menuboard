@@ -2,6 +2,7 @@ import React from 'react';
 import MealCalendar from '../components/MealCalendar';
 import Button from '../components/Button';
 import { Export } from 'phosphor-react';
+import SearchBar from '../components/SearchBar';
 
 
 const MealPlan = () => {
@@ -17,6 +18,7 @@ const MealPlan = () => {
           </div>
           <Button appearance="primary" name="Share" iconBefore={<Export/>}/>
         </div>
+        <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
         <MealCalendar/>
       </div>
     </div>

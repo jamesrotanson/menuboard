@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../components/Button';
 import Twemoji from 'react-twemoji';
+import SearchBar from '../components/SearchBar';
 
 const AppHome = () => {
   return (
@@ -19,13 +20,7 @@ const AppHome = () => {
                 </div>
             </div>
 
-            <div>
-                Search
-            </div>
-
-            <div>
-                Search
-            </div>
+            <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
 
             <div>
                 <h5>Personalise your experience</h5>
