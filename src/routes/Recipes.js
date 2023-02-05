@@ -5,10 +5,11 @@ import Modal from 'react-modal';
 import RichTextEditor from "../components/RichTextEditor";
 import RecipeModal from "../components/RecipeModal";
 import Button from "../components/Button";
+import RecipeData from "../data/RecipeData.json";  
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState(
-    // JSON.parse(localStorage.getItem("recipes")) ||
+    JSON.parse(localStorage.getItem("recipes")) ||
     [
       { id: 1, name: "Sushi", ingredients: "Rice, salmon, nori, soy sauce", instructions: 'Roll everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"},
       { id: 2, name: "Ramen", ingredients: "Noodles, chashu, egg, soup, garnish", instructions: 'Boil everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/99/TonkotsuRamen.jpg"},
@@ -127,6 +128,13 @@ const Recipes = () => {
                   <button onClick={() => setShowModal(false)} className="Button-default">Close</button>
                   <button onClick={handleAddRecipe} className="Button-primary">Save</button>
                 </div>
+                <select>
+                  <option value="grapefruit">Grapefruit</option>
+                  <option value="lime">Lime</option>
+                  <option selected value="coconut">Coconut</option>
+                  <option value="mango">Mango</option>
+                </select>
+                <input type="file" />
               </div>
             </div>
         )}

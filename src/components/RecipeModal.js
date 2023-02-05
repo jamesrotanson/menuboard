@@ -16,8 +16,9 @@ const RecipeModal = (props) => {
             open={showRecipeModal} 
             onOk={props.onCancel} 
             onCancel={props.onCancel}
-            width="100%"
-            style={{ top: 16 }}
+            // width="100%"
+            width="800px"
+            style={{ top: 40 }}
         >   
             <div className="Modal-content-wrapper">
                 <div className="Modal-content-container">

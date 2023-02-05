@@ -16,6 +16,7 @@ import Groceries from './routes/Groceries';
 import Insights from './routes/Insights';
 import Preferences from './routes/Preferences';
 import ErrorPage from './routes/ErrorPage';
+import AppHome from './routes/AppHome';
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
-          <Route path="home" element={<Home/>}/>
+          <Route path="app-home" element={<AppHome/>}/>
           <Route path="recipes" element={<Recipes/>} />
           <Route path="plan" element={<MealPlan/>} />
           <Route path="groceries" element={<Groceries/>} />

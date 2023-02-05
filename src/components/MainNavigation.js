@@ -31,7 +31,7 @@ const MainNavigation = () => {
                     className="Main-nav-container"
                 >
                     <li className="Main-nav-tab"><a href="./"><img src={require("../images/menuboard.png")} className="Logo"/> </a></li>
-                    <li className="Main-nav-tab"><a href="./home"><House/> Home </a></li>
+                    <li className="Main-nav-tab"><a href="./app-home"><House/> Home </a></li>
                     <li className="Main-nav-tab"><a href="./recipes"> <CookingPot/> Recipes </a></li>
                     <li className="Main-nav-tab"><a href="./plan"> <Notepad/> Plan </a></li>
                     <li className="Main-nav-tab"><a href="./groceries"> <ShoppingCart/> Grocery </a></li>
