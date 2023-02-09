@@ -2,7 +2,8 @@ import React from 'react';
 import Button from '../components/Button';
 import Twemoji from 'react-twemoji';
 import SearchBar from '../components/SearchBar';
-import RecipeCardGallery from '../components/RecipeCardGallery';
+import Recipes from '../data/recipes.json'
+import RecipeCard from '../components/RecipeCard';
 
 const AppHome = () => {
   return (
@@ -23,6 +24,32 @@ const AppHome = () => {
 
             <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
 
+            <br></br>
+
+            <h3>Popular recipes</h3>
+            <Button appearance="default" name="View all recipes"/>
+            <ul className='Recipe-card-list'>
+                {
+                    Recipes.map(recipe => {
+                        return(
+                            <RecipeCard 
+                                name={recipe.name}
+                                imageUrl={recipe.imageUrl}
+                                cost={recipe.cost}
+                                time={recipe.time}
+                                // ingredients={recipe.ingredients.map(ingredient => {
+                                //     return(
+                                //         <div>
+                                //             {ingredient.name}
+                                //         </div>
+                                //     )
+                                // })}
+                            />
+                        )
+                    })
+                }
+            </ul>
+
             <div>
                 <h5>Personalise your experience</h5>
                 <h3>What are your favourite cuisines?</h3>
@@ -38,12 +65,6 @@ const AppHome = () => {
                     <li>Japanese</li>
                     <li>Indonesian</li>
                 </ul>
-            </div>
-
-            <div>
-                <h3>Popular recipes</h3>
-                <RecipeCardGallery/>
-                <div>Recipe card list</div>
             </div>
 
             <div>

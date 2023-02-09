@@ -1,0 +1,174 @@
+[
+    {
+        "id": "1",
+        "name": "Sushi",
+        "cost": "$5",
+        "time": "15 min",
+        "ingredients": [
+            {
+                "quantity": "1",
+                "name": " Sashimi",
+                "type": "Fish"
+            },
+            {
+                "quantity": "1 cup",
+                "name": "Rice",
+                "type": "Grains"
+            },
+            {
+                "quantity": "1 tbsp",
+                "name": "Sushi vinegar",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1 package",
+                "name": "Nori / Dried seaweed",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1 tbsp",
+                "name": "water",
+                "type": "Drinks"
+            }
+        ],
+        "steps": [
+            "Gather all the ingredients.",
+            "Cook sushi rice.",
+            "Prepare the fillings",
+            "Make vinegar water and mix into rice.",
+            "Place nori on the sushi mat on a working surface.",
+            "Place rice, then fillings in the middle of rice ",
+            "Roll sushi with the mat",
+            "Cut sushi roll and serve"
+        ],
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg",
+        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
+    },
+    {
+        "id": "2",
+        "name": "Miso Ramen",
+        "cost": "$7",
+        "time": "30 min",
+        "ingredients": [
+            {
+                "quantity": "2",
+                "name": " Ramen noodles",
+                "type": "Noodles"
+            },
+            {
+                "quantity": "4 cup",
+                "name": "Tonkotsu soup",
+                "type": "Soup"
+            },
+            {
+                "quantity": "250 g",
+                "name": "Chashu (Roast pork)",
+                "type": "Meat"
+            },
+            {
+                "quantity": "2",
+                "name": "Soft boiled eggs",
+                "type": "egg"
+            },
+            {
+                "quantity": "2 tbsp",
+                "name": "Spring onion",
+                "type": "Garnish"
+            }
+        ],
+        "steps": [
+            "Heat up soup",
+            "Boil eggs for 6 mins then chill in ice water.",
+            "Grill marinated roast pork and slice them",
+            "Boil noodle",
+            "Mix noodle with lard and soy sauce on a bowl",
+            "Pour soup into noodle, then garnish with chashu, egg, and spring onion "
+        ],
+        "imageUrl": "https://www.justonecookbook.com/wp-content/uploads/2019/05/Miso-Ramen-II.jpg",
+        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
+    },
+    {
+        "id": "3",
+        "name": "Spaghetti Meatballs",
+        "cost": "$3",
+        "time": "45 min",
+        "ingredients": [
+            {
+                "quantity": "300 g",
+                "name": " Minced meat",
+                "type": "Meat"
+            },
+            {
+                "quantity": "2 servings",
+                "name": "Spaghetti Pasta",
+                "type": "Noodles"
+            },
+            {
+                "quantity": "2",
+                "name": "Tomato cans",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1",
+                "name": "All purpose seasonings",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "50g",
+                "name": "Grated parmesan cheese",
+                "type": "Cheese"
+            }
+        ],
+        "steps": [
+            "Make meatballs by combining mince meat and seasoning",
+            "Grill meatball in olive oil",
+            "Stir in tomato sauce and let simmer for 45 mins",
+            "Boil pasta until almost all dente",
+            "Mix with the meat sauce",
+            "Grate cheese on top of pasta and serve"
+        ],
+        "imageUrl": "https://i0.wp.com/www.onceuponachef.com/images/2019/09/Spaghetti-and-Meatballs.jpg?w=1581&ssl=1",
+        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
+    },
+    {
+        "id": "4",
+        "name": "Crock Pot Roast",
+        "cost": "$4",
+        "time": "2 hr",
+        "ingredients": [
+            {
+                "quantity": "1",
+                "name": " beef roast",
+                "type": "Meat"
+            },
+            {
+                "quantity": "1 package",
+                "name": "brown gravy mix",
+                "type": "Baking"
+            },
+            {
+                "quantity": "1 package",
+                "name": "dried Italian salad dressing mix",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1 package",
+                "name": "dry ranch dressing mix",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1/2 cup",
+                "name": "water",
+                "type": "Drinks"
+            }
+        ],
+        "steps": [
+            "Place beef roast in crock pot.",
+            "Mix the dried mixes together in a bowl and sprinkle over the roast.",
+            "Pour the water around the roast.",
+            "Cook on low for 7-9 hours."
+        ],
+        "imageUrl": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg",
+        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
+    }
+]
