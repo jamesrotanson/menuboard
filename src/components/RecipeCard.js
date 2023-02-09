@@ -7,9 +7,8 @@ const RecipeCard = (props) => {
   return (
     <li key={props.id} className="Recipe-card" onClick={props.onClick}>
         <img src={props.imageUrl} className="Recipe-thumbnail"/>
-        <h3>{props.name}</h3>
-        <small>{props.time}</small>
-        <h4>{props.cost}</h4>
+        <h4>{props.name}</h4>
+        <small>{props.time} · {props.cost}</small>
         <div className="Button-group">
         <button className="Button-default">
             <Notepad size={16}/>Add

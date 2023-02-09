@@ -4,6 +4,7 @@ import Twemoji from 'react-twemoji';
 import SearchBar from '../components/SearchBar';
 import Recipes from '../data/recipes.json'
 import RecipeCard from '../components/RecipeCard';
+import AllergiesOptions from '../components/AllergiesOptions';
 
 const AppHome = () => {
   return (
@@ -11,23 +12,21 @@ const AppHome = () => {
         <div className="Page-small">
 
             <div className='Page-header'>
-                <div className='Page-title'>
-                    <div>
-                        <h2>
-                            <Twemoji options={{className: 'Twemoji-small'}}>☀️</Twemoji>
-                            Good morning
-                        </h2>
-                        
+                <div className='Section-center'>
+                    <h5>Let's personalise your experience</h5>
+                    <h3>Do you have any food allergies?</h3>
+                    <AllergiesOptions/>
+                    <div className='Button-group'>
+                        <Button name="Skip" appearance="default"/>
+                        <Button name="Next" appearance="primary"/>
                     </div>
                 </div>
             </div>
 
-            <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
-
             <br></br>
 
             <h3>Popular recipes</h3>
-            <Button appearance="default" name="View all recipes"/>
+            <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/> 
             <ul className='Recipe-card-list'>
                 {
                     Recipes.map(recipe => {
@@ -50,22 +49,7 @@ const AppHome = () => {
                 }
             </ul>
 
-            <div>
-                <h5>Personalise your experience</h5>
-                <h3>What are your favourite cuisines?</h3>
-                <ul>
-                    <li>Japanese</li>
-                    <li>Indonesian</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Do you have any food allergies?</h3>
-                <ul>
-                    <li>Japanese</li>
-                    <li>Indonesian</li>
-                </ul>
-            </div>
+            <br></br>
 
             <div>
                 <h3>Set up your groceries</h3>

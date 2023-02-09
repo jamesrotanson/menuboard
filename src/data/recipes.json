@@ -170,5 +170,48 @@
         ],
         "imageUrl": "http://img.sndimg.com/food/image/upload/w_266/v1/img/recipes/27/20/8/picVfzLZo.jpg",
         "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
+    },
+    {
+        "id": "5",
+        "name": "Gyoza dumpling",
+        "cost": "$3",
+        "time": "45 min",
+        "ingredients": [
+            {
+                "quantity": "400g",
+                "name": " Minced meat",
+                "type": "Meat"
+            },
+            {
+                "quantity": "3",
+                "name": "Cabbage leaves",
+                "type": "Vegetables"
+            },
+            {
+                "quantity": "1 package",
+                "name": "gyoza wrap",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "1 tbsp",
+                "name": "Sesame oil",
+                "type": "Condiments"
+            },
+            {
+                "quantity": "2 tbsp",
+                "name": "Soy sauce",
+                "type": "Condiments"
+            }
+        ],
+        "steps": [
+            "Mix minced meat, minced cabbage, soy sauce, and sesame oil into bowl.",
+            "Take a gyoza wrapper and fill with filling.",
+            "Wrap and pleat the gyoza.",
+            "Put on hot oiled pan",
+            "Pour water and simmer for 15 mins",
+            "Serve with soy sauce"
+        ],
+        "imageUrl": "https://www.justonecookbook.com/wp-content/uploads/2020/04/Gyoza-3096-II.jpg",
+        "originalURL": "http://www.food.com/recipe/to-die-for-crock-pot-roast-27208"
     }
 ]

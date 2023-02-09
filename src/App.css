@@ -555,6 +555,15 @@ button {
   overflow: hidden;
 }
 
+.Section-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 32px 0;
+}
+
 /* RECIPES */
 
 .Recipe-card-list {
@@ -1003,4 +1012,39 @@ button {
   height: 24px;
   width: 24px;
   align-self: center;
+}
+
+
+/* PREFERENCES */
+.Bubble-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.Bubble-option {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 16px;
+  width: 100%;
+  border-radius: 100%;
+  cursor:pointer;
+}
+
+.Bubble-option:hover {
+  background-color: rgba(0,0,0,0.04);
+  transition: 0.2s all ease-in-out;
+}
+
+.Bubble-option .Twemoji-small {
+  height: 28px;
+  width: 28px;
+}
+
+.Bubble-option h5 {
+  margin-top: 8px;
+  text-align: center;
 }
