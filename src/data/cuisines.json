@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1",
+        "name": "Japanese",
+        "emoji": "🍱",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Italian",
+        "emoji": "🍕",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Chinese",
+        "emoji": "🍜",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Korean",
+        "emoji": "🍲",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Spanish",
+        "emoji": "🥘",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Mexican",
+        "emoji": "🌮",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "7",
+        "name": "Indian",
+        "emoji": "🍛",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "8",
+        "name": "Thai",
+        "emoji": "🍌",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "9",
+        "name": "French",
+        "emoji": "🥐",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "10",
+        "name": "American",
+        "emoji": "🍔",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    }
+]

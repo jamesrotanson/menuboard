@@ -5,23 +5,19 @@ import SearchBar from '../components/SearchBar';
 import Recipes from '../data/recipes.json'
 import RecipeCard from '../components/RecipeCard';
 import AllergiesOptions from '../components/AllergiesOptions';
+import Personalisation from '../components/Personalisation';
 
 const AppHome = () => {
   return (
     <div className="Page-container">
         <div className="Page-small">
 
+           
             <div className='Page-header'>
-                <div className='Section-center'>
-                    <h5>Let's personalise your experience</h5>
-                    <h3>Do you have any food allergies?</h3>
-                    <AllergiesOptions/>
-                    <div className='Button-group'>
-                        <Button name="Skip" appearance="default"/>
-                        <Button name="Next" appearance="primary"/>
-                    </div>
-                </div>
+                <Personalisation/>
             </div>
+
+           
 
             <br></br>
 
