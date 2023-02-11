@@ -34,7 +34,7 @@ const Personalisation = () => {
 
     return (
         <div className="Section-center"> 
-            <h5>Let's personalise your rexperience</h5>
+            <h5>Let's personalise your experience</h5>
             {
                 personalisationStep === 1 && (
                     <div className="Section-center">

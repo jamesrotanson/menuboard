@@ -30,13 +30,13 @@ const MainNavigation = () => {
                     // id="nav-list"
                     className="Main-nav-container"
                 >
-                    <li className="Main-nav-tab"><a href="./"><img src={require("../images/menuboard.png")} className="Logo"/> </a></li>
-                    <li className="Main-nav-tab"><a href="./app-home"><House/> Home </a></li>
-                    <li className="Main-nav-tab"><a href="./recipes"> <CookingPot/> Recipes </a></li>
-                    <li className="Main-nav-tab"><a href="./plan"> <Notepad/> Plan </a></li>
-                    <li className="Main-nav-tab"><a href="./groceries"> <ShoppingCart/> Grocery </a></li>
-                    <li className="Main-nav-tab"><a href="./insights"> <ChartPie/> Insights </a></li>
-                    <li className="Main-nav-tab"><a href="./preferences"> <FadersHorizontal/> Preferences </a></li>
+                    <li className="Main-nav-tab"><a href="./"><img src={require("../images/small-logo.png")} className="Logo-small"/> </a></li>
+                    <li className="Main-nav-tab"><a href="./app-home"><House/><p>Home</p></a></li>
+                    <li className="Main-nav-tab"><a href="./recipes"> <CookingPot/><p>Recipes</p></a></li>
+                    <li className="Main-nav-tab"><a href="./plan"> <Notepad/><p>Plan</p></a></li>
+                    <li className="Main-nav-tab"><a href="./groceries"> <ShoppingCart/><p>Grocery</p></a></li>
+                    <li className="Main-nav-tab"><a href="./insights"> <ChartPie/><p>Insights</p></a></li>
+                    <li className="Main-nav-tab"><a href="./preferences"> <FadersHorizontal/><p>Preferences</p></a></li>
                     {/* <Button name="Try free" appearance="primary" onClick={handleLogin}/> */}
                     {buttonVisible ? <Button name="Try free" appearance="primary" onClick={handleLogin}/> : null}
                     {avatarVisible ? <Avatar url={Avatar1} size="medium" onClick={handleLogout}/> : null}

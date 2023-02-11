@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import '../App.css';
-import { IconContext, MagnifyingGlass, X, Trash, NotePencil, PlusCircle, Pencil, Notepad,} from 'phosphor-react';
+import {  X, Trash, NotePencil, PlusCircle, Pencil, Notepad, CalendarPlus} from 'phosphor-react';
 import Modal from 'react-modal';
 import RichTextEditor from "../components/RichTextEditor";
 import RecipeModal from "../components/RecipeModal";
@@ -143,13 +143,11 @@ const Recipes = () => {
               <p>{recipe.ingredients}</p>
               <small>{recipe.instructions}</small>
               <div className="Button-group">
-                <button className="Button-default">
-                  <Notepad size={16}/>Add
-                </button>
+                <Button name="Add" iconBefore={<CalendarPlus/>} appearance="secondary"/>
                 {/* <button onClick={() => handleUpdateRecipe({ ...recipe, name: "Updated Recipe" })} className="Button-default">
                   <Pencil/>Edit
                 </button> */}
-                <button onClick={() => handleDeleteRecipe(recipe.id)} className="Button-delete"><Trash/>Delete</button>
+                <Button name="Delete" iconBefore={<Trash/>} appearance="delete" onClick={() => handleDeleteRecipe(recipe.id)}/>
               </div>
             </li>
           ))}
