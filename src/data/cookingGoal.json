@@ -23,5 +23,10 @@
         "id": "5",
         "name": "Learn new skill",
         "emoji": "📝"
+    },
+    {
+        "id": "6",
+        "name": "Not sure",
+        "emoji": "🎲"
     }
 ]

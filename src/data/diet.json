@@ -1,27 +1,37 @@
 [
     {
         "id": "1",
-        "name": "Vegetarian diet",
-        "emoji": "🥦"
+        "name": "Standard",
+        "emoji": "😋"
     },
     {
         "id": "2",
-        "name": "Vegan diet",
-        "emoji": "🌿"
+        "name": "Vegetarian",
+        "emoji": "🥦"
     },
     {
         "id": "3",
-        "name": "Paleo diet",
-        "emoji": "🍗"
+        "name": "Vegan",
+        "emoji": "🌿"
     },
     {
         "id": "4",
-        "name": "Pescetarian diet",
-        "emoji": "🐟"
+        "name": "Paleo",
+        "emoji": "🍗"
     },
     {
         "id": "5",
-        "name": "Keto diet",
+        "name": "Pescetarian",
+        "emoji": "🐟"
+    },
+    {
+        "id": "6",
+        "name": "Keto",
         "emoji": "🧈"
+    },
+    {
+        "id": "7",
+        "name": "Others",
+        "emoji": "🔎"
     }
 ]

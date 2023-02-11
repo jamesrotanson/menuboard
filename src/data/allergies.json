@@ -38,5 +38,10 @@
         "id":"8",
         "name":"Sulphite-free",
         "icon":"🍒"
+    },
+    {
+        "id":"9",
+        "name":"None",
+        "icon":"✅"
     }
 ]

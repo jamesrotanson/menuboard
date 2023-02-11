@@ -369,8 +369,9 @@ button {
   background-color: #098348;
   cursor: pointer;
   color: white;
-  padding: 8px 12px;
+  padding: 12px 20px;
   border: none;
+  font-size: 16px;
   font-weight: 600;
   gap: 8px;
   display: flex;
@@ -387,8 +388,9 @@ button {
   background-color: white;
   cursor: pointer;
   color: grey;
-  padding: 8px 12px;
+  padding: 12px 20px;
   border: 1px solid rgba(0,0,0,0.12);
+  font-size: 16px;
   font-weight: 600;
   gap: 8px;
   display: flex;
@@ -405,8 +407,9 @@ button {
   background-color: white;
   cursor: pointer;
   color: grey;
-  padding: 8px 12px;
+  padding: 12px 20px;
   border: 1px solid rgba(0,0,0,0.12);
+  font-size: 16px;
   font-weight: 600;
   gap: 8px;
   display: flex;
@@ -1039,9 +1042,36 @@ button {
   max-height: 96px;
 }
 
+
 .Bubble-option:hover {
   background-color: rgba(0,0,0,0.04);
   transition: 0.2s all ease-in-out;
+}
+
+.Bubble-option-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(9, 131, 72, 1.0);
+  padding: 16px;
+  width: 100%;
+  border-radius: 100%;
+  cursor:pointer;
+  min-width: 80px;
+  min-height: 80px;
+  max-width: 96px;
+  max-height: 96px;
+  background-color: rgba(9, 131, 72, 0.12);
+  
+}
+
+.Bubble-option-active h5 {
+  color: rgba(9, 131, 72, 1.0);  
+}
+
+.Bubble-option-active:hover {
+  background-color: rgba(9, 131, 72, 0.2);
 }
 
 .Bubble-option .Twemoji-small {

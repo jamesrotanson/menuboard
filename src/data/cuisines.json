@@ -58,5 +58,10 @@
         "name": "American",
         "emoji": "🍔",
         "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"
+    },
+    {
+        "id": "11",
+        "name": "Others",
+        "emoji": "🔎"
     }
 ]
