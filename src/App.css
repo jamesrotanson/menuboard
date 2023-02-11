@@ -1026,15 +1026,17 @@ button {
 .Bubble-option {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   border: 1px solid rgba(0, 0, 0, 0.12);
   padding: 16px;
   width: 100%;
   border-radius: 100%;
   cursor:pointer;
-  min-width: 64px;
-  min-height: 64px;
+  min-width: 80px;
+  min-height: 80px;
+  max-width: 96px;
+  max-height: 96px;
 }
 
 .Bubble-option:hover {

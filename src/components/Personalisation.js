@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import AllergiesOptions from './AllergiesOptions';
-import CuisinesOptions from './CuisinesOptions';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
+import AllergiesOptions from './AllergiesOptions';
+import CuisinesOptions from './CuisinesOptions';
+import DietOptions from './DietOptions';
+import FoodAvoidOptions from './FoodAvoidOptions';
+import CookingLevelOptions from './CookingLevelOptions';
+import CookingGoalOptions from './CookingGoalOptions';
 
 const Personalisation = () => {
     const [personalisationStep, setpersonalisationStep] = useState(1)
@@ -48,7 +52,7 @@ const Personalisation = () => {
                         <h3>Do you have any food allergies?</h3>
                         <AllergiesOptions/>
                         <div className='Button-group'>
-                            <Button name="Prev" appearance="default" onClick={handlePrev}/>
+                            <Button name="Back" appearance="default" onClick={handlePrev}/>
                             <Button name="Next" appearance="primary" onClick={handleNext}/>
                         </div>
                     </div>
@@ -58,9 +62,9 @@ const Personalisation = () => {
                 personalisationStep === 3 && (
                     <div className="Section-center">
                         <h3>Do you follow any of these diets?</h3>
-                        <AllergiesOptions/>
+                        <DietOptions/>
                         <div className='Button-group'>
-                            <Button name="Prev" appearance="default" onClick={handlePrev}/>
+                            <Button name="Back" appearance="default" onClick={handlePrev}/>
                             <Button name="Next" appearance="primary" onClick={handleNext}/>
                         </div>
                     </div>
@@ -70,9 +74,9 @@ const Personalisation = () => {
                 personalisationStep === 4 && (
                     <div className="Section-center">
                         <h3>Any ingredients you don't want to see in recommended recipes?</h3>
-                        <AllergiesOptions/>
+                        <FoodAvoidOptions/>
                         <div className='Button-group'>
-                            <Button name="Prev" appearance="default" onClick={handlePrev}/>
+                            <Button name="Back" appearance="default" onClick={handlePrev}/>
                             <Button name="Next" appearance="primary" onClick={handleNext}/>
                         </div>
                     </div>
@@ -82,9 +86,9 @@ const Personalisation = () => {
                 personalisationStep === 5 && (
                     <div className="Section-center">
                         <h3>How would you describe your cooking skills?</h3>
-                        <AllergiesOptions/>
+                        <CookingLevelOptions/>
                         <div className='Button-group'>
-                            <Button name="Prev" appearance="default" onClick={handlePrev}/>
+                            <Button name="Back" appearance="default" onClick={handlePrev}/>
                             <Button name="Next" appearance="primary" onClick={handleNext}/>
                         </div>
                     </div>
@@ -94,15 +98,15 @@ const Personalisation = () => {
                 personalisationStep === 6 && (
                     <div className="Section-center">
                         <h3>What are your cooking goals?</h3>
-                        <AllergiesOptions/>
+                        <CookingGoalOptions/>
                         <div className='Button-group'>
-                            <Button name="Prev" appearance="default" onClick={handlePrev}/>
+                            <Button name="Back" appearance="default" onClick={handlePrev}/>
                             <Button name="Done" appearance="primary" onClick={handleDone}/>
                         </div>
                     </div>
                 )
             }
-            <small>Step {personalisationStep} / 7</small>
+            <small>{personalisationStep} of 7</small>
     </div>
   ) 
 }

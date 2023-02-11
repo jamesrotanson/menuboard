@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "name": "Vegetarian diet",
+        "emoji": "🥦"
+    },
+    {
+        "id": "2",
+        "name": "Vegan diet",
+        "emoji": "🌿"
+    },
+    {
+        "id": "3",
+        "name": "Paleo diet",
+        "emoji": "🍗"
+    },
+    {
+        "id": "4",
+        "name": "Pescetarian diet",
+        "emoji": "🐟"
+    },
+    {
+        "id": "5",
+        "name": "Keto diet",
+        "emoji": "🧈"
+    }
+]

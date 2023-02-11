@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "name": "Alcohol",
+        "icon": "🍷"
+    },
+    {
+        "id": "2",
+        "name": "Avocado",
+        "icon": "🥑"
+    },
+    {
+        "id": "3",
+        "name": "Coriander",
+        "icon": "☘️"
+    },
+    {
+        "id": "4",
+        "name": "Bananas",
+        "icon": "🍌"
+    },
+    {
+        "id": "5",
+        "name": "Beef",
+        "icon": "🥩"
+    },
+    {
+        "id": "6",
+        "name": "Pork",
+        "icon": "🥓"
+    },
+    {
+        "id": "7",
+        "name": "Seafood",
+        "icon": "🐟"
+    },
+    {
+        "id": "8",
+        "name": "Shrimp",
+        "icon": "🦐"
+    },
+    {
+        "id": "9",
+        "name": "Sugar",
+        "icon": "🍦"
+    }
+]
