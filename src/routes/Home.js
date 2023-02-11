@@ -9,6 +9,14 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const navigateToAppHome = () => {
+    navigate('/app-home');
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   const navigateToRecipes = () => {
     navigate('/recipes');
     window.scrollTo({
@@ -62,8 +70,8 @@ const Home = () => {
             <h1>Organise all your meals in one place</h1>
             <h2>Menuboard helps you and your loved ones plan, organise, and manage your meals in a quick and easy way </h2>
             <div className='Button-group'>
-              <Button name="Try free" appearance="primary" onClick={navigateToPlan} iconAfter={<CaretRight/>}/>
-              <Button name="Learn more" appearance="default" onClick={navigateToPlan} iconAfter={<CaretRight/>}/>
+              <Button name="Try free" appearance="primary" onClick={navigateToAppHome} iconAfter={<CaretRight/>}/>
+              <Button name="Learn more" appearance="default" onClick={navigateToAppHome} iconAfter={<CaretRight/>}/>
             </div>
           </div>
         </div>

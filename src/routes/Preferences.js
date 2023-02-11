@@ -4,6 +4,7 @@ import Avatar1 from "../images/memoji-01.png"
 import Avatar2 from "../images/memoji-02.png"
 import Twemoji from 'react-twemoji';
 import Avatar from '../components/Avatar';
+import FamilyPlanBanner from '../components/FamilyPlanBanner';
 
 const Preferences = () => {
 
@@ -106,15 +107,7 @@ const Preferences = () => {
         <br></br>
         <br></br>
 
-        <div className="Family-plan-banner"> 
-          <img src={require("../images/family-diverse.png")}/>
-          <div className='Family-plan-banner-content'>
-            <h2>Introducing Family Plan</h2>
-            <p>Get everyone on the table for better recommendation on recipes and groceries. <br></br>Costs only 1 coffee per family member per month. </p>
-            <button className='Button-primary'>Add family member</button>
-          </div>
-          
-        </div>
+        <FamilyPlanBanner/>
       </div>
     </div>
   );
