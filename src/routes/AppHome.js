@@ -51,7 +51,7 @@ const AppHome = () => {
             <br></br>
             <br></br>
 
-            <div className='flex'>
+            <div className='Section-grocery flex'>
                 <div className="Section-content-text">
                     <h3>Set up your groceries</h3>
                     <p>Connect to popular grocery service to easily get the ingredients based on your planned meals</p>

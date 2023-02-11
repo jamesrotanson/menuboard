@@ -1170,4 +1170,104 @@ button {
     gap: 4px;
   }
 
+  .Page-container {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  
+  .Page-small{
+    width: 100%;
+  }
+
+  .Page-medium {
+    width: 100%;
+  }
+
+  .Page-large {
+    width: 100%;
+  }
+
+  .Page-header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .Page-cover-container-hero {
+    object-fit: cover;
+    height: 240px;
+    margin-top: 160px;
+  }
+
+  .Section-hero-content {
+    width: 100%;
+  }
+
+  .Section {
+    flex-direction: column;
+    padding: 0;
+    background-color: #FFFFFF;
+  }
+
+  .Section:nth-child(3){
+    flex-direction: column-reverse;
+  }
+
+  .Section:nth-child(5){
+    flex-direction: column-reverse;
+  }
+
+  .Section-content-text {
+    padding: 0;
+    padding-bottom: 24px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .Bubble-list {
+    overflow: scroll;
+    width: 100%;
+  }
+
+  .Recipe-card {
+    width: 196px;
+  }
+
+  .Section-grocery {
+    flex-direction: column;
+  }
+
+  .Family-plan-banner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Family-plan-banner-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .Plan-calendar-container {
+    width: 960px;
+    overflow: scroll;
+  }
+
+  .Card {
+    width: 100%;
+  }
+
+  .Card-group {
+    flex-direction: column;
+  }
+
+  .Device-icon-container {
+    width: 32px;
+    height: 32px;
+  }
+
+  .Preferences-card-list {
+    flex-direction: column;
+  }
 }

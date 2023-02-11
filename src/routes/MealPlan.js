@@ -19,7 +19,7 @@ const MealPlan = () => {
           <Button appearance="primary" name="Share" iconBefore={<Export/>}/>
         </div>
         <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
-        <MealCalendar/>
+        <MealCalendar className="Plan-calendar-container"/>
       </div>
     </div>
   );
