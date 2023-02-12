@@ -7,6 +7,7 @@ import RecipeCard from '../components/RecipeCard';
 import AllergiesOptions from '../components/AllergiesOptions';
 import Personalisation from '../components/Personalisation';
 import FamilyPlanBanner from '../components/FamilyPlanBanner';
+import ConnectAppsActions from '../components/ConnectAppsActions';
 
 const AppHome = () => {
   return (
@@ -55,12 +56,7 @@ const AppHome = () => {
                 <div className="Section-content-text">
                     <h3>Set up your groceries</h3>
                     <p>Connect to popular grocery service to easily get the ingredients based on your planned meals</p>
-                    <ul className='Button-group-vertical'>
-                        <li><Button name="Connect to Woolworths" appearance="connect" iconBefore={<img className="Button-img" src={require("../images/woolies-logo.png")}/>}/></li>
-                        <li><Button name="Connect to HelloFresh" appearance="connect" iconBefore={<img className="Button-img" src={require("../images/hellofresh-logo.png")}/>}/></li>
-                        <li><Button name="Connect to Coles" appearance="connect" iconBefore={<img className="Button-img" src={require("../images/coles-logo.png")}/>}/></li>
-                        <li><Button name="Connect to Aldi" appearance="connect" iconBefore={<img className="Button-img" src={require("../images/aldi-logo.png")}/>}/></li>
-                    </ul>
+                    <ConnectAppsActions/>
                 </div>
                 <img className='Thumbnail' src={require("../images/grocery-illos.png")}/>
             </div>

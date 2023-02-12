@@ -445,7 +445,7 @@ button {
 .Button-connect {
   background-color: white;
   cursor: pointer;
-  padding: 16px 24px 16px 16px;
+  padding: 12px 20px 12px 12px;
   border: 1px solid rgba(0,0,0,0.12);
   color: rgba(0,0,0,0.72);
   font-size: 16px;
@@ -823,7 +823,7 @@ button {
   align-items: center;
   padding: 24px 8px;
   gap: 8px;
-  width: 114px;
+  width: 70px;
   cursor: pointer;
 }
 
@@ -856,10 +856,23 @@ button {
   width: 280px;
 }
 
+.Grocery-form-add-container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 24px;
+  padding-bottom: 8px;
+  gap: 16px;
+}
+
+.Grocery-form-add-container input {
+  width: 740px;
+}
+
 .Grocery-cart-item {
   display: flex;
   gap: 8px;
   padding: 8px;
+  align-items: center;
 }
 
 .Grocery-cart-item p {

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Twemoji from 'react-twemoji';
-import { IconContext, MagnifyingGlass, ShoppingCart, } from 'phosphor-react';
+import { IconContext, MagnifyingGlass, Plus, ShoppingCart, Trash} from 'phosphor-react';
 import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
+import ConnectAppsActions from '../components/ConnectAppsActions';
 
 
 const Groceries = () => {
@@ -20,8 +21,6 @@ const Groceries = () => {
     updatedItems.splice(index, 1);
     setItems(updatedItems);
   };
-
-  // const groceryEmojis = ["🥚", "🥩", "🥦" ]
 
   const groceryCategoryData = [
     {id: 1, name: "Egg", emoji: "🥚", color: "#FFF3EB"},
@@ -78,18 +77,20 @@ const Groceries = () => {
           </div>
         </div>
 
-        <SearchBar placeholder="Search ingredients for grocery list" onChange={""} appearance="default"/>  
-
         <div className='Grocery-container'>
           {/* GROCERY AREA */}
           <div className='Grocery-area'>
-            <h3>Shop popular categories</h3>
+            <br></br>
+            <h3>Popular categories</h3>
             <div className='Grocery-category-list'>
               {groceryCategoryList}
             </div>
             <br></br>
-            <h3>On sale</h3>
-            <form onSubmit={handleSubmit}>
+            <br></br>
+            <br></br>
+            <h3><ShoppingCart/>Your grocery list</h3>
+            <small>Based on your planned meals we have added the following ingredients to your grocery list </small>
+            <form onSubmit={handleSubmit} className="Grocery-form-add-container">
               <input
                 type="text"
                 value={input}
@@ -97,27 +98,34 @@ const Groceries = () => {
                 className="Form-input"
                 placeholder='Type grocery item'
               />
-              <button type="submit" className='Button-primary'>Add Item</button>
+              <Button type="submit" appearance="primary" name="Add item" iconBefore={<Plus/>}/>
             </form>
             <ul>
+              {groceryList}
               {items.map((item, index) => (
-                <li key={item + index}>
-                  {item}
-                  <button onClick={() => handleDelete(index)} className="Button-delete">Delete</button>
+                <li className='Grocery-cart-item' key={item + index}>
+                  <p className='qty'>1 x</p>
+                  <Twemoji options={{ className: 'twemoji' }}>
+                    <p></p>
+                  </Twemoji>
+                  <p className='name'>{item}</p>
+                  <p className='price'>$0</p>
+                  <Button name="Delete" onClick={() => handleDelete(index)} appearance="delete" iconBefore={<Trash/>}/>
                 </li>
               ))}
             </ul>
+            
+            
+            <button type="submit" className='Button-primary'><ShoppingCart size={24}/>Order now</button>
+            <ConnectAppsActions/>
           </div>
 
 
           {/* GROCERY CART */}
-          <div className='Grocery-cart-container'>
+          {/* <div className='Grocery-cart-container'>
             <img src={require("../images/shopping-basket.png")} className="Recipe-thumbnail"/>
-            <h3><ShoppingCart/>Your cart</h3>
-            <small>Based on your planned meals we have added the following ingredients to your grocery list </small>
-            {groceryList}
-            <button type="submit" className='Button-primary'><ShoppingCart size={24}/>Order now</button>
-          </div>
+            
+          </div> */}
   
         </div>
       </div>
