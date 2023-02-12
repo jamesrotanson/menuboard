@@ -1100,6 +1100,10 @@ button {
   justify-content: space-between;
   /* flex-wrap: wrap; */
   gap: 8px;
+  /* width: 100%; */
+  max-width: 960px;
+  overflow: scroll;
+  
 }
 
 .Bubble-option {
@@ -1160,7 +1164,7 @@ button {
 }
 
 /* MEDIA QUERIES */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
   .Main-nav-tab p {
     display: none;
   }
@@ -1236,6 +1240,7 @@ button {
     width: 100%;
   }
 
+
   .Recipe-card {
     width: 100%;
   }
@@ -1254,12 +1259,49 @@ button {
     text-align: center;
   }
 
+  .fc {
+    height: 100vh;
+  }
+
+  .fc-scrollgrid-sync-inner {
+    padding: 0;
+  }
+
   .fc-toolbar-title {
     font-size: 1.2em !important;
   }
 
   .fc-scrollgrid-liquid {
     height: 100vh;
+  }
+
+  .fc-col-header-cell-cushion {
+    font-size: 8px;
+  }
+
+  .Calendar-event-thumbnail {
+    height: 32px;
+  }
+
+  .Calendar-event-info {
+    padding: 2px;
+  }
+
+  .Calendar-event-info h4 {
+    font-size: 10px;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .Calendar-event-info small {
+    font-size: 9px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+  }
+
+  .Avatar-small {
+    width: 16px;
+    height: 16px;
   }
 
   .Card {
