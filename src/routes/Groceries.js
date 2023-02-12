@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Twemoji from 'react-twemoji';
-import { IconContext, MagnifyingGlass, Plus, ShoppingCart, Trash} from 'phosphor-react';
+import { IconContext, MagnifyingGlass, Minus, Plus, ShoppingCart, Trash, } from 'phosphor-react';
 import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import ConnectAppsActions from '../components/ConnectAppsActions';
@@ -9,6 +9,10 @@ import ConnectAppsActions from '../components/ConnectAppsActions';
 const Groceries = () => {
   const [items, setItems] = useState([]);
   const [input, setInput] = useState('');
+
+  const [itemQuantity, setItemQuantity] = useState(1)
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +25,19 @@ const Groceries = () => {
     updatedItems.splice(index, 1);
     setItems(updatedItems);
   };
+
+  const handleAddQty = () => {
+    setItemQuantity(itemQuantity + 1)
+  }
+
+  const handleReduceQty = () => {
+    
+    if(itemQuantity === 0){
+      setItemQuantity(itemQuantity === 0)
+    }
+    setItemQuantity(itemQuantity - 1)
+  }
+
 
   const groceryCategoryData = [
     {id: 1, name: "Egg", emoji: "🥚", color: "#FFF3EB"},
@@ -37,7 +54,6 @@ const Groceries = () => {
 
   const groceryCategoryList = groceryCategoryData.map((groceryCategory) => 
     <li className="Grocery-category-tile" style={{background: groceryCategory.color}}>
-     
       <Twemoji options={{ className: 'twemoji' }}>
         <p>{groceryCategory.emoji}</p>
       </Twemoji>
@@ -98,25 +114,30 @@ const Groceries = () => {
                 className="Form-input"
                 placeholder='Type grocery item'
               />
-              <Button type="submit" appearance="primary" name="Add item" iconBefore={<Plus/>}/>
+              <Button type="submit" appearance="secondary" name="Add item" iconBefore={<Plus/>} />
             </form>
             <ul>
-              {groceryList}
+              {/* {groceryList} */}
               {items.map((item, index) => (
                 <li className='Grocery-cart-item' key={item + index}>
-                  <p className='qty'>1 x</p>
+                  <input type="checkbox"/>
                   <Twemoji options={{ className: 'twemoji' }}>
                     <p></p>
                   </Twemoji>
                   <p className='name'>{item}</p>
-                  <p className='price'>$0</p>
-                  <Button name="Delete" onClick={() => handleDelete(index)} appearance="delete" iconBefore={<Trash/>}/>
+                  {/* <p className='price'>$0</p> */}
+                  <div className='Button-group-calc'>
+                    <Button appearance="default" iconBefore={<Plus/>} onClick={handleAddQty}/>
+                    <input type="number" value={itemQuantity} className='Form-input'/>
+                    <Button appearance="default" iconBefore={<Minus/>} onClick={handleReduceQty}/>
+                  </div>
+                  <Button onClick={() => handleDelete(index)} appearance="delete" iconBefore={<Trash/>}/>
                 </li>
               ))}
             </ul>
             
             
-            <button type="submit" className='Button-primary'><ShoppingCart size={24}/>Order now</button>
+            {/* <Button name="Order now" appearance="primary" iconBefore={<ShoppingCart/>}/> */}
             <ConnectAppsActions/>
           </div>
 
