@@ -80,7 +80,7 @@ const Groceries = () => {
 
         <SearchBar placeholder="Search ingredients for grocery list" onChange={""} appearance="default"/>  
 
-        <div className='flex'>
+        <div className='Grocery-container'>
           {/* GROCERY AREA */}
           <div className='Grocery-area'>
             <h3>Shop popular categories</h3>

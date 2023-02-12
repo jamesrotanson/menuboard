@@ -795,6 +795,10 @@ button {
 
 
 /* GROCERIES */
+.Grocery-container {
+  display: flex;
+}
+
 .Grocery-area {
   width: 960px;
   margin-right: 48px;
@@ -1173,6 +1177,7 @@ button {
   .Page-container {
     margin-left: 16px;
     margin-right: 16px;
+    padding-bottom: 8px;
   }
   
   .Page-small{
@@ -1249,17 +1254,43 @@ button {
     text-align: center;
   }
 
-  .Plan-calendar-container {
-    width: 960px;
-    overflow: scroll;
+  .fc-toolbar-title {
+    font-size: 1.2em !important;
+  }
+
+  .fc-scrollgrid-liquid {
+    height: 100vh;
   }
 
   .Card {
-    width: 100%;
+    width: auto;
   }
 
   .Card-group {
     flex-direction: column;
+  }
+
+  .Grocery-container {
+    flex-direction: column;
+  }
+
+  .Grocery-cart-container {
+    width: auto;
+  }
+
+  .Grocery-area {
+    width: auto;
+    margin-right: 0;
+  }
+  
+  .Grocery-category-list {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .Grocery-category-tile {
+    width: 28%;
   }
 
   .Device-icon-container {
@@ -1270,4 +1301,5 @@ button {
   .Preferences-card-list {
     flex-direction: column;
   }
+
 }
