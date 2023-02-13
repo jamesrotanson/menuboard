@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
-import Button from '../components/Button';
-import Twemoji from 'react-twemoji';
 import SearchBar from '../components/SearchBar';
 import Recipes from '../data/recipes.json'
 import RecipeCard from '../components/RecipeCard';
-import AllergiesOptions from '../components/AllergiesOptions';
 import Personalisation from '../components/Personalisation';
 import FamilyPlanBanner from '../components/FamilyPlanBanner';
 import ConnectAppsActions from '../components/ConnectAppsActions';
@@ -12,9 +9,30 @@ import LoadingPage from './LoadingPage';
 
 const AppHome = () => {
 
+    // LOADING
     const [loading, setLoading] = useState(true)
-
     setTimeout(() => setLoading(false), 1000);
+
+
+    // ADD
+    const handleAddToPlan = (event) => {
+        event.target.classList.toggle("Button-secondary-active") 
+    }
+
+
+    // SEARCH
+    const [searchTerm, setsearchTerm] = useState("")
+    const handleSearch = (event) => {
+        setsearchTerm(event.target.value)
+    }
+
+    const filteredRecipes = Recipes.filter((recipe) => 
+        recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+
+    // Local storage
+    
 
   return (
     <div>
@@ -27,15 +45,14 @@ const AppHome = () => {
                     <Personalisation/>
                 </div>
 
-            
-
                 <br></br>
 
                 <h3>Popular recipes</h3>
-                <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/> 
+                <SearchBar placeholder="Search recipes and ingredients" onChange={handleSearch} appearance="default"/> 
+
                 <ul className='Recipe-card-list'>
                     {
-                        Recipes.map(recipe => {
+                        filteredRecipes.map(recipe => {
                             return(
                                 <RecipeCard 
                                     key={recipe.id}
@@ -43,6 +60,7 @@ const AppHome = () => {
                                     imageUrl={recipe.imageUrl}
                                     cost={recipe.cost}
                                     time={recipe.time}
+                                    onAdd={handleAddToPlan}
                                     // ingredients={recipe.ingredients.map(ingredient => {
                                     //     return(
                                     //         <div>

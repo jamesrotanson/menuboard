@@ -104,8 +104,6 @@ const Recipes = () => {
             </div>
             <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button>
           </div>
-
-
           
           <SearchBar placeholder="Search recipes or ingredients" onChange={handleSearch} appearance="default"/>   
           
