@@ -66,7 +66,10 @@ const Home = () => {
             <img src={require("../images/3d-food.png")}/>
           </div>
           <div className='Section-hero-content'>
-            <h5>Menuboard</h5>
+            <h5>Introducing</h5>
+            <br></br>
+            <img src={require("../images/menuboard_logo-full.png")} className="Logo-full"/>
+            <br></br>
             <h1>Organise all your meals in one place</h1>
             <h2>Menuboard helps you and your loved ones plan, organise, and manage your meals in a quick and easy way </h2>
             <div className='Button-group'>

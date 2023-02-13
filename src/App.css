@@ -180,6 +180,11 @@ img {
   width: 32px;
 }
 
+.Logo-full {
+  object-fit: contain;
+  width: 200px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
