@@ -5,11 +5,11 @@ import Bubble from './Bubble'
 
 const CuisinesOptions = () => {
   return (
-    <ul className='Bubble-list'>
+    <div className='Bubble-list'>
         {cuisines.map(cuisine => 
             <Bubble name={cuisine.name} icon={cuisine.emoji}/>
         )}
-    </ul>
+    </div>
   )
 }
 

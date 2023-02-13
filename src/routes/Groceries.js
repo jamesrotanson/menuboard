@@ -4,9 +4,15 @@ import { IconContext, MagnifyingGlass, Minus, Plus, ShoppingCart, Trash, } from 
 import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import ConnectAppsActions from '../components/ConnectAppsActions';
+import LoadingPage from './LoadingPage';
 
 
 const Groceries = () => {
+
+  // Loader
+  const [loading, setLoading] = useState(true)
+  setTimeout(() => setLoading(false), 1000);
+
   const [items, setItems] = useState([]);
   const [input, setInput] = useState('');
 
@@ -81,75 +87,79 @@ const Groceries = () => {
 
 
   return (
-    <div className='Page-container'>
-      <div className="Page-small">
+    <div>
+      {loading ? <LoadingPage/> : 
+      <div className='Page-container'>
+        <div className="Page-small">
 
-        <div className="Page-header">
-          <div className="Page-title">
-            <div>
-              <h2>Groceries</h2>
-              <p>Automatically create grocery list based on your planned meals and favourite recipes</p>
+          <div className="Page-header">
+            <div className="Page-title">
+              <div>
+                <h2>Groceries</h2>
+                <p>Automatically create grocery list based on your planned meals and favourite recipes</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className='Grocery-container'>
-          {/* GROCERY AREA */}
-          <div className='Grocery-area'>
-            <br></br>
-            <h3>Popular categories</h3>
-            <div className='Grocery-category-list'>
-              {groceryCategoryList}
+          <div className='Grocery-container'>
+            {/* GROCERY AREA */}
+            <div className='Grocery-area'>
+              <br></br>
+              <h3>Popular categories</h3>
+              <div className='Grocery-category-list'>
+                {groceryCategoryList}
+              </div>
+              <br></br>
+              <br></br>
+              <br></br>
+              <h3><ShoppingCart/>Your grocery list</h3>
+              <small>Based on your planned meals we have added the following ingredients to your grocery list </small>
+              <form onSubmit={handleSubmit} className="Grocery-form-add-container">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  className="Form-input"
+                  placeholder='Type grocery item'
+                />
+                <Button type="submit" appearance="secondary" name="Add item" iconBefore={<Plus/>} />
+              </form>
+              <ul>
+                {/* {groceryList} */}
+                {items.map((item, index) => (
+                  <li className='Grocery-cart-item' key={item + index}>
+                    <input type="checkbox"/>
+                    <Twemoji options={{ className: 'twemoji' }}>
+                      <p></p>
+                    </Twemoji>
+                    <p className='name'>{item}</p>
+                    {/* <p className='price'>$0</p> */}
+                    <div className='Button-group-calc'>
+                      <Button appearance="default" iconBefore={<Plus/>} onClick={handleAddQty}/>
+                      <input type="number" value={itemQuantity} className='Form-input'/>
+                      <Button appearance="default" iconBefore={<Minus/>} onClick={handleReduceQty}/>
+                    </div>
+                    <Button onClick={() => handleDelete(index)} appearance="delete" iconBefore={<Trash/>}/>
+                  </li>
+                ))}
+              </ul>
+              
+              
+              {/* <Button name="Order now" appearance="primary" iconBefore={<ShoppingCart/>}/> */}
+              <ConnectAppsActions/>
             </div>
-            <br></br>
-            <br></br>
-            <br></br>
-            <h3><ShoppingCart/>Your grocery list</h3>
-            <small>Based on your planned meals we have added the following ingredients to your grocery list </small>
-            <form onSubmit={handleSubmit} className="Grocery-form-add-container">
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                className="Form-input"
-                placeholder='Type grocery item'
-              />
-              <Button type="submit" appearance="secondary" name="Add item" iconBefore={<Plus/>} />
-            </form>
-            <ul>
-              {/* {groceryList} */}
-              {items.map((item, index) => (
-                <li className='Grocery-cart-item' key={item + index}>
-                  <input type="checkbox"/>
-                  <Twemoji options={{ className: 'twemoji' }}>
-                    <p></p>
-                  </Twemoji>
-                  <p className='name'>{item}</p>
-                  {/* <p className='price'>$0</p> */}
-                  <div className='Button-group-calc'>
-                    <Button appearance="default" iconBefore={<Plus/>} onClick={handleAddQty}/>
-                    <input type="number" value={itemQuantity} className='Form-input'/>
-                    <Button appearance="default" iconBefore={<Minus/>} onClick={handleReduceQty}/>
-                  </div>
-                  <Button onClick={() => handleDelete(index)} appearance="delete" iconBefore={<Trash/>}/>
-                </li>
-              ))}
-            </ul>
-            
-            
-            {/* <Button name="Order now" appearance="primary" iconBefore={<ShoppingCart/>}/> */}
-            <ConnectAppsActions/>
+
+
+            {/* GROCERY CART */}
+            {/* <div className='Grocery-cart-container'>
+              <img src={require("../images/shopping-basket.png")} className="Recipe-thumbnail"/>
+              
+            </div> */}
+    
           </div>
-
-
-          {/* GROCERY CART */}
-          {/* <div className='Grocery-cart-container'>
-            <img src={require("../images/shopping-basket.png")} className="Recipe-thumbnail"/>
-            
-          </div> */}
-  
         </div>
       </div>
+    }
     </div>
   );
 };

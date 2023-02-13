@@ -37,13 +37,13 @@ const Personalisation = () => {
             <h5>Let's personalise your experience</h5>
             {
                 personalisationStep === 1 && (
-                    <div className="Section-center">
+                    <form className="Section-center" onSubmit={handleNext}>
                         <h3>What are your favourite cuisines? </h3>
                         <CuisinesOptions/>
                         <div className='Button-group'>
-                            <Button name="Next" appearance="primary" onClick={handleNext}/>
+                            <Button name="Next" appearance="primary" type="submit"/>
                         </div>
-                    </div>
+                    </form>
                 )
             }
             {

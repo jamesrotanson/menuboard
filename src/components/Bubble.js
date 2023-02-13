@@ -8,12 +8,13 @@ const Bubble = (props) => {
   }
 
   return (
-    <li className='Bubble-option' onClick={handleSelect}>
+    <div className='Bubble-option' onClick={handleSelect}>
         <Twemoji options={{className: 'Twemoji-small'}}>
             <p>{props.icon}</p>
         </Twemoji>
+        
         <p>{props.name}</p>
-    </li>
+    </div>
   )
 }
 

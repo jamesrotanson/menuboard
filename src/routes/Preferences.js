@@ -5,8 +5,13 @@ import Avatar2 from "../images/memoji-02.png"
 import Twemoji from 'react-twemoji';
 import Avatar from '../components/Avatar';
 import FamilyPlanBanner from '../components/FamilyPlanBanner';
+import LoadingPage from './LoadingPage';
 
 const Preferences = () => {
+
+  // Loader
+  const [loading, setLoading] = useState(true)
+  setTimeout(() => setLoading(false), 600);
 
   const preferencesData = [
     {id: 1, name: "James", avatarUrl: Avatar1, mealType: "Classic", allergies: "None", likes: "Seafood", dislikes: "Glutinuous rice", healthCondition: "None"},
@@ -76,39 +81,43 @@ const Preferences = () => {
   )
 
   return (
-    <div className='Page-container'>
-      <div className="Page-small">
-        <div className="Page-header">
-          <div className="Page-title">
-            <div>
-              <h2>Preferences</h2>
-              <p>Get personal recommendations based on you and your loved ones' taste</p>
+    <div>
+      {loading ? <LoadingPage/> : 
+      <div className='Page-container'>
+        <div className="Page-small">
+          <div className="Page-header">
+            <div className="Page-title">
+              <div>
+                <h2>Preferences</h2>
+                <p>Get personal recommendations based on you and your loved ones' taste</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className='Preferences-card-list'>
-          {preferencesCard}          
-        </div>
+          <div className='Preferences-card-list'>
+            {preferencesCard}          
+          </div>
 
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
 
-        <h2>Sync across devices</h2>
-        <p>Always know what's on the table everyone, everytime, everywhere </p>
-        <br></br>
-        <div className="Device-card-list">
-          {devicesCard}
+          <h2>Sync across devices</h2>
+          <p>Always know what's on the table everyone, everytime, everywhere </p>
+          <br></br>
+          <div className="Device-card-list">
+            {devicesCard}
+          </div>
+          
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <FamilyPlanBanner/>
         </div>
-        
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-
-        <FamilyPlanBanner/>
       </div>
+    }
     </div>
   );
 };
