@@ -113,7 +113,7 @@ const Groceries = () => {
               <br></br>
               <br></br>
               <h3><ShoppingCart/>Your grocery list</h3>
-              <small>Based on your planned meals we have added the following ingredients to your grocery list </small>
+              <small>Search for grocery items to add to your list. In the future, we will automatically add frequent ingredients based on your planned meals. </small>
               <form onSubmit={handleSubmit} className="Grocery-form-add-container">
                 <input
                   type="text"

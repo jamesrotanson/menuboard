@@ -13,7 +13,7 @@ const Recipes = () => {
   // Loading
   const [loading, setLoading] = useState(true)
 
-  setTimeout(() => setLoading(false), 800);
+  setTimeout(() => setLoading(false), 1000);
 
 
   const [recipes, setRecipes] = useState(
