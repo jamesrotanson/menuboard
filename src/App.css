@@ -494,6 +494,18 @@ button {
   transition: 0.2s all ease-in-out;
 }
 
+
+.Button-secondary-active {
+  background-color: #009b3c;
+  color: white;
+}
+
+.Button-secondary-active:hover {
+  background-color: #00b856;
+  transition: 0.2s all ease-in-out;
+}
+
+
 .Button-default {
   background-color: white;
   cursor: pointer;

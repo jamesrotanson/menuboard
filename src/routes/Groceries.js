@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Twemoji from 'react-twemoji';
-import { IconContext, MagnifyingGlass, Minus, Plus, ShoppingCart, Trash, } from 'phosphor-react';
+import { IconContext, MagnifyingGlass, Minus, Plus, ShoppingCart, Storefront, Trash, } from 'phosphor-react';
 import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import ConnectAppsActions from '../components/ConnectAppsActions';
@@ -112,15 +112,21 @@ const Groceries = () => {
               <br></br>
               <br></br>
               <br></br>
-              <h3><ShoppingCart/>Your grocery list</h3>
-              <small>Search for grocery items to add to your list. In the future, we will automatically add frequent ingredients based on your planned meals. </small>
+              <br></br>
+              <div className='flex'>
+                <ShoppingCart size={32}/>
+                <h3> Your grocery list</h3>
+              </div>
+              
+              <p>Search for grocery items to add to your list. In the future, we will automatically add frequent ingredients based on your planned meals. </p>
+              <br></br>
               <form onSubmit={handleSubmit} className="Grocery-form-add-container">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   className="Form-input"
-                  placeholder='Type grocery item'
+                  placeholder='Type grocery items like apples, milk, or Doritos'
                 />
                 <Button type="submit" appearance="secondary" name="Add item" iconBefore={<Plus/>} />
               </form>
@@ -144,8 +150,18 @@ const Groceries = () => {
                 ))}
               </ul>
               
-              
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
               {/* <Button name="Order now" appearance="primary" iconBefore={<ShoppingCart/>}/> */}
+              <div className='flex'>
+                <Storefront size={32}/>
+                <h3> Connect to marketplace</h3>
+              </div>
+              <p>Connect to your local grocery stores to get your grocery list instantly delivered</p>
+              <br></br>
+              <br></br>
               <ConnectAppsActions/>
             </div>
 

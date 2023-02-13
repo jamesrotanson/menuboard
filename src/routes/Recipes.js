@@ -7,13 +7,14 @@ import RecipeModal from "../components/RecipeModal";
 import Button from "../components/Button";
 import SearchBar from "../components/SearchBar";
 import LoadingPage from "./LoadingPage";
+import recipesData from "../data/recipes.json"
 
 const Recipes = () => {
 
   // Loading
   const [loading, setLoading] = useState(true)
 
-  setTimeout(() => setLoading(false), 1000);
+  setTimeout(() => setLoading(false), 1400);
 
 
   const [recipes, setRecipes] = useState(
@@ -83,9 +84,15 @@ const Recipes = () => {
     setShowRecipeModal(false);
   }
 
+  // Handle add to plan
+  const [addToPlan, setAddToPlan] = useState(false)
+  const handleAddToPlan = (event) => {
+      event.target.classList.toggle("Button-secondary-active");
+  }
+
   return (
     <div>
-      {loading ? <LoadingPage/> : 
+      {loading ? <LoadingPage loadHeaderMessage="Recommending some recipes..."/> : 
       <div className="Page-container">
         <div className="Page-small">
           <div className="Page-header">
@@ -97,6 +104,8 @@ const Recipes = () => {
             </div>
             <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button>
           </div>
+
+
           
           <SearchBar placeholder="Search recipes or ingredients" onChange={handleSearch} appearance="default"/>   
           
@@ -104,6 +113,7 @@ const Recipes = () => {
               <div className="Modal-blanket" >
                 <div className="Modal">
                   <h2>New recipe</h2>
+                  <small>Name</small>
                   <input
                     type="text"
                     placeholder="Name"
@@ -111,17 +121,19 @@ const Recipes = () => {
                     onChange={(event) => setRecipeName(event.target.value)}
                     className="Form-input"
                   />
-                  <h4>Ingredients</h4>
-                  <RichTextEditor/>
-                  <h4>Instructions</h4>
-                  <RichTextEditor/>
-                  {/* <input
+                  <br></br>
+                  <small>Ingredients</small>
+                  {/* <RichTextEditor/> */}
+                  <input
                     type="text"
                     placeholder="Ingredients"
                     value={recipeIngredients}
                     onChange={(event) => setRecipeIngredients(event.target.value)}
                     className="Form-input"
-                  /> */}
+                  />
+                  <br></br>
+                  <small>Instructions</small>
+                  {/* <RichTextEditor/> */}
                   <input
                     type="text"
                     placeholder="Instructions"
@@ -129,31 +141,45 @@ const Recipes = () => {
                     onChange={(event) => setRecipeInstructions(event.target.value)}
                     className="Form-input"
                   />
-                  <div className="Button-group">
-                    <button onClick={() => setShowModal(false)} className="Button-default">Close</button>
-                    <button onClick={handleAddRecipe} className="Button-primary">Save</button>
-                  </div>
-                  <select>
+                  <br></br>
+                  <input
+                    type="text"
+                    placeholder="Image Url"
+                    value={recipeImageUrl}
+                    onChange={(event) => setRecipeImageUrl(event.target.value)}
+                    className="Form-input"
+                  />
+                  {/* <input 
+                    type="file" 
+                    value={recipeImageUrl}
+                    onChange={(event) => setRecipeImageUrl(event.target.value)}
+                    className="Form-input"
+                  /> */}
+                  {/* <select>
                     <option value="grapefruit">Grapefruit</option>
                     <option value="lime">Lime</option>
                     <option selected value="coconut">Coconut</option>
                     <option value="mango">Mango</option>
                   </select>
-                  <input type="file" />
+                  <input type="file" /> */}
+                  <div className="Button-group">
+                    <Button name="Cancel" appearance="default" onClick={() => setShowModal(false)}/>
+                    <Button name="Save" appearance="primary" onClick={handleAddRecipe}/>
+                  </div>
                 </div>
               </div>
           )}
 
           <ul className="Recipe-card-list">
             {filteredRecipes.map((recipe) => (
-              <li key={recipe.id} className="Recipe-card" onClick={() => handleOpenRecipe(recipe)}>
+              <li key={recipe.id} className="Recipe-card" >
                 {/* <img src={require("../images/food-illos.png")} className="Recipe-thumbnail"/> */}
-                <img src={recipe.imageUrl} className="Recipe-thumbnail"/>
-                <h3>{recipe.name}</h3>
+                <img src={recipe.imageUrl} className="Recipe-thumbnail" onClick={() => handleOpenRecipe(recipe)}/>
+                <h3 onClick={() => handleOpenRecipe(recipe)}><a>{recipe.name}</a></h3>
                 <p>{recipe.ingredients}</p>
                 <small>{recipe.instructions}</small>
                 <div className="Button-group">
-                  <Button name="Add" iconBefore={<CalendarPlus/>} appearance="secondary"/>
+                  <Button name={addToPlan ? "Added" : "Add"} iconBefore={<CalendarPlus/>} appearance="secondary" onClick={handleAddToPlan} />
                   {/* <button onClick={() => handleUpdateRecipe({ ...recipe, name: "Updated Recipe" })} className="Button-default">
                     <Pencil/>Edit
                   </button> */}

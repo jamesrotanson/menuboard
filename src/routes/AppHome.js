@@ -38,6 +38,7 @@ const AppHome = () => {
                         Recipes.map(recipe => {
                             return(
                                 <RecipeCard 
+                                    key={recipe.id}
                                     name={recipe.name}
                                     imageUrl={recipe.imageUrl}
                                     cost={recipe.cost}
