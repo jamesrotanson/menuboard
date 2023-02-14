@@ -169,7 +169,6 @@ const MealCalendar = () => {
           <small>{eventInfo.event.extendedProps.type}</small>
           <AvatarGroup size="small"/>
         </div>
-        
       </div>
     )
   }

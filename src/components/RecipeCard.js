@@ -1,9 +1,15 @@
-import React from 'react';
-import { Calendar, Notepad, Trash } from 'phosphor-react';
+import React, {useState} from 'react';
+import { CalendarBlank, CalendarCheck, Heart, Trash } from 'phosphor-react';
 import Button from './Button';
 
 
 const RecipeCard = (props) => {
+
+  const [isAddedToPlan, setIsAddedToPlan] = useState(false)
+
+  const handleAddToPlan = () => {
+    setIsAddedToPlan(!isAddedToPlan);
+  }
 
   return (
     <li key={props.id} className="Recipe-card" onClick={props.onClick}>
@@ -11,7 +17,12 @@ const RecipeCard = (props) => {
         <h4>{props.name}</h4>
         <small>{props.time} · {props.cost}</small>
         <div className="Button-group">
-        <Button onClick={props.onAdd} appearance="secondary" iconBefore={<Notepad/>} name="Add"/>
+        <Button 
+          onClick={handleAddToPlan} 
+          appearance={isAddedToPlan ? "primary" : "secondary"} 
+          iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
+          name={isAddedToPlan ? "Added" : "Add"}
+        />
         <Button onClick={props.onDelete} appearance="delete" iconBefore={<Trash/>} name="Delete"/>
         </div>
     </li>

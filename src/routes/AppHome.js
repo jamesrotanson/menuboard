@@ -6,6 +6,7 @@ import Personalisation from '../components/Personalisation';
 import FamilyPlanBanner from '../components/FamilyPlanBanner';
 import ConnectAppsActions from '../components/ConnectAppsActions';
 import LoadingPage from './LoadingPage';
+import RecipeModal from '../components/RecipeModal';
 
 const AppHome = () => {
 
@@ -13,11 +14,6 @@ const AppHome = () => {
     const [loading, setLoading] = useState(true)
     setTimeout(() => setLoading(false), 1000);
 
-
-    // ADD
-    const handleAddToPlan = (event) => {
-        event.target.classList.toggle("Button-secondary-active") 
-    }
 
 
     // SEARCH
@@ -30,6 +26,21 @@ const AppHome = () => {
         recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    // OPEN MODAL
+    const [showRecipeModal, setShowRecipeModal] = useState(false)
+    const [activeRecipe, setActiveRecipe] = useState({});
+
+    const handleRecipeModalOpen = (recipe) => {
+        setShowRecipeModal(true)
+        setActiveRecipe(recipe)
+        console.log(recipe.ingredients)
+    }
+
+    const handleRecipeModalCancel = () => {
+        setShowRecipeModal(false)
+    }
+
+    
 
     // Local storage
     
@@ -52,7 +63,7 @@ const AppHome = () => {
 
                 <ul className='Recipe-card-list'>
                     {
-                        filteredRecipes.map(recipe => {
+                        filteredRecipes.map((recipe) => {
                             return(
                                 <RecipeCard 
                                     key={recipe.id}
@@ -60,7 +71,7 @@ const AppHome = () => {
                                     imageUrl={recipe.imageUrl}
                                     cost={recipe.cost}
                                     time={recipe.time}
-                                    onAdd={handleAddToPlan}
+                                    onClick={() => handleRecipeModalOpen(recipe)}
                                     // ingredients={recipe.ingredients.map(ingredient => {
                                     //     return(
                                     //         <div>
@@ -73,6 +84,17 @@ const AppHome = () => {
                         })
                     }
                 </ul>
+
+                {showRecipeModal ? 
+                    <RecipeModal
+                        onCancel={handleRecipeModalCancel}
+                        recipeName={activeRecipe.name}
+                        recipeImageUrl={activeRecipe.imageUrl}
+
+                    /> 
+                    : null
+                }
+
 
                 <br></br>
                 <br></br>

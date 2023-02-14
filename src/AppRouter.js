@@ -17,6 +17,7 @@ import Insights from './routes/Insights';
 import Preferences from './routes/Preferences';
 import ErrorPage from './routes/ErrorPage';
 import AppHome from './routes/AppHome';
+import MainNavigation from './components/MainNavigation';
 
 const router = createBrowserRouter([
   {

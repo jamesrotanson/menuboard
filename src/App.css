@@ -474,6 +474,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.2 all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .Button-primary:hover {
@@ -492,6 +493,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.2 all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .Button-secondary:hover {

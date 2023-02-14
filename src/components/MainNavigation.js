@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { IconContext, House, CookingPot, Notepad, ShoppingCart, ChartPie, FadersHorizontal, CaretRight} from 'phosphor-react';
+import { IconContext, House, CookingPot, CalendarBlank, ShoppingCart, ChartPie, FadersHorizontal} from 'phosphor-react';
 import '../App.css';
 import Button from '../components/Button';
 import Avatar from "./Avatar";
@@ -33,7 +33,7 @@ const MainNavigation = () => {
                     <li className="Main-nav-tab"><a href="./"><img src={require("../images/small-logo.png")} className="Logo-small"/> </a></li>
                     <li className="Main-nav-tab"><a href="./app-home"><House/><p>Home</p></a></li>
                     <li className="Main-nav-tab"><a href="./recipes"> <CookingPot/><p>Recipes</p></a></li>
-                    <li className="Main-nav-tab"><a href="./plan"> <Notepad/><p>Plan</p></a></li>
+                    <li className="Main-nav-tab"><a href="./plan"> <CalendarBlank/><p>Plan</p></a></li>
                     <li className="Main-nav-tab"><a href="./groceries"> <ShoppingCart/><p>Grocery</p></a></li>
                     <li className="Main-nav-tab"><a href="./insights"> <ChartPie/><p>Insights</p></a></li>
                     <li className="Main-nav-tab"><a href="./preferences"> <FadersHorizontal/><p>Preferences</p></a></li>
