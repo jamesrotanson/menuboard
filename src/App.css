@@ -760,6 +760,10 @@ button {
   margin-top: 8px;
 }
 
+.Recipe-card h4 {
+  width: 100%;
+}
+
 .Recipe-card:hover h4 {
   text-decoration: underline;
 }
