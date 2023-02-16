@@ -1,47 +1,47 @@
 [
     {
         "id":"1",
-        "name":"Dairy-free",
-        "icon":"🥛"
+        "name":"None",
+        "icon":"✅"
     },
     {
         "id":"2",
-        "name":"Peanut-free",
-        "icon":"🥜"
+        "name":"Dairy",
+        "icon":"🥛"
     },
     {
         "id":"3",
-        "name":"Wheat-free",
-        "icon":"🌾"
+        "name":"Peanut",
+        "icon":"🥜"
     },
     {
         "id":"4",
-        "name":"Soy-free",
-        "icon":"🫘"
+        "name":"Wheat",
+        "icon":"🌾"
     },
     {
         "id":"5",
-        "name":"Seafood-free",
-        "icon":"🦐"
+        "name":"Soy",
+        "icon":"🫘"
     },
     {
         "id":"6",
-        "name":"Gluten-free",
-        "icon":"🍞"
+        "name":"Seafood",
+        "icon":"🦐"
     },
     {
         "id":"7",
-        "name":"Egg-free",
-        "icon":"🥚"
+        "name":"Gluten",
+        "icon":"🍞"
     },
     {
         "id":"8",
-        "name":"Sulphite-free",
-        "icon":"🍒"
+        "name":"Egg",
+        "icon":"🥚"
     },
     {
         "id":"9",
-        "name":"None",
-        "icon":"✅"
+        "name":"Sulphite",
+        "icon":"🍒"
     }
 ]
