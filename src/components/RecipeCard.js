@@ -9,6 +9,7 @@ const RecipeCard = (props) => {
   const [addToPlanVisible, setAddToPlanVisible] = useState(true)
   const [addedToPlanVisible, setAddedToPlanVisible] = useState(false)
 
+
   const handleAddToPlan = () => {
     setAddToPlanVisible(false);
     setAddedToPlanVisible(true);

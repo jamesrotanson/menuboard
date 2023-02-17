@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import './App.css'
 import ReactDOM from "react-dom/client";
 import {
@@ -12,11 +13,9 @@ import "@fontsource/inter";
 import "@fontsource/inter/700.css";
 import "@fontsource/inter/500.css";
 import {createStore} from "redux";
-import { Provider } from 'react-redux';
-import reducer from './reducers/reducer';
+import rootReducer from './reducers/index'
 
-
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 store.dispatch({type: "INCREASE_PLAN_COUNT"});
 store.dispatch({type: "DECREASE_PLAN_COUNT"});

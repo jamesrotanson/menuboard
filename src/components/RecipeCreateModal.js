@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import Modal from 'antd/es/modal/Modal'
 import Button from './Button'
+import { addRecipe } from '../reducers/recipeReducer'
+import {v4 as uuid} from 'uuid';
+import { useDispatch } from 'react-redux'
 
 const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) => {
     
@@ -8,9 +11,20 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
     const [recipeIngredients, setRecipeIngredients] = useState('');
     const [recipeInstructions, setRecipeInstructions] = useState('');
   
+    const dispatch = useDispatch()
+
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log({recipeName, recipeIngredients, recipeInstructions})
+        if(recipeName){
+            dispatch(
+                addRecipe({
+                    id: uuid(),
+                    recipeName, 
+                    time: new Date().toLocaleDateString(),
+                })
+            )
+        }
     }
 
     return (
