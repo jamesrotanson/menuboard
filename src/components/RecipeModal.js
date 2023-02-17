@@ -7,6 +7,7 @@ import IngredientsList from './IngredientsList';
 const RecipeModal = (props) => {
     
     const [showRecipeModal, setShowRecipeModal] = useState(true)
+    
 
     return (
     <div>

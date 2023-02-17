@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar'
 import RecipeCard from '../components/RecipeCard'
 import RecipesData from '../data/recipes.json'
 import RecipeModal from '../components/RecipeModal'
+import RecipeCreateModal from '../components/RecipeCreateModal'
 
 
 const Recipes = () => {
@@ -44,6 +45,14 @@ const Recipes = () => {
     //     setRecipes(recipes.filter((recipe) => recipe.id !== id));
     // };
 
+
+    // CREATE RECIPE
+    const [showRecipeCreateModal, setShowRecipeCreateModal] = useState(false)
+
+    const handleOpenRecipeCreateModal = () => {
+        setShowRecipeCreateModal(true)
+    }
+
     const handleDeleteRecipe = (id) => {RecipesData.filter((recipe) => recipe.id !== id)}
 
   return (
@@ -61,12 +70,19 @@ const Recipes = () => {
                         <p>Discover tasty recipes designed to suit your taste, preferences, allergies, body condition, and habits.</p>
                     </div>
                     </div>
-                    <Button appearance="primary" name="New recipe" iconBefore={<NotePencil/>} />
+                    <Button
+                        appearance="primary"
+                        name="New recipe" 
+                        iconBefore={<NotePencil/>} 
+                        onClick={handleOpenRecipeCreateModal}
+                    
+                    />
                     {/* <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button> */}
                 </div>
 
                 <SearchBar placeholder="Search recipes and ingredients" onChange={handleSearch} appearance="default"/> 
 
+                <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/>
                 <ul className='Recipe-card-list'>
                     {
                         filteredRecipes.map((recipe) => {
