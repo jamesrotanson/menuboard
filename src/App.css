@@ -332,17 +332,6 @@ img {
 }
 
 
-/* BADGE */
-.Badge {
-  background-color: rgb(255, 71, 71);
-  color: white;
-  padding: 2px 8px;
-  border-radius: 16px;
-  margin-left: 2px;
-  margin-right: 2px;
-  font-size: 12px;
-}
-
 /* SEARCH */
 
 .Search-bar {

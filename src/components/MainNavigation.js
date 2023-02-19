@@ -4,10 +4,11 @@ import { IconContext, House, CookingPot, CalendarBlank, ShoppingCart, ChartPie, 
 import '../App.css';
 import Button from '../components/Button';
 import Avatar from "./Avatar";
-import Avatar1 from "../images/memoji-01.png";
-import {connect, useSelector} from "react-redux";
+import Avatar1 from "../images/memoji-01.png"
 
-const MainNavigation = (props) => {
+
+
+const MainNavigation = () => {
 
     const [buttonVisible, setButtonVisible] = useState(true)
     const [avatarVisible, setAvatarVisible] = useState(false)
@@ -23,8 +24,8 @@ const MainNavigation = (props) => {
     }
 
     return(
-        <nav>
-            <IconContext.Provider value={{color: "#000", size: 24, weight: "bold"}}>
+        <IconContext.Provider value={{color: "#000", size: 24, weight: "bold"}}>
+            <nav>
                 <ul 
                     // id="nav-list"
                     className="Main-nav-container"
@@ -35,6 +36,7 @@ const MainNavigation = (props) => {
                     <li className="Main-nav-tab"><a href="./plan"> <CalendarBlank/><p>Plan 
                         {/* <span className="Badge">{props.count}</span> */}
                     </p></a></li>
+                    <li className="Main-nav-tab"><a href="./plan"> <CalendarBlank/><p>Plan</p></a></li>
                     <li className="Main-nav-tab"><a href="./groceries"> <ShoppingCart/><p>Grocery</p></a></li>
                     <li className="Main-nav-tab"><a href="./insights"> <ChartPie/><p>Insights</p></a></li>
                     <li className="Main-nav-tab"><a href="./preferences"> <FadersHorizontal/><p>Preferences</p></a></li>
@@ -42,14 +44,10 @@ const MainNavigation = (props) => {
                     {buttonVisible ? <Button name="Try free" appearance="primary" onClick={handleLogin}/> : null}
                     {avatarVisible ? <Avatar url={Avatar1} size="medium" onClick={handleLogout}/> : null}
                 </ul>
-            
-            </IconContext.Provider>
-        </nav>
+            </nav>
+        </IconContext.Provider>
         )
     }
     
-const mapStateToProps = (state) => ({
-    count: state.count
-});
 
-export default connect(mapStateToProps)(MainNavigation);
+export default MainNavigation
