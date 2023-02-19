@@ -7,6 +7,7 @@ import IngredientsList from './IngredientsList';
 const RecipeModal = (props) => {
     
     const [showRecipeModal, setShowRecipeModal] = useState(true)
+    const [imageLoaded, setImageLoaded] = useState(false)
     
 
     return (
@@ -24,16 +25,11 @@ const RecipeModal = (props) => {
             <div className="Modal-content-wrapper">
                 <div className="Modal-content-container">
                     <h1 className="Page-title">{props.recipeName}</h1>
-                    {/* <img src={require("../images/miso-ramen.jpeg")} className="Recipe-cover"/> */}
-                    <img src={props.recipeImageUrl} className="Recipe-cover"/>
-                    
-                    {/* <input
-                        type="text"
-                        placeholder="Name"
-                        value={recipeName}
-                        onChange={(event) => setRecipeName(event.target.value)}
-                        className="Form-input"
-                    /> */}
+                    {props.imageUrl ? 
+                    <img src={props.recipeImageUrl} alt="Recipe cover" className="Recipe-cover"/>
+                    :
+                    <img src={require("../images/food-illos.png")} alt="Recipe thumbnail" className="Recipe=thumbnail" onClick={props.onClick}/>
+                    }
                     <div className="Recipe-time-tabs-container">
                         <div className="Recipe-time-tabs">
                             <h5>Prep time</h5>
