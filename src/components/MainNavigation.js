@@ -5,7 +5,7 @@ import '../App.css';
 import Button from '../components/Button';
 import Avatar from "./Avatar";
 import Avatar1 from "../images/memoji-01.png";
-import {connect} from "react-redux";
+import {connect, useSelector} from "react-redux";
 
 const MainNavigation = (props) => {
 
@@ -21,7 +21,6 @@ const MainNavigation = (props) => {
         setButtonVisible(true);
         setAvatarVisible(false);
     }
-
 
     return(
         <nav>

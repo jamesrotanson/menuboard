@@ -13,6 +13,7 @@ const getInitialRecipes = () => {
 
 const initialValue = {
     recipeList: getInitialRecipes(),
+    count: 0,
 }
 
 export const recipeReducer = createSlice({
@@ -40,12 +41,18 @@ export const recipeReducer = createSlice({
             else{
                 window.localStorage.setItem('recipeList', JSON.stringify([...action.payload]))
             }
+        },
+        increasePlanCount: (state) => {
+            state.count = state.count + 1;
+        },
+        decreasePlanCount: (state) => {
+            state.count = state.count - 1;
         }
     }
 });
 
 
 
-export const {addRecipe} = recipeReducer.actions;
+export const {addRecipe, increasePlanCount, decreasePlanCount} = recipeReducer.actions;
 
 export default recipeReducer.reducer;
