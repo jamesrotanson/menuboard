@@ -90,7 +90,7 @@ const Recipes = (props) => {
 
                 <SearchBar placeholder="Search recipes and ingredients" onChange={handleSearch} appearance="default"/> 
 
-                <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/>
+                {/* <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/> */}
                 <ul className='Recipe-card-list'>
                     {
                         filteredRecipes.map((recipe) => {
@@ -125,8 +125,4 @@ const Recipes = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
-    count: state.count
-})
-
-export default connect(mapStateToProps)(Recipes);
+export default Recipes

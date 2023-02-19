@@ -36,7 +36,6 @@ const MainNavigation = () => {
                     <li className="Main-nav-tab"><a href="./plan"> <CalendarBlank/><p>Plan 
                         {/* <span className="Badge">{props.count}</span> */}
                     </p></a></li>
-                    <li className="Main-nav-tab"><a href="./plan"> <CalendarBlank/><p>Plan</p></a></li>
                     <li className="Main-nav-tab"><a href="./groceries"> <ShoppingCart/><p>Grocery</p></a></li>
                     <li className="Main-nav-tab"><a href="./insights"> <ChartPie/><p>Insights</p></a></li>
                     <li className="Main-nav-tab"><a href="./preferences"> <FadersHorizontal/><p>Preferences</p></a></li>
