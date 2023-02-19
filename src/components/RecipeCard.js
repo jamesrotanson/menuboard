@@ -6,15 +6,23 @@ import Button from './Button';
 const RecipeCard = (props) => {
 
   const [isAddedToPlan, setIsAddedToPlan] = useState(false)
-
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   const handleAddToPlan = () => {
     setIsAddedToPlan(!isAddedToPlan);
   }
 
+  const handleImageLoaded = () => {
+    setImageLoaded(true);
+  }
+
   return (
     <li key={props.id} className="Recipe-card">
-        <img src={props.imageUrl} className="Recipe-thumbnail" onClick={props.onClick}/>
+        {props.imageUrl ? 
+          <img src={props.imageUrl} alt="Recipe thumbnail" className="Recipe-thumbnail" onClick={props.onClick} onLoad={handleImageLoaded}/>
+          :
+          <img src={require("../images/food-illos.png")} alt="Recipe thumbnail" className="Recipe=thumbnail" onClick={props.onClick}/>
+        }
         <h4 onClick={props.onClick}>{props.name}</h4>
         <small>{props.time} · {props.cost}</small>
         <div className="Button-group">

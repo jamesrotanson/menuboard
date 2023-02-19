@@ -12,6 +12,8 @@ import MainNavigation from './components/MainNavigation';
 import "@fontsource/inter";
 import "@fontsource/inter/700.css"
 import "@fontsource/inter/500.css"
+import { createStore } from 'redux';
+import rootReducer from './reducers'
 
 const router = createBrowserRouter([
   {
@@ -26,14 +28,16 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   </React.StrictMode>
 );
 
-
+const store = createStore(rootReducer)
 
 const App = () => {
   return (
-    <div className='App-container'>
-      <MainNavigation/>
-      <AppRouter/>
-    </div>
+    <Provider store={store}>
+      <div className='App-container'>
+        <MainNavigation/>
+        <AppRouter/>
+      </div>
+    </Provider>
   );
 };
 

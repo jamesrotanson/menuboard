@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState} from 'react'
 import LoadingPage from './LoadingPage'
 import Button from '../components/Button'
 import { NotePencil } from 'phosphor-react'
@@ -51,8 +51,11 @@ const Recipes = (props) => {
         setShowRecipeCreateModal(true)
     }
 
-    // const recipeList = useSelector((state) => state.recipe.recipeList)
-    // console.log(recipeList)
+    // DISPLAY CREATED RECIPE
+    const recipeList = useSelector((state) => state.recipe.recipeList)
+    const sortedRecipeList = [...recipeList];
+    sortedRecipeList.sort((a, b) => new Date(b.time) - new Date(a.time));
+
 
     const handleDeleteRecipe = (id) => {RecipesData.filter((recipe) => recipe.id !== id)}
     // const handleDeleteRecipe = (id) => {
@@ -67,7 +70,6 @@ const Recipes = (props) => {
         <div className="Page-container">
             <div className="Page-small">
 
-
                 <br></br>
                 <div className="Page-header">
                     <div className="Page-title">
@@ -81,16 +83,15 @@ const Recipes = (props) => {
                         name="New recipe" 
                         iconBefore={<NotePencil/>} 
                         onClick={handleOpenRecipeCreateModal}
-                    
                     />
-                    {/* <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button> */}
                 </div>
-
-                {props.count}
 
                 <SearchBar placeholder="Search recipes and ingredients" onChange={handleSearch} appearance="default"/> 
 
-                {/* <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/> */}
+                <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/>
+                
+                <br></br>
+                <h3>Recommended for you</h3>
                 <ul className='Recipe-card-list'>
                     {
                         filteredRecipes.map((recipe) => {
@@ -107,6 +108,37 @@ const Recipes = (props) => {
                             )
                         })
                     }
+                </ul>
+
+                <div className='Page-header'>
+                    <div className="Page-title">
+                        <h3> My recipes</h3>
+                    </div>
+                    <Button
+                        appearance="primary"
+                        name="New recipe" 
+                        iconBefore={<NotePencil/>} 
+                        onClick={handleOpenRecipeCreateModal}
+                    />
+                </div>
+                <ul className='Recipe-card-list'>
+                {sortedRecipeList && sortedRecipeList.length > 0 
+                    ? sortedRecipeList.map((recipe) => 
+                        {
+                            return(
+                                <RecipeCard 
+                                    key={recipe.id}
+                                    name={recipe.recipeName}
+                                    imageUrl={recipe.imageUrl}
+                                    cost={recipe.cost}
+                                    time={recipe.time}
+                                    onClick={() => handleRecipeModalOpen(recipe)}
+                                    onDelete={() => handleDeleteRecipe(recipe.id)}
+                                />
+                            )
+                        }
+                    )
+                    : 'no recipe found'}
                 </ul>
 
                 {showRecipeModal ? 

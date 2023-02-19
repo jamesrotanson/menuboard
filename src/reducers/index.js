@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
-import reducer from './reducer';
 import recipeReducer from './recipeReducer';
+import planReducer from './planSlice';
 
-export default combineReducers({
-    reducer, recipeReducer
+
+const rootReducer = combineReducers({
+    recipe: recipeReducer,
+    planCount: planReducer
 })
+
+export default rootReducer;

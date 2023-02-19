@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { IconContext, House, CookingPot, CalendarBlank, ShoppingCart, ChartPie, FadersHorizontal} from 'phosphor-react';
 import '../App.css';
 import Button from '../components/Button';
@@ -8,7 +7,7 @@ import Avatar1 from "../images/memoji-01.png"
 
 
 
-const MainNavigation = () => {
+const MainNavigation = (props) => {
 
     const [buttonVisible, setButtonVisible] = useState(true)
     const [avatarVisible, setAvatarVisible] = useState(false)

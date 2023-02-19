@@ -22,6 +22,8 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
                 addRecipe({
                     id: uuid(),
                     recipeName, 
+                    recipeIngredients,
+                    recipeInstructions,
                     time: new Date().toLocaleString(),
                 })
             );
@@ -39,8 +41,10 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
         {showRecipeCreateModal && (
             <Modal
                 open={()=> setShowRecipeCreateModal(true)}
+                onOk={() => setShowRecipeCreateModal(false)}
                 onCancel={() => setShowRecipeCreateModal(false)}
                 footer={null}
+                maskTransitionName=""
             >
                 <form className='Form' onSubmit={(event) => handleSubmit(event)}>
                     <h2>New recipe</h2>
@@ -53,7 +57,6 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
                         className='Form-input'
                         value={recipeName}
                         onChange={(event) => setRecipeName(event.target.value)}
-                        
                     />
                     <label htmlFor="ingredients">
                         Ingredients
@@ -88,5 +91,7 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
     </div>
   )
 }
+
+
 
 export default RecipeCreateModal

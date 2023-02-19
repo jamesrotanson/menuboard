@@ -430,6 +430,16 @@ label {
   flex-direction: row;
 }
 
+/* BADGE */
+.Badge {
+  background: red;
+  padding: 2px 4px;
+  border-radius: 8px;
+  color: white;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
 /* BUTTONS */
 button {
   border-radius: 24px;
