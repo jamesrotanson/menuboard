@@ -17,7 +17,6 @@ import Insights from './routes/Insights';
 import Preferences from './routes/Preferences';
 import ErrorPage from './routes/ErrorPage';
 import AppHome from './routes/AppHome';
-import MainNavigation from './components/MainNavigation';
 
 const router = createBrowserRouter([
   {
@@ -38,15 +37,13 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <Route index element={<Home />} />
-          <Route path="app-home" element={<AppHome/>}/>
-          <Route path="recipes" element={<Recipes/>} />
-          <Route path="plan" element={<MealPlan/>} />
-          <Route path="groceries" element={<Groceries/>} />
-          <Route path="insights" element={<Insights/>} />
-          <Route path="preferences" element={<Preferences/>} />
-        </Route>
+        <Route path="/" index element={<Home/>}/>
+        <Route path="app-home" element={<AppHome/>}/>
+        <Route path="recipes" element={<Recipes/>} />
+        <Route path="plan" element={<MealPlan/>} />
+        <Route path="groceries" element={<Groceries/>} />
+        <Route path="insights" element={<Insights/>} />
+        <Route path="preferences" element={<Preferences/>} />
       </Routes>
     </BrowserRouter>
   );

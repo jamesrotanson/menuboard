@@ -6,7 +6,7 @@ const CookingGoalOptions = () => {
   return (
     <ul className='Bubble-list'>
         {cookingGoals.map(cookingGoal => 
-            <Bubble name={cookingGoal.name} icon={cookingGoal.emoji}/>
+            <Bubble key={cookingGoal.id} name={cookingGoal.name} icon={cookingGoal.emoji}/>
         )}
     </ul>
   )

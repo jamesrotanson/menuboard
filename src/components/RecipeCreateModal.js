@@ -4,6 +4,7 @@ import Button from './Button'
 import { addRecipe } from '../reducers/recipeReducer'
 import {v4 as uuid} from 'uuid';
 import { useDispatch } from 'react-redux'
+import { toast } from 'react-hot-toast';
 
 const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) => {
     
@@ -21,10 +22,16 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
                 addRecipe({
                     id: uuid(),
                     recipeName, 
-                    time: new Date().toLocaleDateString(),
+                    time: new Date().toLocaleString(),
                 })
-            )
+            );
+            toast.success("Recipe created successfully");
+            setShowRecipeCreateModal(false);
         }
+        else {
+            toast.error("Name shouldn't be empty")
+        }
+        
     }
 
     return (
@@ -33,6 +40,7 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
             <Modal
                 open={()=> setShowRecipeCreateModal(true)}
                 onCancel={() => setShowRecipeCreateModal(false)}
+                footer={null}
             >
                 <form className='Form' onSubmit={(event) => handleSubmit(event)}>
                     <h2>New recipe</h2>
@@ -67,6 +75,7 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
                         value={recipeInstructions}
                         onChange={(event) => setRecipeInstructions(event.target.value)}
                     />
+                    <br></br>
                     
                     <div className='Button-group'>
                         <Button type="submit" name="Create" appearance="primary" onClick={() => setShowRecipeCreateModal(true)}/>

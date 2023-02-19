@@ -8,7 +8,7 @@ const AllergiesOptions = () => {
   return (
         <ul className='Bubble-list'>
             {allergies.map(allergy => 
-                <Bubble name={allergy.name} icon={allergy.icon}/>
+                <Bubble key={allergy.id} name={allergy.name} icon={allergy.icon}/>
             )}
         </ul>
         

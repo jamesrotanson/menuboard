@@ -6,7 +6,7 @@ const FoodAvoidOptions = () => {
   return (
     <ul className='Bubble-list'>
         {foodsAvoid.map(foodAvoid => 
-            <Bubble name={foodAvoid.name} icon={foodAvoid.icon}/>
+            <Bubble key={foodAvoid.id} name={foodAvoid.name} icon={foodAvoid.icon}/>
         )}
     </ul>
   )

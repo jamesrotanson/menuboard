@@ -14,6 +14,7 @@ import "@fontsource/inter/700.css";
 import "@fontsource/inter/500.css";
 import {createStore} from "redux";
 import rootReducer from './reducers/index'
+import { Toaster } from 'react-hot-toast';
 
 const store = createStore(rootReducer);
 
@@ -43,6 +44,9 @@ const App = () => {
         <MainNavigation/>
         <AppRouter/>
       </div>
+      <Toaster
+        position="bottom-center"
+      />
     </Provider>
   );
 };

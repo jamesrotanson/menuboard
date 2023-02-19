@@ -37,6 +37,9 @@ export const recipeReducer = createSlice({
                 // Then set it back and stringify
                 window.localStorage.setItem('recipeList', JSON.stringify(recipeListArray));
             }
+            else{
+                window.localStorage.setItem('recipeList', JSON.stringify([...action.payload]))
+            }
         }
     }
 });

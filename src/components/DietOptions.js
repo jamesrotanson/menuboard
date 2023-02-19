@@ -7,7 +7,7 @@ const DietOptions = () => {
     return (
     <ul className="Bubble-list">
         {diets.map(diet => 
-            <Bubble name={diet.name} icon={diet.emoji}/>
+            <Bubble key={diet.id} name={diet.name} icon={diet.emoji}/>
         )}
     </ul>
   )

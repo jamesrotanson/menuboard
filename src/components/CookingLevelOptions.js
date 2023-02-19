@@ -7,7 +7,7 @@ const CookingLevelOptions = () => {
   return (
     <ul className='Bubble-list'>
         {cookingLevels.map(cookingLevel => 
-            <Bubble name={cookingLevel.name} icon={cookingLevel.icon}/>
+            <Bubble key={cookingLevel.id} name={cookingLevel.name} icon={cookingLevel.icon}/>
         )}
     </ul>
   )

@@ -7,6 +7,7 @@ import RecipeCard from '../components/RecipeCard'
 import RecipesData from '../data/recipes.json'
 import RecipeModal from '../components/RecipeModal'
 import RecipeCreateModal from '../components/RecipeCreateModal'
+import { useSelector } from 'react-redux'
 
 
 const Recipes = () => {
@@ -41,11 +42,8 @@ const Recipes = () => {
         setShowRecipeModal(false)
     }
 
-    // const handleDeleteRecipe = (id) => {
-    //     setRecipes(recipes.filter((recipe) => recipe.id !== id));
-    // };
-
-
+    
+    
     // CREATE RECIPE
     const [showRecipeCreateModal, setShowRecipeCreateModal] = useState(false)
 
@@ -53,7 +51,11 @@ const Recipes = () => {
         setShowRecipeCreateModal(true)
     }
 
+
     const handleDeleteRecipe = (id) => {RecipesData.filter((recipe) => recipe.id !== id)}
+    // const handleDeleteRecipe = (id) => {
+    //     setRecipes(recipes.filter((recipe) => recipe.id !== id));
+    // };
 
   return (
     <div>

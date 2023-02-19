@@ -7,7 +7,7 @@ const CuisinesOptions = () => {
   return (
     <div className='Bubble-list'>
         {cuisines.map(cuisine => 
-            <Bubble name={cuisine.name} icon={cuisine.emoji}/>
+            <Bubble key={cuisine.id} name={cuisine.name} icon={cuisine.emoji}/>
         )}
     </div>
   )
