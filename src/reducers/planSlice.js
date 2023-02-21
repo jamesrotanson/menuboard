@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    planCount: 0,
+    planCount: 100,
 }
 
 const planSlice = createSlice({
@@ -10,6 +10,7 @@ const planSlice = createSlice({
     reducers: {
         increasePlanCount: (state) => {
             state.planCount = state.planCount + 1;
+            console.log(state.planCount);
         },
         decreasePlanCount: (state) => {
             state.planCount = state.planCount - 1;

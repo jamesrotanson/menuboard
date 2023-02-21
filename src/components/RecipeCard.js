@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import { CalendarBlank, CalendarCheck, Heart, Pencil, Trash } from 'phosphor-react';
+import { CalendarCheck, Heart, Pencil, Trash } from 'phosphor-react';
 import Button from './Button';
 import { useDispatch } from 'react-redux';
-import { deleteRecipe } from '../reducers/recipeReducer';
+import { deleteRecipe, updateRecipe } from '../reducers/recipeReducer';
+import { increasePlanCount } from '../reducers/planSlice';
 
 
 const RecipeCard = (props) => {
@@ -20,13 +21,15 @@ const RecipeCard = (props) => {
 
   const dispatch = useDispatch();
 
+  // Delete doesn't work yet
   const handleDelete = () => {
     console.log('delete');
     dispatch(deleteRecipe(props.id));
   }
 
   const handleUpdate = () => {
-    console.log('edit')
+    // dispatch(updateRecipe());
+    dispatch(increasePlanCount());
   }
 
   return (
@@ -46,7 +49,7 @@ const RecipeCard = (props) => {
           iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
           name={isAddedToPlan ? "Added" : "Add"}
         />
-        <Button 
+        {/* <Button 
           onClick={handleUpdate} 
           onKeyDown={handleUpdate}
           role="button" 
@@ -54,7 +57,7 @@ const RecipeCard = (props) => {
           appearance="default" 
           iconBefore={<Pencil/>} 
           name="Edit"
-        />
+        /> */}
         <Button 
           onClick={handleDelete} 
           onKeyDown={handleDelete}

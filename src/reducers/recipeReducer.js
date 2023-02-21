@@ -13,6 +13,7 @@ const getInitialRecipes = () => {
 
 const initialValue = {
     recipeList: getInitialRecipes(),
+    count: 0,
 }
 
 export const recipeReducer = createSlice({
@@ -55,12 +56,17 @@ export const recipeReducer = createSlice({
                 console.log(recipeListArray)
                 state.recipeList = recipeListArray;
             }
+        }, 
+        updateRecipe: (state, action) => {
+            console.log('this is update')
+            state.count = state.count + 1;
+            console.log(state.count)    
         }
     }
 });
 
 
 
-export const {addRecipe, deleteRecipe} = recipeReducer.actions;
+export const {addRecipe, deleteRecipe, updateRecipe} = recipeReducer.actions;
 
 export default recipeReducer.reducer;
