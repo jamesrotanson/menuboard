@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar';
 import LoadingPage from './LoadingPage';
 import { useSelector } from 'react-redux';
 import RecipeCard from '../components/RecipeCard';
+import UnscheduledSidebar from '../components/UnscheduledSidebar';
 
 
 const MealPlan = () => {
@@ -36,26 +37,7 @@ const MealPlan = () => {
             
           </div>
         </div>
-        <div className='Plan-sidebar'>
-            <h3>Unscheduled meals</h3>
-            {unscheduledRecipeList && unscheduledRecipeList.length > 0
-              ?
-              unscheduledRecipeList.map((recipe) => {
-                return(
-                  // <div>{recipe.recipeName}</div>
-                  <RecipeCard 
-                      key={recipe.id}
-                      name={recipe.name}
-                      imageUrl={recipe.imageUrl}
-                      cost={recipe.cost}
-                      time={recipe.time}
-                  />
-              )
-              })
-              :
-              "No meals found. Add meals from recipe."
-            }
-        </div>
+          <UnscheduledSidebar/>
         </div>
       }
     </div>

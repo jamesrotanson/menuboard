@@ -6,9 +6,10 @@ import { deleteRecipe, scheduleRecipe } from '../reducers/recipeReducer';
 import { increasePlanCount } from '../reducers/planSlice';
 import {v4 as uuid} from 'uuid';
 import { toast } from 'react-hot-toast';
+import { useDrag } from 'react-dnd';
 
 
-const RecipeCard = (props) => {
+const RecipeCard = (props, recipe) => {
 
   const [isAddedToPlan, setIsAddedToPlan] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
@@ -18,13 +19,16 @@ const RecipeCard = (props) => {
   const [recipeIngredients, setRecipeIngredients] = useState('');
   const [recipeInstructions, setRecipeInstructions] = useState('');
 
+
+
+
   const dispatch = useDispatch();
 
   const handleAddToPlan = (event) => {
     event.preventDefault();
-    console.log(props.name)
     setIsAddedToPlan(!isAddedToPlan);
 
+    console.log(isAddedToPlan)
     if(props.name){
       dispatch(
         scheduleRecipe({
@@ -34,9 +38,11 @@ const RecipeCard = (props) => {
           time: props.time,
           cost: props.cost,
           ingredients: props.ingredients,
-          instructions: props.instructions
+          instructions: props.instructions,
+          planned: isAddedToPlan
         })
       )
+      
       toast.success("Recipe successfully added to plan!")
     }
     else {
@@ -49,15 +55,18 @@ const RecipeCard = (props) => {
   }
 
   // Delete doesn't work yet
-  const handleDelete = () => {
+  const handleDelete = (recipe) => {
     console.log('delete');
-    dispatch(deleteRecipe(props.id));
+    // dispatch(deleteRecipe(props.id));
+    // dispatch(unscheduleRecipe(recipe.id))
   }
 
   const handleUpdate = () => {
     // dispatch(updateRecipe());
     dispatch(increasePlanCount());
   }
+
+  
 
   return (
     <li key={props.id} className="Recipe-card">

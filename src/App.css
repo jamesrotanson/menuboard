@@ -945,7 +945,7 @@ button {
 }
 
 .Plan-sidebar .Button-delete  {
-  display: none;
+  /* display: none; */
 }
 
 .Plan-sidebar .Recipe-thumbnail {
