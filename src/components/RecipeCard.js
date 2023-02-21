@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
-import { CalendarBlank, CalendarCheck, Heart, Trash } from 'phosphor-react';
+import { CalendarBlank, CalendarCheck, Heart, Pencil, Trash } from 'phosphor-react';
 import Button from './Button';
+import { useDispatch } from 'react-redux';
+import { deleteRecipe } from '../reducers/recipeReducer';
 
 
 const RecipeCard = (props) => {
@@ -16,6 +18,17 @@ const RecipeCard = (props) => {
     setImageLoaded(true);
   }
 
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    console.log('delete');
+    dispatch(deleteRecipe(props.id));
+  }
+
+  const handleUpdate = () => {
+    console.log('edit')
+  }
+
   return (
     <li key={props.id} className="Recipe-card">
         {props.imageUrl ? 
@@ -28,11 +41,29 @@ const RecipeCard = (props) => {
         <div className="Button-group">
         <Button 
           onClick={handleAddToPlan} 
+          onKeyDown={handleAddToPlan}
           appearance={isAddedToPlan ? "primary" : "secondary"} 
           iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
           name={isAddedToPlan ? "Added" : "Add"}
         />
-        <Button onClick={props.onDelete} appearance="delete" iconBefore={<Trash/>} name="Delete"/>
+        <Button 
+          onClick={handleUpdate} 
+          onKeyDown={handleUpdate}
+          role="button" 
+          tabIndex={0} 
+          appearance="default" 
+          iconBefore={<Pencil/>} 
+          name="Edit"
+        />
+        <Button 
+          onClick={handleDelete} 
+          onKeyDown={handleDelete}
+          role="button" 
+          tabIndex={0}
+          appearance="delete" 
+          iconBefore={<Trash/>} 
+          name="Delete"
+        />
         </div>
     </li>
   )

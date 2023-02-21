@@ -40,12 +40,27 @@ export const recipeReducer = createSlice({
             else{
                 window.localStorage.setItem('recipeList', JSON.stringify([...action.payload]))
             }
+        },
+        deleteRecipe: (state, action) => {
+            const recipeList = window.localStorage.getItem('recipeList');
+            if(recipeList){
+                const recipeListArray = JSON.parse(recipeList);
+                recipeListArray.forEach((recipe, index) => {
+                    if(recipe.id === action.payload){
+                        recipeListArray.splice(index, 1);
+                    }
+                });
+
+                window.localStorage.setItem('recipeList', JSON.stringify(recipeListArray));
+                console.log(recipeListArray)
+                state.recipeList = recipeListArray;
+            }
         }
     }
 });
 
 
 
-export const {addRecipe} = recipeReducer.actions;
+export const {addRecipe, deleteRecipe} = recipeReducer.actions;
 
 export default recipeReducer.reducer;
