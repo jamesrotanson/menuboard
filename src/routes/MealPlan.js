@@ -14,6 +14,7 @@ const MealPlan = () => {
   setTimeout(() => setLoading(false), 1400);
 
   const recipeList = useSelector((state) => state.recipe.recipeList)
+  const unscheduledRecipeList = useSelector((state) => state.recipe.unscheduledRecipeList)
 
   return (
     <div>
@@ -37,19 +38,22 @@ const MealPlan = () => {
         </div>
         <div className='Plan-sidebar'>
             <h3>Unscheduled meals</h3>
-            {
-              recipeList.map((recipe) => {
+            {unscheduledRecipeList && unscheduledRecipeList.length > 0
+              ?
+              unscheduledRecipeList.map((recipe) => {
                 return(
                   // <div>{recipe.recipeName}</div>
                   <RecipeCard 
                       key={recipe.id}
-                      name={recipe.recipeName}
+                      name={recipe.name}
                       imageUrl={recipe.imageUrl}
                       cost={recipe.cost}
                       time={recipe.time}
                   />
               )
               })
+              :
+              "No meals found. Add meals from recipe."
             }
         </div>
         </div>

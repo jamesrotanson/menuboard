@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import { CalendarCheck, Heart, Pencil, Trash } from 'phosphor-react';
 import Button from './Button';
 import { useDispatch } from 'react-redux';
-import { deleteRecipe, updateRecipe } from '../reducers/recipeReducer';
+import { deleteRecipe, scheduleRecipe } from '../reducers/recipeReducer';
 import { increasePlanCount } from '../reducers/planSlice';
+import {v4 as uuid} from 'uuid';
+import { toast } from 'react-hot-toast';
 
 
 const RecipeCard = (props) => {
@@ -11,15 +13,40 @@ const RecipeCard = (props) => {
   const [isAddedToPlan, setIsAddedToPlan] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
 
-  const handleAddToPlan = () => {
+
+  const [recipeName, setRecipeName] = useState('');
+  const [recipeIngredients, setRecipeIngredients] = useState('');
+  const [recipeInstructions, setRecipeInstructions] = useState('');
+
+  const dispatch = useDispatch();
+
+  const handleAddToPlan = (event) => {
+    event.preventDefault();
+    console.log(props.name)
     setIsAddedToPlan(!isAddedToPlan);
+
+    if(props.name){
+      dispatch(
+        scheduleRecipe({
+          id: uuid(),
+          name: props.name,
+          imageUrl: props.imageUrl,
+          time: props.time,
+          cost: props.cost,
+          ingredients: props.ingredients,
+          instructions: props.instructions
+        })
+      )
+      toast.success("Recipe successfully added to plan!")
+    }
+    else {
+      toast.error("Failed to add plan")
+    }
   }
 
   const handleImageLoaded = () => {
     setImageLoaded(true);
   }
-
-  const dispatch = useDispatch();
 
   // Delete doesn't work yet
   const handleDelete = () => {

@@ -11,15 +11,43 @@ const getInitialRecipes = () => {
     return [];
 }
 
+const getInitialUnscheduledRecipes = () => {
+    const localUnscheduledRecipesList = window.localStorage.getItem('unscheduledRecipeList')
+
+    if(localUnscheduledRecipesList){
+        return JSON.parse(localUnscheduledRecipesList)
+    }
+
+    window.localStorage.setItem('unscheduledRecipeList', JSON.stringify([]));
+    return [];
+}
+
+
 const initialValue = {
     recipeList: getInitialRecipes(),
     count: 0,
+    unscheduledRecipeList: getInitialUnscheduledRecipes(),
 }
 
 export const recipeReducer = createSlice({
     name: 'recipe', 
     initialState: initialValue, 
     reducers: {
+        scheduleRecipe: (state, action) => {
+            state.unscheduledRecipeList.push(action.payload);
+            const unscheduledRecipeList = window.localStorage.getItem('unscheduledRecipeList');
+
+            if(unscheduledRecipeList){
+                const unscheduledRecipeListArray = JSON.parse(unscheduledRecipeList);
+                unscheduledRecipeListArray.push({
+                    ...action.payload,
+                });
+                window.localStorage.setItem('unscheduledRecipeList', JSON.stringify(unscheduledRecipeListArray))
+            }
+            else {
+                window.localStorage.setItem('unscheduledRecipeList', JSON.stringify([...action.payload]))
+            }
+        },
         addRecipe: (state, action) => {
             state.recipeList.push(action.payload);
             const recipeList = window.localStorage.getItem('recipeList');
@@ -67,6 +95,6 @@ export const recipeReducer = createSlice({
 
 
 
-export const {addRecipe, deleteRecipe, updateRecipe} = recipeReducer.actions;
+export const {addRecipe, deleteRecipe, updateRecipe, scheduleRecipe} = recipeReducer.actions;
 
 export default recipeReducer.reducer;
