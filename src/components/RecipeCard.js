@@ -37,36 +37,38 @@ const RecipeCard = (props) => {
         {props.imageUrl ? 
           <img src={props.imageUrl} alt="Recipe thumbnail" className="Recipe-thumbnail" onClick={props.onClick} onLoad={handleImageLoaded}/>
           :
-          <img src={require("../images/food-illos.png")} alt="Recipe thumbnail" className="Recipe=thumbnail" onClick={props.onClick}/>
+          <img src={require("../images/food-illos.png")} alt="Recipe thumbnail" className="Recipe-thumbnail" onClick={props.onClick}/>
         }
-        <h4 onClick={props.onClick}>{props.name}</h4>
-        <small>{props.time} · {props.cost}</small>
-        <div className="Button-group">
-        <Button 
-          onClick={handleAddToPlan} 
-          onKeyDown={handleAddToPlan}
-          appearance={isAddedToPlan ? "primary" : "secondary"} 
-          iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
-          name={isAddedToPlan ? "Added" : "Add"}
-        />
-        {/* <Button 
-          onClick={handleUpdate} 
-          onKeyDown={handleUpdate}
-          role="button" 
-          tabIndex={0} 
-          appearance="default" 
-          iconBefore={<Pencil/>} 
-          name="Edit"
-        /> */}
-        <Button 
-          onClick={handleDelete} 
-          onKeyDown={handleDelete}
-          role="button" 
-          tabIndex={0}
-          appearance="delete" 
-          iconBefore={<Trash/>} 
-          name="Delete"
-        />
+        <div>
+          <h4 onClick={props.onClick}>{props.name}</h4>
+          <small>{props.time} · {props.cost}</small>
+          <div className="Button-group">
+          <Button 
+            onClick={handleAddToPlan} 
+            onKeyDown={handleAddToPlan}
+            appearance={isAddedToPlan ? "primary" : "secondary"} 
+            iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
+            name={isAddedToPlan ? "Added" : "Add"}
+          />
+          {/* <Button 
+            onClick={handleUpdate} 
+            onKeyDown={handleUpdate}
+            role="button" 
+            tabIndex={0} 
+            appearance="default" 
+            iconBefore={<Pencil/>} 
+            name="Edit"
+          /> */}
+          <Button 
+            onClick={handleDelete} 
+            onKeyDown={handleDelete}
+            role="button" 
+            tabIndex={0}
+            appearance="delete" 
+            iconBefore={<Trash/>} 
+            name="Delete"
+          />
+          </div>
         </div>
     </li>
   )

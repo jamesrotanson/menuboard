@@ -912,7 +912,46 @@ button {
   display: flex;
 }
 
+/* PLAN SIDEBAR */
+.Plan-page-container {
+  margin-right: 368px;
+  height: 100vh;
+  overflow: scroll;
+}
 
+.Plan-page-container::-webkit-scrollbar {
+  display: none;
+}
+
+.Plan-sidebar {
+  /* background-color: rgb(247, 247, 247); */
+  background-color: white;
+  width: 320px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: scroll;
+  padding: 80px 24px 24px 24px;
+  box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.06);
+}
+
+.Plan-sidebar .Recipe-card {
+  flex-direction: row;
+  gap: 16px;
+  margin-bottom: 8px;
+  padding: 12px;
+  justify-content: flex-start;
+}
+
+.Plan-sidebar .Button-delete  {
+  display: none;
+}
+
+.Plan-sidebar .Recipe-thumbnail {
+  width: 96px;
+  height: 96px;
+}
 
 /* GROCERIES */
 .Grocery-container {
