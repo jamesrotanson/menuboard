@@ -1,42 +1,92 @@
 import { useState } from "react";
-import { auth } from "firebase/auth";
-// import {auth} from "@react-firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth'
+import Button from "./Button";
+import {auth} from '../firebase-config';
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("")
+  const [user, setUser] = useState({});
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    // try {
-    //   await auth.signInWithEmailAndPassword(email, password);
-    //   localStorage.setItem("isLoggedIn", "true");
-    //   window.location.href = "/";
-    // } catch (error) {
-    //   alert(error.message);
-    // }
-  };
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser)
+  })
+
+  const register = async () => {
+    try {
+        const user = await createUserWithEmailAndPassword(
+            auth,
+            registerEmail,
+            registerPassword
+        );
+        console.log(user);
+    }
+    catch (error){
+        console.log(error.message);
+    }
+  }
+  
+
+  const handleSignIn = async () => {
+    try {
+        const user = await signInWithEmailAndPassword(
+            auth,
+            loginEmail,
+            loginPassword
+        );
+        console.log(user);
+    }
+    catch (error){
+        console.log(error.message);
+    }
+  }
+
+  const handleSignOut = async () => {
+    await signOut(auth);
+    console.log(user)
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Email:</label>
-      <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br />
-      <label htmlFor="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      <button type="submit">Login</button>
-    </form>
+    <div>
+
+        <h3>Register</h3>
+        <input 
+            type="email"
+            placeholder="Email" 
+            onChange={(event) => {
+                setRegisterEmail(event.target.value)
+            }}
+        />
+        <input 
+            type="password"
+            placeholder="Password" 
+            onChange={(event) => {
+                setRegisterPassword(event.target.value)
+            }}
+        />
+        <Button name="Create user" appearance="primary" onClick={register}/>
+
+        <h3>Login</h3>
+        <input 
+            placeholder="Email" 
+            onChange={(event) => {
+                setLoginEmail(event.target.value)
+            }}
+        />
+        <input 
+            placeholder="Password" 
+            onChange={(event) => {
+                setLoginPassword(event.target.value)
+            }}
+        />
+        <Button name="Log in" appearance="primary" onClick={handleSignIn}/>
+
+        <Button name="Log out" appearance="default" onClick={handleSignOut}/>
+        {user?.email}
+
+    </div>
   );
 }
 
