@@ -2,8 +2,12 @@ import React, {useState} from 'react'
 import '../App.css';
 import { Plus } from 'phosphor-react';
 import Button from './Button';
+import { useDispatch } from 'react-redux';
+import { addToGroceryList } from '../reducers/groceryReducer';
+import {v4 as uuid} from 'uuid';
+import { toast } from 'react-hot-toast';
 
-const IngredientsList = () => {
+const IngredientsList = (props) => {
 
     const ingredientsData = [
         {id:1, name:"Garlic", unit: "2 cloves"},
@@ -18,14 +22,30 @@ const IngredientsList = () => {
 
     const [addIngredientActive, setAddIngredientActive] = useState(false);
     
-    const handleClick = (event) => {
+    const dispatch = useDispatch();
+
+    const handleAddToGrocery = (event) => {
         setAddIngredientActive(true);
         event.currentTarget.classList.toggle('Button-active');
+        if(props.name){
+            dispatch(
+                addToGroceryList({
+                    id: uuid(),
+                    name: props.name,
+                    unit: props.unit,
+                })
+            )
+
+            toast.success("Added to grocery list")
+        }
+        else {
+            toast.error("Failed to add to grocery list")
+        }
     }
 
     const ingredientsList = ingredientsData.map((ingredients) => 
         <li className="Ingredients-list-item" key={ingredients.toString()}>
-            <Button iconBefore={<Plus/>} appearance="default" onClick={handleClick}/>
+            <Button iconBefore={<Plus/>} appearance="default" onClick={handleAddToGrocery}/>
             <p>{ingredients.unit} {' '} {ingredients.name}</p>
             {/* <p>{ingredients.name}</p> */}
         </li>

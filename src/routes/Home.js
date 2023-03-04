@@ -3,6 +3,7 @@ import '../App.css';
 import { CaretRight} from 'phosphor-react';
 import { useNavigate} from 'react-router-dom';
 import Button from '../components/Button';
+import LoginForm from '../components/LoginForm';
 
 
 const Home = () => {
@@ -78,6 +79,8 @@ const Home = () => {
             </div>
           </div>
         </div>
+
+        {/* <LoginForm/> */}
 
         <div className="Section">
           <div className='Section-content-text'>

@@ -6,20 +6,12 @@ import { deleteRecipe, scheduleRecipe } from '../reducers/recipeReducer';
 import { increasePlanCount } from '../reducers/planSlice';
 import {v4 as uuid} from 'uuid';
 import { toast } from 'react-hot-toast';
-import { useDrag } from 'react-dnd';
 
 
 const RecipeCard = (props, recipe) => {
 
   const [isAddedToPlan, setIsAddedToPlan] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
-
-
-  const [recipeName, setRecipeName] = useState('');
-  const [recipeIngredients, setRecipeIngredients] = useState('');
-  const [recipeInstructions, setRecipeInstructions] = useState('');
-
-
 
 
   const dispatch = useDispatch();
