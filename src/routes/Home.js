@@ -5,7 +5,6 @@ import { useNavigate} from 'react-router-dom';
 import Button from '../components/Button';
 import LoginForm from '../components/LoginForm';
 
-
 const Home = () => {
 
   const navigate = useNavigate();

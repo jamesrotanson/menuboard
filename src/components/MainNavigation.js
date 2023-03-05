@@ -4,6 +4,7 @@ import '../App.css';
 import Button from '../components/Button';
 import Avatar from "./Avatar";
 import Avatar1 from "../images/memoji-01.png"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -22,6 +23,17 @@ const MainNavigation = (props) => {
         setAvatarVisible(false);
     }
 
+    // const navigate = useNavigate();
+
+    // const navigateToAuth = () => {
+    //     navigate('/login');
+    //     window.scrollTo({
+    //         top: 0,
+    //         behaviour: 'smooth',
+    //     });
+    // };
+    
+
     return(
         <IconContext.Provider value={{color: "#000", size: 24, weight: "bold"}}>
             <nav>
@@ -39,8 +51,15 @@ const MainNavigation = (props) => {
                     <li className="Main-nav-tab"><a href="./insights"> <ChartPie/><p>Insights</p></a></li>
                     <li className="Main-nav-tab"><a href="./preferences"> <FadersHorizontal/><p>Preferences</p></a></li>
                     {/* <Button name="Try free" appearance="primary" onClick={handleLogin}/> */}
-                    {buttonVisible ? <Button name="Try free" appearance="primary" onClick={handleLogin}/> : null}
-                    {avatarVisible ? <Avatar url={Avatar1} size="medium" onClick={handleLogout}/> : null}
+                    <div className="Auth-buttons-nav-container">
+                        <a href="./login"><Button name="Login" appearance="default"/></a>
+                        <a href="./register"><Button name="Sign up" appearance="primary"/></a>
+                        
+                    </div>
+                    {/* {buttonVisible ? 
+                        <a href="./login"><Button name="Try free" appearance="primary" onClick={handleLogin}/></a>
+                        : null}
+                    {avatarVisible ? <Avatar url={Avatar1} size="medium" onClick={handleLogout}/> : null} */}
                 </ul>
             </nav>
         </IconContext.Provider>

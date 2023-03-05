@@ -57,12 +57,17 @@ p, .p {
   margin-top: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .Strikethrough {
   text-decoration-line: line-through;
 }
 
 small {
   opacity: 60%;
+  line-height: 20px;
 }
 
 img {
@@ -178,6 +183,12 @@ img {
   object-fit: contain;
   pointer-events: none;
   width: 32px;
+}
+
+.Logo-big {
+  object-fit: contain;
+  pointer-events: none;
+  width: 80px;
 }
 
 .Logo-full {
@@ -369,11 +380,12 @@ img {
 .Form {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 }
 
 .Form-input {
   border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.08); */
   border-radius: 44px;
   width: auto;
   padding: 8px 16px;
@@ -385,6 +397,10 @@ label {
   margin-top: 20px;
   margin-bottom: 8px;
   color: rgba(0,0,0,0.64);
+}
+
+.Input-error {
+  color: red;
 }
 
 /* AVATARS */
@@ -1525,4 +1541,44 @@ button {
     flex-direction: column;
   }
 
+}
+
+
+/* AUTHENTICATION */
+.Auth-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Auth-container form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; 
+  justify-content: center;
+  align-items: center;
+}
+
+.Auth-container small {
+  text-align: center;
+}
+
+.Auth-container input {
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0);
+  padding: 16px;
+  width: 320px;
+}
+
+.Auth-container button {
+  padding: 16px;
+  width: 360px;
+}
+
+.Auth-buttons-nav-container {
+  display: flex;
+  flex-direction: row;
 }

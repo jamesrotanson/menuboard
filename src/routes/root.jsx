@@ -23,6 +23,9 @@ export default function Root() {
               <li>
                 <a href={`/preferences`}>Preferences</a>
               </li>
+              <li>
+                <a href={`/login`}>Login</a>
+              </li>
             </ul>
           </nav>
         </div>

@@ -17,6 +17,9 @@ import Insights from './routes/Insights';
 import Preferences from './routes/Preferences';
 import ErrorPage from './routes/ErrorPage';
 import AppHome from './routes/AppHome';
+import Login from './routes/Login';
+import MainNavigation from './components/MainNavigation';
+import Register from './routes/Register';
 
 const router = createBrowserRouter([
   {
@@ -35,17 +38,22 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" index element={<Home/>}/>
-        <Route path="app-home" element={<AppHome/>}/>
-        <Route path="recipes" element={<Recipes/>} />
-        <Route path="plan" element={<MealPlan/>} />
-        <Route path="groceries" element={<Groceries/>} />
-        <Route path="insights" element={<Insights/>} />
-        <Route path="preferences" element={<Preferences/>} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <MainNavigation/>
+      <BrowserRouter>  
+        <Routes>
+          <Route path="/" index element={<Home/>}/>
+          <Route path="app-home" element={<AppHome/>}/>
+          <Route path="recipes" element={<Recipes/>} />
+          <Route path="plan" element={<MealPlan/>} />
+          <Route path="groceries" element={<Groceries/>} />
+          <Route path="insights" element={<Insights/>} />
+          <Route path="preferences" element={<Preferences/>} />
+          <Route path="login" element={<Login/>}/>
+          <Route path="register" element={<Register/>}/>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 

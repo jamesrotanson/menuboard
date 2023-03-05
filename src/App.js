@@ -36,7 +36,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className='App-container'>
-        <MainNavigation/>
+        {/* <MainNavigation/> */}
         <AppRouter/>
       </div>
     </Provider>
