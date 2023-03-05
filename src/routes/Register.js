@@ -3,6 +3,7 @@ import LoadingPage from './LoadingPage';
 import Button from '../components/Button';
 import {createUserWithEmailAndPassword} from 'firebase/auth'
 import {auth} from '../firebase-config';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const [loading, setLoading] = useState(true)
@@ -12,12 +13,15 @@ const Register = () => {
     const [registerPassword, setRegisterPassword] = useState("");
     const [registerError, setRegisterError] = useState(false);
 
+    const navigate = useNavigate();
 
     const register = async () => {
         try {
+            navigate('/app-home');
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
             console.log(user)
             console.log("Successfully created an account!")
+            
         }
         catch(error){
             setRegisterError(true);

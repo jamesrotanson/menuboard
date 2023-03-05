@@ -3,7 +3,6 @@ import '../App.css';
 import { CaretRight} from 'phosphor-react';
 import { useNavigate} from 'react-router-dom';
 import Button from '../components/Button';
-import LoginForm from '../components/LoginForm';
 
 const Home = () => {
 
@@ -57,29 +56,31 @@ const Home = () => {
     });
   };
 
+  const navigateToRegister = () => {
+    navigate('/register');
+  }
+
 
   return (
     <div className='Page-container'>
       <div className="Page-small">
         <div className='Section-hero'>
           <div className="Page-cover-container-hero">
-            <img src={require("../images/3d-food.png")}/>
+            <img src={require("../images/3d-food.png")} alt="illustration"/>
           </div>
           <div className='Section-hero-content'>
             <h5>Introducing</h5>
             <br></br>
-            <img src={require("../images/menuboard_logo-full.png")} className="Logo-full"/>
+            <img src={require("../images/menuboard_logo-full.png")} className="Logo-full" alt="illustration"/>
             <br></br>
             <h1>Organise all your meals in one place</h1>
             <h2>Menuboard helps you and your loved ones plan, organise, and manage your meals in a quick and easy way </h2>
             <div className='Button-group'>
-              <Button name="Try free" appearance="primary" onClick={navigateToAppHome} iconAfter={<CaretRight/>}/>
+              <Button name="Sign up for free" appearance="primary" onClick={navigateToRegister} iconAfter={<CaretRight/>}/>
               <Button name="Learn more" appearance="default" onClick={navigateToAppHome} iconAfter={<CaretRight/>}/>
             </div>
           </div>
         </div>
-
-        <LoginForm/>
 
         <div className="Section">
           <div className='Section-content-text'>
@@ -90,14 +91,14 @@ const Home = () => {
             <Button name="Discover recipes" appearance="default" onClick={navigateToRecipes} iconAfter={<CaretRight/>}/>
           </div>
           <div className='Section-content-image'>
-            <img src={require("../images/character-recipes.png")}/>
+            <img src={require("../images/character-recipes.png")} alt="illustration"/>
           </div>
         </div>
         
 
         <div className='Section'>
           <div className='Section-content-image'>
-            <img src={require("../images/character-sushi.png")}/>
+            <img src={require("../images/character-sushi.png")} alt="illustration"/>
           </div>
           <div className='Section-content-text'>
             <h5>Create</h5>
@@ -117,13 +118,13 @@ const Home = () => {
             <Button name="Create list" appearance="default" onClick={navigateToGroceries} iconAfter={<CaretRight/>}/>
           </div>
           <div className='Section-content-image'>
-            <img src={require("../images/character-grocery.png")}/>
+            <img src={require("../images/character-grocery.png")} alt="illustration"/>
           </div>
         </div>
 
         <div className='Section'>
           <div className='Section-content-image'>
-            <img src={require("../images/character-insights.png")}/>
+            <img src={require("../images/character-insights.png")} alt="illustration"/>
           </div>
           <div className='Section-content-text'>
             <h5>Monitor</h5>
@@ -143,7 +144,7 @@ const Home = () => {
             <Button name="Set your preferences" appearance="default" onClick={navigateToPreferences} iconAfter={<CaretRight/>}/>
           </div>
           <div className='Section-content-image'>
-            <img src={require("../images/character-plan.png")}/>
+            <img src={require("../images/character-plan.png")} alt="illustration"/>
           </div>
         </div>
       </div>
