@@ -20,6 +20,7 @@ import AppHome from './routes/AppHome';
 import Login from './routes/Login';
 import MainNavigation from './components/MainNavigation';
 import Register from './routes/Register';
+import Recipe from './routes/Recipe';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,7 @@ const AppRouter = () => {
           <Route path="preferences" element={<Preferences/>} />
           <Route path="login" element={<Login/>}/>
           <Route path="register" element={<Register/>}/>
+          <Route path="recipe" element={<Recipe/>}/>
         </Routes>
       </BrowserRouter>
     </div>

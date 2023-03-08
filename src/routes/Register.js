@@ -37,6 +37,8 @@ const Register = () => {
                     <br></br>
                     <h3>Create your account</h3>
                     <br></br>
+                    <small>Already have an account? <a href="/login">Sign in</a></small>
+                    <br></br>
                     <form>
                         <input 
                             type="email"

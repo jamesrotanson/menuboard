@@ -6,6 +6,11 @@ import { deleteRecipe, scheduleRecipe } from '../reducers/recipeReducer';
 import { increasePlanCount } from '../reducers/planSlice';
 import {v4 as uuid} from 'uuid';
 import { toast } from 'react-hot-toast';
+import {db} from "../firebase-config"
+import {
+    deleteDoc, 
+    doc,
+} from "firebase/firestore"
 
 
 const RecipeCard = (props, recipe) => {
@@ -47,10 +52,11 @@ const RecipeCard = (props, recipe) => {
   }
 
   // Delete doesn't work yet
-  const handleDelete = (recipe) => {
+  const handleDelete = (id) => {
     console.log('delete');
     // dispatch(deleteRecipe(props.id));
     // dispatch(unscheduleRecipe(recipe.id))
+    deleteDoc(doc(db, "recipes", id))
   }
 
   const handleUpdate = () => {
@@ -88,8 +94,8 @@ const RecipeCard = (props, recipe) => {
             name="Edit"
           /> */}
           <Button 
-            onClick={handleDelete} 
-            onKeyDown={handleDelete}
+            onClick={() => handleDelete(recipe.id)} 
+            onKeyDown={() => handleDelete(recipe.id)}
             role="button" 
             tabIndex={0}
             appearance="delete" 

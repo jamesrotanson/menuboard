@@ -8,6 +8,7 @@ import ConnectAppsActions from '../components/ConnectAppsActions';
 import LoadingPage from './LoadingPage';
 import RecipeModal from '../components/RecipeModal';
 
+
 const AppHome = () => {
 
     // LOADING

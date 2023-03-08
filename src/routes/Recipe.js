@@ -1,210 +1,296 @@
-import React, { useState, useEffect} from "react";
-import '../App.css';
-import {  X, Trash, NotePencil, PlusCircle, Pencil, Notepad, CalendarPlus} from 'phosphor-react';
-import Modal from 'react-modal';
-import RichTextEditor from "../components/RichTextEditor";
-import RecipeModal from "../components/RecipeModal";
-import Button from "../components/Button";
-import SearchBar from "../components/SearchBar";
-import LoadingPage from "./LoadingPage";
-import recipesData from "../data/recipes.json"
+import React, {useState, useEffect} from 'react'
+import {db} from "../firebase-config"
+import {
+    collection,
+    doc,
+    addDoc,
+    deleteDoc, 
+    onSnapshot
+} from "firebase/firestore"
+import Button from '../components/Button'
+import RecipeCard from '../components/RecipeCard'
+import { NotePencil } from 'phosphor-react'
+
+import RecipeCreateModal from '../components/RecipeCreateModal'
+import RecipeModal from '../components/RecipeModal'
+import Modal from 'antd/es/modal/Modal'
 
 const Recipe = () => {
 
-  // Loading
-  const [loading, setLoading] = useState(true)
+    const [recipes, setRecipes] = useState([])
+    const [recipeForm, setRecipeForm] = useState({
+        title: "",
+        description: "", 
+        ingredients: [], 
+        steps: []
+    })
+    
 
-  setTimeout(() => setLoading(false), 1400);
+    const [recipeActive, setRecipeActive] = useState(false)
 
+    const recipesCollectionRef = collection(db, "recipes")
 
-  const [recipes, setRecipes] = useState(
-    JSON.parse(localStorage.getItem("recipes")) ||
-    [
-      { id: 1, name: "Sushi", ingredients: "Rice, salmon, nori, soy sauce", instructions: 'Roll everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg"},
-      { id: 2, name: "Ramen", ingredients: "Noodles, chashu, egg, soup, garnish", instructions: 'Boil everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/99/TonkotsuRamen.jpg"},
-      { id: 3, name: "Pasta", ingredients: "Pasta, Tomato Sauce, Parmesan", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Aglio_e_olio.jpg" },
-      { id: 4, name: "Salad", ingredients: "Lettuce, Tomato, Cucumber, Salad Dressing", instructions: 'Mix everything', imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg" },
-    ]
-  );
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const [recipeName, setRecipeName] = useState("");
-  const [recipeIngredients, setRecipeIngredients] = useState("");
-  const [recipeInstructions, setRecipeInstructions] = useState("");
-  const [recipeImageUrl, setRecipeImageUrl] = useState("");
+    useEffect(() => {
+        onSnapshot(recipesCollectionRef, snapshot => {
+            setRecipes(snapshot.docs.map(doc => {
+                return {
+                    id: doc.id, 
+                    viewing: false,
+                    ...doc.data()
+                }
+            }))
+        })
+    }, [])
 
-  useEffect(() => {
-    localStorage.setItem("recipes", JSON.stringify(recipes));
-  }, [recipes]);
+    const handleViewRecipe = (id) => {
+        const recipesArray = [...recipes]
 
+        recipesArray.forEach(recipe => {
+            if(recipe.id === id){
+                recipe.viewing = true
+            }
+            else {
+                recipe.viewing = false
+            }
+        })
 
-  const handleAddRecipe = (recipe) => {
-    setRecipes([...recipes, { id: recipes.length + 1, name: recipeName, ingredients: recipeIngredients, instructions: recipeInstructions, imageUrl: recipeImageUrl }]);
-    setShowModal(false);
-    setRecipeName("");
-    setRecipeIngredients("");
-    setRecipeInstructions("");
-    setRecipeImageUrl("");
-  };
-
-  const handleUpdateRecipe = (updatedRecipe) => {
-    setRecipes(
-      recipes.map((recipe) =>
-        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
-      )
-    );
-  };
-
-  const handleDeleteRecipe = (id) => {
-    setRecipes(recipes.filter((recipe) => recipe.id !== id));
-  };
-
-
-  // SEARCH RECIPES
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-
-  // OPEN RECIPE MODAL
-  const [showRecipeModal, setShowRecipeModal] = useState(false)
-  const [activeRecipe, setActiveRecipe] = useState({});
-  
-
-  const handleOpenRecipe = (recipe) => {
-    setShowRecipeModal(true);    
-    setActiveRecipe(recipe);
-  }
-
-  const handleCancelRecipe = () => {
-    setShowRecipeModal(false);
-  }
-
-  // Handle add to plan
-  const [addToPlan, setAddToPlan] = useState(false)
-  const handleAddToPlan = (event) => {
-      event.target.classList.toggle("Button-secondary-active");
-  }
-
-  return (
-    <div>
-      {loading ? <LoadingPage loadHeaderMessage="Recommending some recipes..."/> : 
-      <div className="Page-container">
-        <div className="Page-small">
-          <div className="Page-header">
-            <div className="Page-title">
-              <div>
-                <h2>Recipes</h2>
-                <p>Discover tasty recipes designed to suit your taste, preferences, allergies, body condition, and habits.</p>
-              </div>
-            </div>
-            <button onClick={() => setShowModal(true)} className="Button-primary"><NotePencil size={24}/>New recipe</button>
-          </div>
-          
-          <SearchBar placeholder="Search recipes or ingredients" onChange={handleSearch} appearance="default"/>   
-          
-          {showModal && (
-              <div className="Modal-blanket" >
-                <div className="Modal">
-                  <h2>New recipe</h2>
-                  <small>Name</small>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    value={recipeName}
-                    onChange={(event) => setRecipeName(event.target.value)}
-                    className="Form-input"
-                  />
-                  <br></br>
-                  <small>Ingredients</small>
-                  {/* <RichTextEditor/> */}
-                  <input
-                    type="text"
-                    placeholder="Ingredients"
-                    value={recipeIngredients}
-                    onChange={(event) => setRecipeIngredients(event.target.value)}
-                    className="Form-input"
-                  />
-                  <br></br>
-                  <small>Instructions</small>
-                  {/* <RichTextEditor/> */}
-                  <input
-                    type="text"
-                    placeholder="Instructions"
-                    value={recipeInstructions}
-                    onChange={(event) => setRecipeInstructions(event.target.value)}
-                    className="Form-input"
-                  />
-                  <br></br>
-                  <input
-                    type="text"
-                    placeholder="Image Url"
-                    value={recipeImageUrl}
-                    onChange={(event) => setRecipeImageUrl(event.target.value)}
-                    className="Form-input"
-                  />
-                  {/* <input 
-                    type="file" 
-                    value={recipeImageUrl}
-                    onChange={(event) => setRecipeImageUrl(event.target.value)}
-                    className="Form-input"
-                  /> */}
-                  {/* <select>
-                    <option value="grapefruit">Grapefruit</option>
-                    <option value="lime">Lime</option>
-                    <option selected value="coconut">Coconut</option>
-                    <option value="mango">Mango</option>
-                  </select>
-                  <input type="file" /> */}
-                  <div className="Button-group">
-                    <Button name="Cancel" appearance="default" onClick={() => setShowModal(false)}/>
-                    <Button name="Save" appearance="primary" onClick={handleAddRecipe}/>
-                  </div>
-                </div>
-              </div>
-          )}
-
-          <ul className="Recipe-card-list">
-            {filteredRecipes.map((recipe) => (
-              <li key={recipe.id} className="Recipe-card" >
-                {/* <img src={require("../images/food-illos.png")} className="Recipe-thumbnail"/> */}
-                <img src={recipe.imageUrl} className="Recipe-thumbnail" onClick={() => handleOpenRecipe(recipe)}/>
-                <h3 onClick={() => handleOpenRecipe(recipe)}><a>{recipe.name}</a></h3>
-                <p>{recipe.ingredients}</p>
-                <small>{recipe.instructions}</small>
-                <div className="Button-group">
-                  <Button name={addToPlan ? "Added" : "Add"} iconBefore={<CalendarPlus/>} appearance="secondary" onClick={handleAddToPlan} />
-                  {/* <button onClick={() => handleUpdateRecipe({ ...recipe, name: "Updated Recipe" })} className="Button-default">
-                    <Pencil/>Edit
-                  </button> */}
-                  <Button name="Delete" iconBefore={<Trash/>} appearance="delete" onClick={() => handleDeleteRecipe(recipe.id)}/>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          {showRecipeModal ? 
-            <RecipeModal 
-              onCancel={handleCancelRecipe} 
-              recipeName={activeRecipe.name}
-              recipeIngredients={activeRecipe.ingredients}
-              recipeInstructions={activeRecipe.instructions}
-              recipeImageUrl={activeRecipe.imageUrl}
-            />
-          : null}
-
-        </div>
-      </div>
+        setRecipes(recipesArray)
     }
-    </div>
-  );
-};
-
-export default Recipe;
 
 
+    // Create recipe
+    const [showRecipeCreateModal, setShowRecipeCreateModal] = useState(false);
 
+    const handleOpenRecipeCreateModal = () => {
+        setShowRecipeCreateModal(true)
+    }
+
+    const handleIngredient = (event, i) => {
+        const ingredientsArray = [...recipeForm.ingredients]
+
+        ingredientsArray[i] = event.target.value
+
+        setRecipeForm({
+            ...recipeForm, 
+            ingredients: ingredientsArray
+        })
+    }
+
+    const handleIngredientCount = () => {
+        setRecipeForm({
+            ...recipeForm, 
+            ingredients: [...recipeForm.ingredients, ""]
+        })
+    }
+
+    const handleStep = (event, i) => {
+        const stepsArray = [...recipeForm.steps]
+
+        stepsArray[i] = event.target.value
+
+        setRecipeForm({
+            ...recipeForm, 
+            steps: stepsArray
+        })
+    }
+
+    const handleStepCount = () => {
+        setRecipeForm({
+            ...recipeForm, 
+            steps: [...recipeForm.steps, ""]
+        })
+    }
+
+    const handleCreateRecipe = (event) => {
+        console.log('Create my recipe')
+        // event.preventDefault()
+
+        if (
+            !recipeForm.title ||
+            !recipeForm.description ||
+            !recipeForm.ingredients ||
+            !recipeForm.steps 
+        ) {
+            // alert("Please fill out all fields")
+            return
+        }
+
+        addDoc(recipesCollectionRef, recipeForm)
+
+        setRecipeForm({
+            title: "",
+            desc: "", 
+            ingredients: [],
+            steps: []
+        })
+
+        setShowRecipeCreateModal(false)
+        
+    }
+
+    // View recipe
+    const [showRecipeModal, setShowRecipeModal] = useState(false)
+    const [activeRecipe, setActiveRecipe] = useState({});
+
+    const handleRecipeModalOpen = (recipe) => {
+        setShowRecipeModal(true)
+        setActiveRecipe(recipe)
+        console.log(recipe.ingredients)
+    }
+
+    // Delete recipe
+    const removeRecipe = (id) => {
+        deleteDoc(doc(db, "recipes", id))
+    }
+
+    const handleRecipeModalCancel = () => {
+        setShowRecipeModal(false)
+    }
+        
+    return (
+        <div className="Page-container">
+            <div className="Page-small">
+                <div className="Page-header">
+                    <div className='Page-title'>
+                        <div>
+                        <h2>Recipes</h2>
+                        <p>Discover tasty recipes designed to suit your taste, preferences, allergies, body condition, and habits.</p>
+                        </div>
+                    </div>
+                    <Button
+                        appearance="primary"
+                        name="New recipe" 
+                        iconBefore={<NotePencil/>} 
+                        onClick={handleOpenRecipeCreateModal}
+                    />
+                </div>
+
+                {/* <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/> */}
+                
+                <ul className='Recipe-card-list'>
+                {recipes.map((recipe, i) => (
+                    <div>
+                
+                    <RecipeCard 
+                        key={recipe.id}
+                        name={recipe.title}
+                        // imageUrl={recipe.imageUrl}
+                        // cost={recipe.cost}
+                        // time={recipe.time}
+                        // onClick={() => handleViewRecipe(recipe.id)}
+                        onClick={() => handleRecipeModalOpen(recipe.id)}
+                        onDelete={() => removeRecipe(recipe.id)}
+                    />
+                        <Button appearance="delete" name="Delete" onClick={() => removeRecipe(recipe.id)}/>
+                        {recipe.viewing && 
+                            <div>
+                            <h4>Ingredients</h4>
+                                <ul>
+                                    {recipe.ingredients.map((ingredient, i) => (
+                                        <li key={i}>{ingredient}</li>
+                                    ))}
+                                </ul>
+                                <h4>Steps</h4>
+                                <ol>
+                                    {recipe.steps.map((step, i) => (
+                                        <li key={i}>{step}</li>
+                                    ))}
+                                </ol>
+                            </div>
+                        }
+                        </div>
+                    ))
+                }
+                </ul>
+
+                {showRecipeModal ? 
+                    <RecipeModal
+                        onCancel={handleRecipeModalCancel}
+                        recipeName={activeRecipe.name}
+                        recipeImageUrl={activeRecipe.imageUrl}
+                    /> 
+                    : null
+                }
+
+
+                {showRecipeCreateModal && 
+                    <Modal
+                        open={()=> setShowRecipeCreateModal(true)}
+                        onOk={() => setShowRecipeCreateModal(false)}
+                        onCancel={() => setShowRecipeCreateModal(false)}
+                        footer={null}
+                        maskTransitionName=""
+                    >
+                        <div className="Recipe-create-modal">
+                            <h2> Add a new recipe</h2>
+                            <form className="Form" onSubmit={handleCreateRecipe}>
+                                <div className='Form-input-container'>
+                                    <label htmlFor="name">Recipe name</label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Name"
+                                        className='Form-input'
+                                        value={recipeForm.title}
+                                        onChange={(event) => setRecipeForm({...recipeForm, title: event.target.value})}
+                                    />
+                                </div>
+                                <div className='Form-input-container'>
+                                    <label htmlFor="name">Recipe description</label>
+                                    <textarea 
+                                        type="text" 
+                                        placeholder="Name"
+                                        className='Form-input'
+                                        value={recipeForm.description}
+                                        onChange={(event) => setRecipeForm({...recipeForm, description: event.target.value})}
+                                    />
+                                </div>
+                                <div className='Form-input-container'>
+                                    <label htmlFor="name">Ingredients</label>
+                                    {
+                                        recipeForm.ingredients.map((ingredient, i) => (
+                                            <input 
+                                                type="text" 
+                                                key={i}
+                                                placeholder="Name"
+                                                className='Form-input'
+                                                value={ingredient}
+                                                onChange={(event) => handleIngredient(event, i)}
+                                            />
+                                        ))
+                                    }
+                                    <Button type="button" name="Add ingredient" appearance="default" onClick={handleIngredientCount}/>
+                                </div>
+                                <div className='Form-input-container'>
+                                    <label htmlFor="name">Steps</label>
+                                    {
+                                        recipeForm.steps.map((step, i) => (
+                                            <input 
+                                                type="text" 
+                                                key={i}
+                                                placeholder="Name"
+                                                className='Form-input'
+                                                value={step}
+                                                onChange={(event) => handleStep(event, i)}
+                                            />
+                                        ))
+                                    }
+                                    <Button type="button" name="Add steps" appearance="default" onClick={handleStepCount}/>
+                                </div>
+
+                                <div className='Button-group'>
+                                    <Button type="submit" name="Create" appearance="primary" />
+                                    <Button type="button" name="Cancel" appearance="default" onClick={() => setShowRecipeCreateModal(false)}/>
+                                </div>
+                            </form>
+
+                            {JSON.stringify(recipeForm)}
+                        </div>
+                    </Modal>
+                }
+                
+            </div>
+        </div>
+    )
+}
+
+export default Recipe
