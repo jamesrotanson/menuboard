@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore"
 import Button from '../components/Button'
 import RecipeCard from '../components/RecipeCard'
-import { NotePencil } from 'phosphor-react'
+import { NotePencil, Plus } from 'phosphor-react'
 
 import RecipeCreateModal from '../components/RecipeCreateModal'
 import RecipeModal from '../components/RecipeModal'
@@ -25,8 +25,6 @@ const Recipe = () => {
         steps: []
     })
     
-
-    const [recipeActive, setRecipeActive] = useState(false)
 
     const recipesCollectionRef = collection(db, "recipes")
 
@@ -138,14 +136,17 @@ const Recipe = () => {
         console.log(recipe.ingredients)
     }
 
+    const handleRecipeModalCancel = () => {
+        setShowRecipeModal(false)
+    }
+
+
     // Delete recipe
     const removeRecipe = (id) => {
         deleteDoc(doc(db, "recipes", id))
     }
 
-    const handleRecipeModalCancel = () => {
-        setShowRecipeModal(false)
-    }
+    
         
     return (
         <div className="Page-container">
@@ -174,14 +175,13 @@ const Recipe = () => {
                     <RecipeCard 
                         key={recipe.id}
                         name={recipe.title}
-                        // imageUrl={recipe.imageUrl}
-                        // cost={recipe.cost}
-                        // time={recipe.time}
+                        imageUrl={recipe.imageUrl}
+                        cost={recipe.cost}
+                        time={recipe.time}
                         // onClick={() => handleViewRecipe(recipe.id)}
                         onClick={() => handleRecipeModalOpen(recipe.id)}
                         onDelete={() => removeRecipe(recipe.id)}
                     />
-                        <Button appearance="delete" name="Delete" onClick={() => removeRecipe(recipe.id)}/>
                         {recipe.viewing && 
                             <div>
                             <h4>Ingredients</h4>
@@ -222,7 +222,7 @@ const Recipe = () => {
                         maskTransitionName=""
                     >
                         <div className="Recipe-create-modal">
-                            <h2> Add a new recipe</h2>
+                            <h2> New recipe</h2>
                             <form className="Form" onSubmit={handleCreateRecipe}>
                                 <div className='Form-input-container'>
                                     <label htmlFor="name">Recipe name</label>
@@ -258,7 +258,7 @@ const Recipe = () => {
                                             />
                                         ))
                                     }
-                                    <Button type="button" name="Add ingredient" appearance="default" onClick={handleIngredientCount}/>
+                                    <Button type="button" name="Add ingredient" iconBefore={<Plus/>} appearance="default" onClick={handleIngredientCount}/>
                                 </div>
                                 <div className='Form-input-container'>
                                     <label htmlFor="name">Steps</label>
@@ -274,7 +274,7 @@ const Recipe = () => {
                                             />
                                         ))
                                     }
-                                    <Button type="button" name="Add steps" appearance="default" onClick={handleStepCount}/>
+                                    <Button type="button" name="Add steps" appearance="default" iconBefore={<Plus/>} onClick={handleStepCount}/>
                                 </div>
 
                                 <div className='Button-group'>
@@ -283,7 +283,7 @@ const Recipe = () => {
                                 </div>
                             </form>
 
-                            {JSON.stringify(recipeForm)}
+                            {/* {JSON.stringify(recipeForm)} */}
                         </div>
                     </Modal>
                 }

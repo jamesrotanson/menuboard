@@ -47,6 +47,8 @@ const RecipeCard = (props, recipe) => {
     }
   }
 
+
+
   const handleImageLoaded = () => {
     setImageLoaded(true);
   }
@@ -94,8 +96,8 @@ const RecipeCard = (props, recipe) => {
             name="Edit"
           /> */}
           <Button 
-            onClick={() => handleDelete(recipe.id)} 
-            onKeyDown={() => handleDelete(recipe.id)}
+            onKeyDown={props.onDelete}
+            onKe
             role="button" 
             tabIndex={0}
             appearance="delete" 

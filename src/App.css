@@ -380,7 +380,7 @@ img {
 .Form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
 
 .Form-input-container {
@@ -395,6 +395,7 @@ img {
   border-radius: 44px;
   width: auto;
   padding: 8px 16px;
+  margin-bottom: 8px;
 }
 
 label {
