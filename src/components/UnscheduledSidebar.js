@@ -11,6 +11,7 @@ const UnscheduledSidebar = () => {
   return (
     <div className='Plan-sidebar'>
         <h3>Unscheduled meals</h3>
+        
         {unscheduledRecipeList && unscheduledRecipeList.length > 0
         ?
         unscheduledRecipeList.map((recipe) => {

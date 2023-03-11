@@ -45,7 +45,7 @@ const AppRouter = () => {
         <Routes>
           <Route path="/" index element={<Home/>}/>
           <Route path="app-home" element={<AppHome/>}/>
-          <Route path="recipes" element={<Recipes/>} />
+          <Route path="recipes" element={<Recipe/>} />
           <Route path="plan" element={<MealPlan/>} />
           <Route path="groceries" element={<Groceries/>} />
           <Route path="insights" element={<Insights/>} />

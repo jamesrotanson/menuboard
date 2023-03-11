@@ -96,12 +96,21 @@ const RecipeCard = (props, recipe) => {
             name="Edit"
           /> */}
           <Button 
+            onClick={props.onEdit}
+            onKeyDown={props.onEdit}
+            role="button" 
+            tabIndex={0}
+            appearance="default" 
+            // iconBefore={<Pencil/>} 
+            name="Edit"
+          />
+          <Button 
             onKeyDown={props.onDelete}
-            onKe
+            onClick={props.onDelete}
             role="button" 
             tabIndex={0}
             appearance="delete" 
-            iconBefore={<Trash/>} 
+            // iconBefore={<Trash/>} 
             name="Delete"
           />
           </div>

@@ -4,6 +4,7 @@ import {
     collection,
     doc,
     addDoc,
+    updateDoc,
     deleteDoc, 
     onSnapshot
 } from "firebase/firestore"
@@ -14,9 +15,25 @@ import { NotePencil, Plus } from 'phosphor-react'
 import RecipeCreateModal from '../components/RecipeCreateModal'
 import RecipeModal from '../components/RecipeModal'
 import Modal from 'antd/es/modal/Modal'
+import RecipesData from '../data/recipes.json'
+import SearchBar from '../components/SearchBar'
+import LoadingPage from './LoadingPage'
 
 const Recipe = () => {
 
+    // LOADING
+    const [loading, setLoading] = useState(true)
+    setTimeout(() => setLoading(false), 1000);
+
+
+    // TABS
+    const [tabState, setTabState] = useState(1);
+
+    const toggleTabs = (index) => {
+        setTabState(index)
+    }
+    
+    // RECIPES
     const [recipes, setRecipes] = useState([])
     const [recipeForm, setRecipeForm] = useState({
         title: "",
@@ -24,6 +41,7 @@ const Recipe = () => {
         ingredients: [], 
         steps: []
     })
+
     
 
     const recipesCollectionRef = collection(db, "recipes")
@@ -103,15 +121,15 @@ const Recipe = () => {
         console.log('Create my recipe')
         // event.preventDefault()
 
-        if (
-            !recipeForm.title ||
-            !recipeForm.description ||
-            !recipeForm.ingredients ||
-            !recipeForm.steps 
-        ) {
-            // alert("Please fill out all fields")
-            return
-        }
+        // if (
+        //     !recipeForm.title ||
+        //     !recipeForm.description ||
+        //     !recipeForm.ingredients ||
+        //     !recipeForm.steps 
+        // ) {
+        //     alert("Please fill out all fields")
+        //     return
+        // }
 
         addDoc(recipesCollectionRef, recipeForm)
 
@@ -122,19 +140,30 @@ const Recipe = () => {
             steps: []
         })
 
-        setShowRecipeCreateModal(false)
-        
+        setShowRecipeCreateModal(false)   
     }
 
     // View recipe
     const [showRecipeModal, setShowRecipeModal] = useState(false)
     const [activeRecipe, setActiveRecipe] = useState({});
 
-    const handleRecipeModalOpen = (recipe) => {
+    const handleRecipeModalOpen = (recipes) => {
         setShowRecipeModal(true)
-        setActiveRecipe(recipe)
-        console.log(recipe.ingredients)
+        // setActiveRecipe(recipe)
+        console.log(recipes.ingredients)
     }
+
+    useEffect(() => {
+        onSnapshot(recipesCollectionRef, snapshot => {
+            setRecipes(snapshot.docs.map(doc => {
+                return {
+                    id: doc.id, 
+                    viewing: false,
+                    ...doc.data()
+                }
+            }))
+        })
+    }, [])
 
     const handleRecipeModalCancel = () => {
         setShowRecipeModal(false)
@@ -146,73 +175,143 @@ const Recipe = () => {
         deleteDoc(doc(db, "recipes", id))
     }
 
+    // Search
+    const [searchTerm, setsearchTerm] = useState("")
+    const handleSearch = (event) => {
+        setsearchTerm(event.target.value)
+    }
+
+    const filteredRecipes = RecipesData.filter((recipe) => 
+        recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    
     
         
     return (
+        <div>
+        {loading ? <LoadingPage/> :
         <div className="Page-container">
             <div className="Page-small">
                 <div className="Page-header">
                     <div className='Page-title'>
-                        <div>
                         <h2>Recipes</h2>
-                        <p>Discover tasty recipes designed to suit your taste, preferences, allergies, body condition, and habits.</p>
-                        </div>
                     </div>
-                    <Button
-                        appearance="primary"
-                        name="New recipe" 
-                        iconBefore={<NotePencil/>} 
-                        onClick={handleOpenRecipeCreateModal}
-                    />
+                    <SearchBar placeholder="Search recipes" onChange={handleSearch} appearance="default"/> 
+
                 </div>
 
-                {/* <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/> */}
                 
-                <ul className='Recipe-card-list'>
-                {recipes.map((recipe, i) => (
-                    <div>
-                
-                    <RecipeCard 
-                        key={recipe.id}
-                        name={recipe.title}
-                        imageUrl={recipe.imageUrl}
-                        cost={recipe.cost}
-                        time={recipe.time}
-                        // onClick={() => handleViewRecipe(recipe.id)}
-                        onClick={() => handleRecipeModalOpen(recipe.id)}
-                        onDelete={() => removeRecipe(recipe.id)}
-                    />
-                        {recipe.viewing && 
-                            <div>
-                            <h4>Ingredients</h4>
-                                <ul>
-                                    {recipe.ingredients.map((ingredient, i) => (
-                                        <li key={i}>{ingredient}</li>
-                                    ))}
-                                </ul>
-                                <h4>Steps</h4>
-                                <ol>
-                                    {recipe.steps.map((step, i) => (
-                                        <li key={i}>{step}</li>
-                                    ))}
-                                </ol>
+
+                <div className='Tabs-controls'>
+                    <div className={tabState === 1 ? "Tab Tab-active" : "Tab"} onClick={() => toggleTabs(1)}>Recommended for you</div>
+                    <div className={tabState === 2 ? "Tab Tab-active" : "Tab"} onClick={() => toggleTabs(2)}>My recipes</div>
+                </div>
+
+
+                <div className="Tabs-content">
+
+                    <div className={tabState === 1 ? 'Tab-content Tab-content-active' : "Tab-content"}>
+                        <br></br>
+                        <br></br>
+                        <h4>Because you like Japanese food</h4>                    
+                        <ul className='Recipe-card-list'>
+                            {
+                                filteredRecipes.map((recipe) => {
+                                    return(
+                                        <RecipeCard 
+                                            key={recipe.id}
+                                            name={recipe.name}
+                                            imageUrl={recipe.imageUrl}
+                                            cost={recipe.cost}
+                                            time={recipe.time}
+                                            onClick={() => handleRecipeModalOpen(recipe)}
+                                            // onDelete={() => handleDeleteRecipe(recipe.id)}
+                                        />
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+
+                    <div className={tabState === 2 ? 'Tab-content Tab-content-active' : "Tab-content"}>
+                        <br></br>
+                        <br></br>
+                        <div className='flex'>
+                            <div className='Page-title'>
+                                <h4>My recipes</h4>  
+                            
                             </div>
-                        }
+                            <Button
+                                appearance="primary"
+                                name="New recipe" 
+                                iconBefore={<NotePencil/>} 
+                                onClick={handleOpenRecipeCreateModal}
+                            />
                         </div>
-                    ))
-                }
-                </ul>
+                        <br></br>   
+                            <ul className='Recipe-card-list'>
+                            {recipes.map((recipe, i) => (
+                                <div>
+                            
+                                <RecipeCard 
+                                    key={recipe.id}
+                                    name={recipe.title}
+                                    imageUrl={recipe.imageUrl}
+                                    cost={recipe.cost}
+                                    time={recipe.time}
+                                    // onClick={() => handleViewRecipe(recipe.id)}
+                                    onClick={() => handleRecipeModalOpen(recipe.id)}
+                                    onDelete={() => removeRecipe(recipe.id)}
+                                    // onEdit={() => handleUpdateRecipeModalOpen(recipe.id)}
+                                />
+                                    {/* <ul>
+                                        {recipe.ingredients.map((ingredient, i) => (
+                                            <li key={i}>{ingredient}</li>
+                                        ))}
+                                    </ul> */}
+                                    {recipe.viewing && 
+                                        <div>
+                                        <h4>Ingredients</h4>
+                                            <ul>
+                                                {recipe.ingredients.map((ingredient, i) => (
+                                                    <li key={i}>{ingredient}</li>
+                                                ))}
+                                            </ul>
+                                            <h4>Steps</h4>
+                                            <ol>
+                                                {recipe.steps.map((step, i) => (
+                                                    <li key={i}>{step}</li>
+                                                ))}
+                                            </ol>
+                                        </div>
+                                    }
+                                    </div>
+                                    
+                                ))
+                            }
+                            </ul>
+                    </div>
+                </div>
+                
+
+                <br></br>
+
+                
 
                 {showRecipeModal ? 
                     <RecipeModal
+                        onOk={handleRecipeModalCancel}
                         onCancel={handleRecipeModalCancel}
                         recipeName={activeRecipe.name}
                         recipeImageUrl={activeRecipe.imageUrl}
+                        recipeIngredients={activeRecipe.ingredients}
                     /> 
                     : null
                 }
 
 
+                {/* <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/> */}
+                
                 {showRecipeCreateModal && 
                     <Modal
                         open={()=> setShowRecipeCreateModal(true)}
@@ -278,7 +377,7 @@ const Recipe = () => {
                                 </div>
 
                                 <div className='Button-group'>
-                                    <Button type="submit" name="Create" appearance="primary" />
+                                    <Button type="submit" name="Create" appearance="primary" onClick={() => handleCreateRecipe()}/>
                                     <Button type="button" name="Cancel" appearance="default" onClick={() => setShowRecipeCreateModal(false)}/>
                                 </div>
                             </form>
@@ -289,6 +388,8 @@ const Recipe = () => {
                 }
                 
             </div>
+        </div>
+        }
         </div>
     )
 }
