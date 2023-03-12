@@ -293,7 +293,7 @@ img {
 }
 
 .Main-nav-container button {
-  margin: 12px;
+  margin: 8px 4px;
 }
 
 
@@ -1627,4 +1627,5 @@ button {
 .Auth-buttons-nav-container {
   display: flex;
   flex-direction: row;
+  gap: 4px;
 }

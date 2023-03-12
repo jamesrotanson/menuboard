@@ -11,8 +11,6 @@ import {
 import Button from '../components/Button'
 import RecipeCard from '../components/RecipeCard'
 import { NotePencil, Plus } from 'phosphor-react'
-
-import RecipeCreateModal from '../components/RecipeCreateModal'
 import RecipeModal from '../components/RecipeModal'
 import Modal from 'antd/es/modal/Modal'
 import RecipesData from '../data/recipes.json'

@@ -30,18 +30,18 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+// ReactDOM.createRoot(document.getElementById("root")).render(
+//   <React.StrictMode>
+//     <RouterProvider router={router} />
+//   </React.StrictMode>
+// );
 
 
 const AppRouter = () => {
   return (
     <div>
       <MainNavigation/>
-      <BrowserRouter>  
+      {/* <BrowserRouter>   */}
         <Routes>
           <Route path="/" index element={<Home/>}/>
           <Route path="app-home" element={<AppHome/>}/>
@@ -54,7 +54,7 @@ const AppRouter = () => {
           <Route path="register" element={<Register/>}/>
           <Route path="recipe" element={<Recipe/>}/>
         </Routes>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
     </div>
   );
 };

@@ -13,6 +13,7 @@ const Register = () => {
     const [registerPassword, setRegisterPassword] = useState("");
     const [registerError, setRegisterError] = useState(false);
 
+
     const navigate = useNavigate();
 
     const register = async () => {

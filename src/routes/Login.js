@@ -23,6 +23,10 @@ const Login = () => {
             console.log(user)
             console.log("Successfully logged in!")
             navigate('/app-home');
+            window.scrollTo({
+                top: 0,
+                behaviour: 'smooth',
+            });
         }
         catch(error){
             setLoginError(true);
@@ -31,6 +35,8 @@ const Login = () => {
 
     }
 
+
+
     return (
         <div>
         {loading ? <LoadingPage/> :
@@ -38,6 +44,7 @@ const Login = () => {
                 <img src={require("../images/small-logo.png")} className="Logo-big" alt="Logo"/>
                 <br></br>
                 <h3>Log in to Menuboard</h3>
+                <small>Don't have an account? <a href="/register">Sign up here</a></small>
                 <br></br>
                 <form>
                     <input 
