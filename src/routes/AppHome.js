@@ -7,6 +7,7 @@ import FamilyPlanBanner from '../components/FamilyPlanBanner';
 import ConnectAppsActions from '../components/ConnectAppsActions';
 import LoadingPage from './LoadingPage';
 import RecipeModal from '../components/RecipeModal';
+import FeedbackCollector from '../components/FeedbackCollector';
 
 
 const AppHome = () => {
@@ -117,6 +118,7 @@ const AppHome = () => {
                 <br></br>
 
                 <FamilyPlanBanner/>
+                <FeedbackCollector/>
             </div>
         </div>
         }

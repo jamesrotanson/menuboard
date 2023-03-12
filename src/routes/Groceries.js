@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import ConnectAppsActions from '../components/ConnectAppsActions';
 import LoadingPage from './LoadingPage';
+import FeedbackCollector from '../components/FeedbackCollector';
 
 
 const Groceries = () => {
@@ -171,9 +172,11 @@ const Groceries = () => {
               <img src={require("../images/shopping-basket.png")} className="Recipe-thumbnail"/>
               
             </div> */}
+            
     
           </div>
         </div>
+        <FeedbackCollector/>
       </div>
     }
     </div>

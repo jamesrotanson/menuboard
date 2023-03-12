@@ -51,7 +51,7 @@ h5 {
 }
 
 p, .p {
-  color: black;
+  color: rgba(0,0,0,0.84);
   font-family: "Inter";
   font-size: 14px;
   line-height: 24px;
@@ -398,6 +398,25 @@ img {
   width: auto;
   padding: 8px 16px;
   margin-bottom: 8px;
+}
+
+.Form .Button-group {
+  justify-content: flex-end;
+
+}
+
+.Form button {
+  width: 100%;
+}
+
+textarea {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  width: auto;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  font-family: "Inter";
+  min-height: 80px;
 }
 
 label {
@@ -772,7 +791,16 @@ button {
 /* TABS */
 .Tabs-controls {
   display: flex;
+}
 
+.Tabs-controls::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 245px;
+  height: 3px;
+  width: 960px;
+  background-color: rgba(0,0,0,0.08);
 }
 
 .Tab {
@@ -782,11 +810,11 @@ button {
   color: rgba(0,0,0,0.40);
   cursor: pointer;
   /* border-radius: 24px; */
-  flex-grow: 1;
+  /* flex-grow: 1; */
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 3px solid rgba(0,0,0,0.08);
+  border-bottom: 3px solid rgba(0,0,0,0);
 }
 
 .Tab-active {
@@ -1629,3 +1657,42 @@ button {
   flex-direction: row;
   gap: 4px;
 }
+
+/* FEEDBACK */
+.Feedback-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 24px;
+  border-radius: 16px;
+}
+
+.Feedback-container textarea {
+  width: 320px;
+}
+
+.Feedback-container label {
+  width: 360px;
+  text-align: center;
+}
+
+.Feedback-rating-bubble {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  width: 100%;
+  border-radius: 100%;
+  cursor: pointer;
+  color: rgba(0,0,0,0.4);
+  background-color: #FFFFFF;
+}
+
+.Feedback-rating-bubble-active {
+  background-color: rgba(0, 155, 60, 0.12);
+  color: #009b3c;
+  border: 1px solid #009b3c;
+}
+

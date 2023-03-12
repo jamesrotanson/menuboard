@@ -6,6 +6,7 @@ import ChartWeight from '../components/ChartWeight';
 import '../App.css';
 import { ForkKnife, CurrencyCircleDollar, Scales, Heart } from 'phosphor-react';
 import LoadingPage from './LoadingPage';
+import FeedbackCollector from '../components/FeedbackCollector';
 
 const Insights = () => {
 
@@ -68,9 +69,10 @@ const Insights = () => {
           </div>
 
           <br></br>
-
+          <FeedbackCollector/>
         </div>
       </div>
+      
     }
     </div>
   );

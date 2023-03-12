@@ -16,6 +16,7 @@ import Modal from 'antd/es/modal/Modal'
 import RecipesData from '../data/recipes.json'
 import SearchBar from '../components/SearchBar'
 import LoadingPage from './LoadingPage'
+import FeedbackCollector from '../components/FeedbackCollector'
 
 const Recipe = () => {
 
@@ -336,7 +337,6 @@ const Recipe = () => {
                                     <textarea 
                                         type="text" 
                                         placeholder="Name"
-                                        className='Form-input'
                                         value={recipeForm.description}
                                         onChange={(event) => setRecipeForm({...recipeForm, description: event.target.value})}
                                     />
@@ -385,6 +385,8 @@ const Recipe = () => {
                     </Modal>
                 }
                 
+
+                <FeedbackCollector/>
             </div>
         </div>
         }
