@@ -1,34 +1,35 @@
 import React, {useState} from 'react'
-import RichTextEditor from './RichTextEditor'
-import Button from './Button'
 import { Modal } from 'antd';
-import IngredientsList from './IngredientsList';
 
 const RecipeModal = (props) => {
     
-    const [showRecipeModal, setShowRecipeModal] = useState(true)
+    
     const [imageLoaded, setImageLoaded] = useState(false)
+    
+
+    const [showRecipeModal, setShowRecipeModal] = useState(true)
+
     
 
     return (
     <div>
         {showRecipeModal ? 
         <Modal 
-            // title={props.recipeName}
             open={showRecipeModal} 
-            onOk={props.onCancel} 
+            onOk={props.onOk} 
             onCancel={props.onCancel}
-            // width="100%"
-            width="800px"
+            width="100%"
+            footer={null}
+            // width="800px"
             style={{ top: 40 }}
         >   
             <div className="Modal-content-wrapper">
                 <div className="Modal-content-container">
-                    <h1 className="Page-title">{props.recipeName}</h1>
+                    <h2 className="Page-title">{props.name}</h2>
                     {props.imageUrl ? 
                     <img src={props.recipeImageUrl} alt="Recipe cover" className="Recipe-cover"/>
                     :
-                    <img src={require("../images/food-illos.png")} alt="Recipe thumbnail" className="Recipe=thumbnail" onClick={props.onClick}/>
+                    <img src={require("../images/food-illos.png")} alt="Recipe thumbnail" className="Recipe-cover" onClick={props.onClick}/>
                     }
                     <div className="Recipe-time-tabs-container">
                         <div className="Recipe-time-tabs">
@@ -44,14 +45,27 @@ const RecipeModal = (props) => {
                             <p>30 mins</p>
                         </div>
                     </div>
+                    <div className="Recipe-time-tabs-container">
+                        <div className="Recipe-time-tabs">
+                            <h5>Difficulty</h5>
+                            <p>Intermediate</p>
+                        </div>
+                        <div className="Recipe-time-tabs">
+                            <h5>Cuisine</h5>
+                            <p>Japanese</p>
+                        </div>
+                        <div className="Recipe-time-tabs">
+                            <h5>Estimated cost</h5>
+                            <p>$4 / servings</p>
+                        </div>
+                    </div>
                     
                     <h3>Ingredients</h3>
-                    <IngredientsList/>
-                    <p>{props.recipeIngredients}</p>
+                    <p>{props.ingredients}</p>
                     {/* <RichTextEditor content={props.recipeIngredients}/> */}
                     
-                    <h3>Instructions</h3>
-                    <p>{props.recipeInstructions}</p>
+                    <h3>Steps</h3>
+                    <p>{props.steps}</p>
                     {/* <RichTextEditor/> */}
                 </div>
             </div>            

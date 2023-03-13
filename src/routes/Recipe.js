@@ -17,6 +17,8 @@ import RecipesData from '../data/recipes.json'
 import SearchBar from '../components/SearchBar'
 import LoadingPage from './LoadingPage'
 import FeedbackCollector from '../components/FeedbackCollector'
+import RecipeCreateModal from '../components/RecipeCreateModal'
+import IngredientItem from '../components/IngredientItem'
 
 const Recipe = () => {
 
@@ -34,6 +36,7 @@ const Recipe = () => {
     
     // RECIPES
     const [recipes, setRecipes] = useState([])
+    
     const [recipeForm, setRecipeForm] = useState({
         title: "",
         description: "", 
@@ -57,20 +60,7 @@ const Recipe = () => {
         })
     }, [])
 
-    const handleViewRecipe = (id) => {
-        const recipesArray = [...recipes]
-
-        recipesArray.forEach(recipe => {
-            if(recipe.id === id){
-                recipe.viewing = true
-            }
-            else {
-                recipe.viewing = false
-            }
-        })
-
-        setRecipes(recipesArray)
-    }
+    
 
 
     // Create recipe
@@ -143,13 +133,13 @@ const Recipe = () => {
     }
 
     // View recipe
+    
     const [showRecipeModal, setShowRecipeModal] = useState(false)
-    const [activeRecipe, setActiveRecipe] = useState({});
+    const [activeRecipe, setActiveRecipe] = useState([]);
 
-    const handleRecipeModalOpen = (recipes) => {
+    const handleRecipeModalOpen = (recipe) => {
         setShowRecipeModal(true)
-        // setActiveRecipe(recipe)
-        console.log(recipes.ingredients)
+        setActiveRecipe(recipe)
     }
 
     useEffect(() => {
@@ -166,8 +156,16 @@ const Recipe = () => {
 
     const handleRecipeModalCancel = () => {
         setShowRecipeModal(false)
+        console.log('Cancel')
     }
 
+    // Edit recipe
+    const [editRecipeModal, setEditRecipeModal] = useState(false)
+
+    const handleRecipeEditModal= () => {
+        setEditRecipeModal(true)
+        console.log('edit')
+    }
 
     // Delete recipe
     const removeRecipe = (id) => {
@@ -183,7 +181,30 @@ const Recipe = () => {
     const filteredRecipes = RecipesData.filter((recipe) => 
         recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    
+
+
+    // Show data in modal
+    const [recipeModalInfo, setRecipeModalInfo] = useState([])
+
+
+    const handleViewRecipe = (id) => {
+        setShowRecipeModal(true)
+        const recipesArray = [...recipes]
+
+        console.log(recipesArray)
+
+        recipesArray.forEach(recipe => {
+            if(recipe.id === id){
+                recipe.viewing = true
+                
+            }
+            else {
+                recipe.viewing = false
+            }
+        })
+
+        setRecipes(recipesArray)
+    }
     
         
     return (
@@ -249,44 +270,21 @@ const Recipe = () => {
                         </div>
                         <br></br>   
                             <ul className='Recipe-card-list'>
+                                
                             {recipes.map((recipe, i) => (
                                 <div>
-                            
-                                <RecipeCard 
-                                    key={recipe.id}
-                                    name={recipe.title}
-                                    imageUrl={recipe.imageUrl}
-                                    cost={recipe.cost}
-                                    time={recipe.time}
-                                    // onClick={() => handleViewRecipe(recipe.id)}
-                                    onClick={() => handleRecipeModalOpen(recipe.id)}
-                                    onDelete={() => removeRecipe(recipe.id)}
-                                    // onEdit={() => handleUpdateRecipeModalOpen(recipe.id)}
-                                />
-                                    
-                                    {/* <ul>
-                                        {recipe.ingredients.map((ingredient, i) => (
-                                            <li key={i}>{ingredient}</li>
-                                        ))}
-                                    </ul> */}
-                                    {recipe.viewing && 
-                                        <div>
-                                        <h4>Ingredients</h4>
-                                            <ul>
-                                                {recipe.ingredients.map((ingredient, i) => (
-                                                    <li key={i}>{ingredient}</li>
-                                                ))}
-                                            </ul>
-                                            <h4>Steps</h4>
-                                            <ol>
-                                                {recipe.steps.map((step, i) => (
-                                                    <li key={i}>{step}</li>
-                                                ))}
-                                            </ol>
-                                        </div>
-                                    }
-                                    </div>
-                                    
+                                    <RecipeCard 
+                                        key={recipe.id}
+                                        name={recipe.title}
+                                        imageUrl={recipe.imageUrl}
+                                        cost={recipe.cost}
+                                        time={recipe.time}
+                                        // onClick={() => handleViewRecipe(recipe.id)}
+                                        onClick={() => handleRecipeModalOpen(recipe)}
+                                        onDelete={() => removeRecipe(recipe.id)}
+                                        onEdit={() => handleRecipeEditModal()}
+                                    />
+                                </div>
                                 ))
                             }
                             </ul>
@@ -302,16 +300,34 @@ const Recipe = () => {
                     <RecipeModal
                         onOk={handleRecipeModalCancel}
                         onCancel={handleRecipeModalCancel}
-                        recipeName={activeRecipe.name}
-                        recipeImageUrl={activeRecipe.imageUrl}
-                        recipeIngredients={activeRecipe.ingredients}
+                        name={activeRecipe.title}
+                        ingredients={
+                            <ul>
+                                {activeRecipe.ingredients.map((ingredient, i) => (
+                                    // <li key={i}>{ingredient}</li>
+                                    <IngredientItem key={i} ingredientName={ingredient}/>
+                                ))}
+                            </ul>
+                        }
+                        steps={
+                            <ol>
+                                {activeRecipe.steps.map((step, i) => (
+                                    <li key={i}>{step}</li>
+                                ))}
+                            </ol>
+                        }
                     /> 
+
                     : null
                 }
 
 
                 {/* <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/> */}
                 
+                {editRecipeModal && 
+                    <RecipeCreateModal mode="edit"/>
+                }
+
                 {showRecipeCreateModal && 
                     <Modal
                         open={()=> setShowRecipeCreateModal(true)}

@@ -7,6 +7,7 @@ import LoadingPage from './LoadingPage';
 import { useSelector } from 'react-redux';
 import RecipeCard from '../components/RecipeCard';
 import UnscheduledSidebar from '../components/UnscheduledSidebar';
+import FeedbackCollector from '../components/FeedbackCollector';
 
 
 const MealPlan = () => {
@@ -34,7 +35,7 @@ const MealPlan = () => {
             </div>
             <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
             <MealCalendar/>
-            
+            <FeedbackCollector/>
           </div>
         </div>
           <UnscheduledSidebar/>

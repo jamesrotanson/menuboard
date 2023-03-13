@@ -6,7 +6,7 @@ import {v4 as uuid} from 'uuid';
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-hot-toast';
 
-const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) => {
+const RecipeCreateModal = ({mode, editRecipeModal, showRecipeCreateModal, setShowRecipeCreateModal}) => {
     
     const [recipeName, setRecipeName] = useState('');
     const [recipeIngredients, setRecipeIngredients] = useState('');
@@ -47,7 +47,7 @@ const RecipeCreateModal = ({showRecipeCreateModal, setShowRecipeCreateModal}) =>
                 maskTransitionName=""
             >
                 <form className='Form' onSubmit={(event) => handleSubmit(event)}>
-                    <h2>New recipe</h2>
+                    <h2>{mode === "Edit" ? "Edit recipe" : "New recipe"}</h2>
                     <label htmlFor="name">
                         Recipe name
                     </label>
