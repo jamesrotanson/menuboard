@@ -297,6 +297,10 @@ const Recipe = () => {
                         onCancel={handleRecommendedRecipeModalCancel}
                         name={activeRecommendedRecipe.name}
                         imageUrl={activeRecommendedRecipe.imageUrl}
+                        cost={activeRecommendedRecipe.cost}
+                        time={activeRecommendedRecipe.time}
+                        difficulty={activeRecommendedRecipe.difficulty}
+                        cuisine={activeRecommendedRecipe.cuisine}
                         ingredients={
                             <ul>
                                 {activeRecommendedRecipe.ingredients.map((ingredient, i) => (

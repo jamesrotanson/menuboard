@@ -1547,7 +1547,11 @@ button {
 
 
   .Recipe-card {
-    width: 100%;
+    width: 100% !important;
+  }
+
+  .Modal-content-container {
+    width: 380px;
   }
 
   .Section-grocery {
@@ -1603,6 +1607,69 @@ button {
     margin-top: 2px;
     margin-bottom: 2px;
   }
+
+  .Plan-page-container {
+    margin-right: 0;
+  }
+
+  .Plan-sidebar {
+    height: auto;
+    width: 100vw;
+    padding: 24px;
+    z-index: 95;
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    right: auto;
+    left: 0;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    /* background-color: red; */
+    border-top: 1px solid rgba(0,0,0,0.08)
+  }
+  .Plan-sidebar h3 {
+    font-size: 16px;
+  }
+
+  .Plan-sidebar h4 {
+    font-size: 12px;
+    padding-left: 4px;
+    font-weight: 500;
+  }
+  
+  .Plan-sidebar ul {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    overflow: scroll;
+  }
+
+  .Plan-sidebar .Recipe-card {
+    padding: 0;
+    gap: 4px;
+    min-width: 80px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+
+
+  .Plan-sidebar .Recipe-thumbnail {
+    height: 48px;
+    border-radius: 0;
+  }
+
+  .Plan-sidebar small {
+    display: none;
+  }
+
+  .Plan-sidebar button {
+    padding: 6px 12px;
+    display: none;
+  }
+
 
   .Avatar-small {
     width: 16px;

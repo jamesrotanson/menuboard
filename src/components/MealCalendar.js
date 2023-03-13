@@ -135,17 +135,20 @@ const MealCalendar = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [recipeName, setRecipeName] = useState("");
+  const [activeRecipe, setActiveRecipe] = useState([])
 
-  const handleDateClick = (arg) => {
+  const handleDateClick = (recipe) => {
     // setEvents([...events, { title: "New Event", date: arg.dateStr }]);
     setShowModal(true);
+    setActiveRecipe(recipe)
   };
 
 
   // OPEN RECIPE DETAIL
   const [showRecipeModal, setShowRecipeModal] = useState(false);
-  const handleOpenRecipe = () => {
+  const handleOpenRecipe = (recipe) => {
     setShowRecipeModal(true)
+    setActiveRecipe(recipe)
   }
 
   const handleCancelRecipe = () => {
@@ -160,14 +163,14 @@ const MealCalendar = () => {
 
   
 
-  const renderEventContent = (eventInfo) => {
+  const renderEventContent = (recipe) => {
     return (
-      <div className="Calendar-event" onClick={handleOpenRecipe}>
-        <img className="Calendar-event-thumbnail" src={eventInfo.event.extendedProps.imageUrl}/>
+      <div className="Calendar-event" onClick={() => handleOpenRecipe(recipe)}>
+        <img className="Calendar-event-thumbnail" src={recipe.event.extendedProps.imageUrl} alt="Recipe thumbnail"/>
         <div className="Calendar-event-info">
-          <h4>{eventInfo.event.title}</h4>
-          <small>{eventInfo.event.extendedProps.type}</small>
-          <AvatarGroup size="small"/>
+          <h4>{recipe.event.title}</h4>
+          <small>{recipe.event.extendedProps.type}</small>
+          {/* <AvatarGroup size="small"/> */}
         </div>
       </div>
     )
@@ -176,7 +179,15 @@ const MealCalendar = () => {
   return (
     <div>
       {/* RECIPE DETAIL */}
-      {showRecipeModal ? <RecipeModal onCancel={handleCancelRecipe} /> : null}
+      {showRecipeModal &&
+        <RecipeModal 
+          onCancel={handleCancelRecipe}
+          // name={activeRecipe.title}
+          name={activeRecipe.event.title}
+          imageUrl={activeRecipe.event.extendedProps.imageUrl} 
+          plannedDate={activeRecipe.event.date}
+        /> 
+      }
 
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}

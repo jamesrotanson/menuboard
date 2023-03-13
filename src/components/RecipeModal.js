@@ -33,31 +33,32 @@ const RecipeModal = (props) => {
                     <p>{props.description}</p>
                     <div className="Recipe-time-tabs-container">
                         <div className="Recipe-time-tabs">
-                            <h5>Prep time</h5>
-                            <p>10 mins</p>
-                        </div>
-                        <div className="Recipe-time-tabs">
                             <h5>Cook time</h5>
-                            <p>20 mins</p>
+                            <p> {props.time ? null : "--" } {props.time}</p>
                         </div>
                         <div className="Recipe-time-tabs">
-                            <h5>Total time</h5>
-                            <p>30 mins</p>
+                            <h5>Estimated cost</h5>
+                            <p> {props.cost ? "Est. " : null} {props.cost ? null : "--" } {props.cost} {props.cost ? "/ servings" : null}</p>
+                        </div>
+                        <div className="Recipe-time-tabs">
+                            <h5>Plan for</h5>
+                            <p>{props.plannedDate ? null : "--" } {props.plannedDate}</p>
                         </div>
                     </div>
                     <div className="Recipe-time-tabs-container">
                         <div className="Recipe-time-tabs">
                             <h5>Difficulty</h5>
-                            <p>Intermediate</p>
+                            <p>{props.difficulty ? null : "--" } {props.difficulty}</p>
                         </div>
                         <div className="Recipe-time-tabs">
                             <h5>Cuisine</h5>
-                            <p>Japanese</p>
+                            <p>{props.cuisine ? null : "--" } {props.cuisine}</p>
                         </div>
                         <div className="Recipe-time-tabs">
-                            <h5>Estimated cost</h5>
-                            <p>$4 / servings</p>
+                            {/* <h5>Plan for</h5>
+                            <p>{props.plannedDate ? null : "--" } {props.plannedDate}</p> */}
                         </div>
+                        
                     </div>
                     
                     <h3>Ingredients</h3>

@@ -4,6 +4,8 @@
         "name": "Sushi",
         "cost": "$5",
         "time": "15 min",
+        "difficulty": "Intermediate",
+        "cuisine": "Japanese",
         "ingredients": [
             {
                 "quantity": "1",
@@ -49,6 +51,8 @@
         "name": "Miso Ramen",
         "cost": "$7",
         "time": "30 min",
+        "difficulty": "Advanced",
+        "cuisine": "Japanese",
         "ingredients": [
             {
                 "quantity": "2",
@@ -92,6 +96,8 @@
         "name": "Spaghetti Meatballs",
         "cost": "$3",
         "time": "45 min",
+        "difficulty": "Intermediate",
+        "cuisine": "Italian",
         "ingredients": [
             {
                 "quantity": "300 g",
@@ -135,6 +141,8 @@
         "name": "Crock Pot Roast",
         "cost": "$4",
         "time": "2 hr",
+        "difficulty": "Beginner",
+        "cuisine": "Western",
         "ingredients": [
             {
                 "quantity": "1",
@@ -173,9 +181,11 @@
     },
     {
         "id": "5",
-        "name": "Gyoza dumpling",
+        "name": "Dumpling",
         "cost": "$3",
         "time": "45 min",
+        "difficulty": "Intermediate",
+        "cuisine": "Chinese",
         "ingredients": [
             {
                 "quantity": "400g",
