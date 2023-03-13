@@ -65,6 +65,7 @@ const Recipe = () => {
 
     // Create recipe
     const [showRecipeCreateModal, setShowRecipeCreateModal] = useState(false);
+    
 
     const handleOpenRecipeCreateModal = () => {
         setShowRecipeCreateModal(true)
@@ -132,7 +133,7 @@ const Recipe = () => {
         setShowRecipeCreateModal(false)   
     }
 
-    // View recipe
+    // View user generated recipe
     
     const [showRecipeModal, setShowRecipeModal] = useState(false)
     const [activeRecipe, setActiveRecipe] = useState([]);
@@ -159,6 +160,21 @@ const Recipe = () => {
         console.log('Cancel')
     }
 
+
+    // View recommended recipe
+    const [showRecommendedRecipeModal, setShowRecommendedRecipeModal] = useState(false)
+    const [activeRecommendedRecipe, setActiveRecommendedRecipe] = useState([])
+
+    const handleViewRecommendedRecipeModal = (recipe) => {
+        setShowRecommendedRecipeModal(true)
+        setActiveRecommendedRecipe(recipe)
+    }
+
+    const handleRecommendedRecipeModalCancel = () => {
+        setShowRecommendedRecipeModal(false)
+    }
+    
+
     // Edit recipe
     const [editRecipeModal, setEditRecipeModal] = useState(false)
 
@@ -183,28 +199,7 @@ const Recipe = () => {
     );
 
 
-    // Show data in modal
-    const [recipeModalInfo, setRecipeModalInfo] = useState([])
 
-
-    const handleViewRecipe = (id) => {
-        setShowRecipeModal(true)
-        const recipesArray = [...recipes]
-
-        console.log(recipesArray)
-
-        recipesArray.forEach(recipe => {
-            if(recipe.id === id){
-                recipe.viewing = true
-                
-            }
-            else {
-                recipe.viewing = false
-            }
-        })
-
-        setRecipes(recipesArray)
-    }
     
         
     return (
@@ -244,7 +239,8 @@ const Recipe = () => {
                                             imageUrl={recipe.imageUrl}
                                             cost={recipe.cost}
                                             time={recipe.time}
-                                            onClick={() => handleRecipeModalOpen(recipe)}
+                                            onClick={() => handleViewRecommendedRecipeModal(recipe)}
+                                            // onClick={() => handleRecipeModalOpen(recipe)}
                                             // onDelete={() => handleDeleteRecipe(recipe.id)}
                                         />
                                     )
@@ -279,10 +275,10 @@ const Recipe = () => {
                                         imageUrl={recipe.imageUrl}
                                         cost={recipe.cost}
                                         time={recipe.time}
-                                        // onClick={() => handleViewRecipe(recipe.id)}
                                         onClick={() => handleRecipeModalOpen(recipe)}
                                         onDelete={() => removeRecipe(recipe.id)}
                                         onEdit={() => handleRecipeEditModal()}
+                                        nonEditable={true}
                                     />
                                 </div>
                                 ))
@@ -294,6 +290,33 @@ const Recipe = () => {
 
                 <br></br>
 
+
+                {showRecommendedRecipeModal && 
+                    <RecipeModal
+                        onOk={handleRecommendedRecipeModalCancel}
+                        onCancel={handleRecommendedRecipeModalCancel}
+                        name={activeRecommendedRecipe.name}
+                        imageUrl={activeRecommendedRecipe.imageUrl}
+                        ingredients={
+                            <ul>
+                                {activeRecommendedRecipe.ingredients.map((ingredient, i) => (
+                                    <IngredientItem key={i} 
+                                        ingredientName={ingredient.name}
+                                        ingredientQuantity={ingredient.quantity}
+                                        ingredientType={ingredient.type}
+                                    />
+                                ))}
+                            </ul>
+                        }
+                        steps={
+                            <ol>
+                                {activeRecommendedRecipe.steps.map((step, i) => (
+                                    <li key={i}>{step}</li>
+                                ))}
+                            </ol>
+                        }
+                    />
+                }
                 
 
                 {showRecipeModal ? 
@@ -301,10 +324,10 @@ const Recipe = () => {
                         onOk={handleRecipeModalCancel}
                         onCancel={handleRecipeModalCancel}
                         name={activeRecipe.title}
+                        // description={activeRecipe.description}
                         ingredients={
                             <ul>
                                 {activeRecipe.ingredients.map((ingredient, i) => (
-                                    // <li key={i}>{ingredient}</li>
                                     <IngredientItem key={i} ingredientName={ingredient}/>
                                 ))}
                             </ul>
@@ -320,7 +343,6 @@ const Recipe = () => {
 
                     : null
                 }
-
 
                 {/* <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/> */}
                 
@@ -396,8 +418,6 @@ const Recipe = () => {
                                     <Button type="button" name="Cancel" appearance="default" onClick={() => setShowRecipeCreateModal(false)}/>
                                 </div>
                             </form>
-
-                            {/* {JSON.stringify(recipeForm)} */}
                         </div>
                     </Modal>
                 }

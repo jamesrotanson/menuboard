@@ -77,7 +77,7 @@ const RecipeCard = (props, recipe) => {
         }
         <div>
           <h4 onClick={props.onClick}>{props.name}</h4>
-          <small>{props.time} · {props.cost}</small>
+          <small> {props.cost && "Est. "}  {props.time} · {props.cost} {props.cost && "/servings"}</small>
           <div className="Button-group">
           <Button 
             onClick={handleAddToPlan} 
@@ -86,16 +86,7 @@ const RecipeCard = (props, recipe) => {
             iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
             name={isAddedToPlan ? "Added" : "Add"}
           />
-          {/* <Button 
-            onClick={handleUpdate} 
-            onKeyDown={handleUpdate}
-            role="button" 
-            tabIndex={0} 
-            appearance="default" 
-            iconBefore={<Pencil/>} 
-            name="Edit"
-          /> */}
-          <Button 
+          {props.nonEditable ? <Button 
             onClick={props.onEdit}
             onKeyDown={props.onEdit}
             role="button" 
@@ -103,16 +94,20 @@ const RecipeCard = (props, recipe) => {
             appearance="default" 
             // iconBefore={<Pencil/>} 
             name="Edit"
-          />
-          <Button 
-            onKeyDown={props.onDelete}
-            onClick={props.onDelete}
-            role="button" 
-            tabIndex={0}
-            appearance="delete" 
-            // iconBefore={<Trash/>} 
-            name="Delete"
-          />
+          /> : null}
+          {props.nonEditable ? 
+            <Button 
+              onKeyDown={props.onDelete}
+              onClick={props.onDelete}
+              role="button" 
+              tabIndex={0}
+              appearance="delete" 
+              // iconBefore={<Trash/>} 
+              name="Delete"
+            />
+            : null
+           }
+          
           </div>
         </div>
     </li>

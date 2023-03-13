@@ -18,19 +18,19 @@ const RecipeModal = (props) => {
             open={showRecipeModal} 
             onOk={props.onOk} 
             onCancel={props.onCancel}
-            width="100%"
+            width={880}
             footer={null}
-            // width="800px"
             style={{ top: 40 }}
         >   
             <div className="Modal-content-wrapper">
-                <div className="Modal-content-container">
-                    <h2 className="Page-title">{props.name}</h2>
-                    {props.imageUrl ? 
-                    <img src={props.recipeImageUrl} alt="Recipe cover" className="Recipe-cover"/>
+                {props.imageUrl ? 
+                    <img src={props.imageUrl} alt="Recipe cover" className="Recipe-cover"/>
                     :
                     <img src={require("../images/food-illos.png")} alt="Recipe thumbnail" className="Recipe-cover" onClick={props.onClick}/>
-                    }
+                }
+                <div className="Modal-content-container">
+                    <h2 className="Page-title">{props.name}</h2>
+                    <p>{props.description}</p>
                     <div className="Recipe-time-tabs-container">
                         <div className="Recipe-time-tabs">
                             <h5>Prep time</h5>
@@ -67,6 +67,8 @@ const RecipeModal = (props) => {
                     <h3>Steps</h3>
                     <p>{props.steps}</p>
                     {/* <RichTextEditor/> */}
+                    <br></br>
+                    <br></br>
                 </div>
             </div>            
         </Modal> 

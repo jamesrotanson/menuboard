@@ -13,7 +13,12 @@ const IngredientItem = (props) => {
     return (
         <li key={props.key} className="Ingredients-list-item">
             <Button iconBefore={plusActive ? <Check/> : <Plus/>} appearance={plusActive ? "icon-active" : "default"} onClick={handleAddToGrocery}/>
-            {props.ingredientName}
+            {props.ingredientQuantity} &nbsp;
+            {props.ingredientName} &nbsp;
+            {props.ingredientType &&
+                <span className='Tag'>{props.ingredientType}</span>
+            }
+            
         </li>
     )
 }
