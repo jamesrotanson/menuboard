@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import RecipeCard from '../components/RecipeCard';
 import RecipeModal from './RecipeModal';
 import IngredientItem from './IngredientItem';
+import SearchBar from './SearchBar';
 
 
 const UnscheduledSidebar = () => {
@@ -21,13 +22,24 @@ const UnscheduledSidebar = () => {
       setShowRecipeModal(false)
     }
 
+    const [searchTerm, setSearchTerm] = useState("")
+    const handleSearch = (event) => {
+      setSearchTerm(event.target.value)
+    }
+
+    const filteredUnscheduledRecipeList = unscheduledRecipeList.filter((recipe) => 
+      recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+
     return (
       <div className='Plan-sidebar'>
+          
           <h3>Unscheduled meals</h3>
+          <SearchBar placeholder="Search recipes" onChange={handleSearch} appearance="default"/> 
           <ul>
-            {unscheduledRecipeList && unscheduledRecipeList.length > 0
+            {filteredUnscheduledRecipeList && unscheduledRecipeList.length > 0
             ?
-            unscheduledRecipeList.map((recipe) => {
+            filteredUnscheduledRecipeList.map((recipe) => {
                 return(
                 <RecipeCard 
                     key={recipe.id}

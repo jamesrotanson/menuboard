@@ -28,12 +28,12 @@ const MealPlan = () => {
               <div className="Page-title">
                 <div>
                   <h2>Plan</h2>
-                  <p>Plan your weekly meals by drag and dropping recipes, food delivery, and dining out options for the week</p>
+                  {/* <p>Plan your weekly meals by drag and dropping recipes, food delivery, and dining out options for the week</p> */}
                 </div>
               </div>
-              <Button appearance="primary" name="Share" iconBefore={<Export/>}/>
+              <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
+            
             </div>
-            <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
             <MealCalendar/>
             <FeedbackCollector/>
           </div>

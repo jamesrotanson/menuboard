@@ -268,7 +268,7 @@ const Recipe = () => {
                             <ul className='Recipe-card-list'>
                                 
                             {recipes.map((recipe, i) => (
-                                <div>
+    
                                     <RecipeCard 
                                         key={recipe.id}
                                         name={recipe.title}
@@ -280,7 +280,7 @@ const Recipe = () => {
                                         onEdit={() => handleRecipeEditModal()}
                                         nonEditable={true}
                                     />
-                                </div>
+           
                                 ))
                             }
                             </ul>
