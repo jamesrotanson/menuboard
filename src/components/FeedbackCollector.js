@@ -28,6 +28,7 @@ const FeedbackCollector = () => {
 
     const [feedbackForm, setFeedbackForm] = useState({
         feedbackTitle: "", 
+        feedbackEmail: "",
     })
 
     const feedbackCollectionRef = collection(db, "feedback")
@@ -75,6 +76,12 @@ const FeedbackCollector = () => {
                             placeholder='Let us know any feedback, thoughts, and suggestions'
                             onChange={(event) => setFeedbackForm({...feedbackForm, feedbackTitle: event.target.value})}
                         />
+                        <input 
+                            className="Form-input" 
+                            type="email" 
+                            placeholder="Your email"
+                            onChange={(event) => setFeedbackForm({...feedbackForm, feedbackEmail: event.target.value})}
+                        />
                         <div className="Button-group">
                             <Button name="Submit" appearance="primary" onClick={() => handleSubmitFeedback()}/>
                             <Button name="Cancel" appearance="default" onClick={handleCloseFeedback}/>
@@ -85,7 +92,6 @@ const FeedbackCollector = () => {
                 :
                 null
             }
-            
 
             {toggleDislike ? 
                 (

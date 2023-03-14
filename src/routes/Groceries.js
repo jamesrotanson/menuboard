@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {db} from "../firebase-config"
+import {
+    collection,
+    doc,
+    addDoc,
+    updateDoc,
+    deleteDoc, 
+    onSnapshot
+} from "firebase/firestore"
 import Twemoji from 'react-twemoji';
-import { IconContext, MagnifyingGlass, Minus, Plus, ShoppingCart, Storefront, Trash, } from 'phosphor-react';
+import {Minus, Plus, ShoppingCart, Storefront, Trash, } from 'phosphor-react';
 import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import ConnectAppsActions from '../components/ConnectAppsActions';
 import LoadingPage from './LoadingPage';
 import FeedbackCollector from '../components/FeedbackCollector';
+import GroceryListItem from '../components/GroceryListItem';
 
 
 const Groceries = () => {
@@ -68,24 +78,32 @@ const Groceries = () => {
     </li>
   );
 
-  const groceryListData = [
-    {id: 1, name: "Egg", emoji: "🥚", qty: 1, price: "$5.50"},
-    {id: 2, name: "Chicken thigh", emoji: "🍗", qty: 1, price: "$12.50"},
-    {id: 3, name: "Red chilli", emoji: "🌶", qty: 2, price: "$3.00"},
-    {id: 4, name: "Noodles", emoji: "🍜", qty: 4, price: "$4.00"},
-  ]
+  // Get ingredients from database
 
-  const groceryList = groceryListData.map((groceryListItem) =>
-    <li className='Grocery-cart-item'>
-      <p className='qty'>{groceryListItem.qty} x</p>
-      <Twemoji options={{ className: 'twemoji' }}>
-        <p>{groceryListItem.emoji}</p>
-      </Twemoji>
-      <p className='name'>{groceryListItem.name}</p>
-      <p className='price'>{groceryListItem.price}</p>
-    </li>
-  )
+  const groceryIngredientsListRef = collection(db, "ingredients")
+  const [groceryIngredientsList, setGroceryIngredientsList] = useState([])
 
+  useEffect(() => {
+    onSnapshot(groceryIngredientsListRef, snapshot => {
+      setGroceryIngredientsList(snapshot.docs.map(doc => {
+        return {
+          id: doc.id, 
+          ...doc.data()
+        }
+      }))
+    })
+  }, [])
+  
+
+  // Remove recipe
+  // const handleDeleteIngredient = (id) => {
+  //     deleteDoc(doc(db, "ingredients", id))
+  // }
+
+  const handleDeleteIngredient = (id) => {
+    console.log(id)
+    deleteDoc(doc(db, "ingredients", id))
+  }
 
   return (
     <div>
@@ -121,6 +139,10 @@ const Groceries = () => {
               
               <p>Search for grocery items to add to your list. In the future, we will automatically add frequent ingredients based on your planned meals. </p>
               <br></br>
+              <ul>
+                
+              </ul>
+
               <form onSubmit={handleSubmit} className="Grocery-form-add-container">
                 <input
                   type="text"
@@ -134,21 +156,21 @@ const Groceries = () => {
               <ul>
                 {/* {groceryList} */}
                 {items.map((item, index) => (
-                  <li className='Grocery-cart-item' key={item + index}>
-                    <input type="checkbox"/>
-                    <Twemoji options={{ className: 'twemoji' }}>
-                      <p></p>
-                    </Twemoji>
-                    <p className='name'>{item}</p>
-                    {/* <p className='price'>$0</p> */}
-                    <div className='Button-group-calc'>
-                      <Button appearance="default" iconBefore={<Plus/>} onClick={handleAddQty}/>
-                      <input type="number" value={itemQuantity} className='Form-input'/>
-                      <Button appearance="default" iconBefore={<Minus/>} onClick={handleReduceQty}/>
-                    </div>
-                    <Button onClick={() => handleDelete(index)} appearance="delete" iconBefore={<Trash/>}/>
-                  </li>
+                  <GroceryListItem
+                    key={item + index}
+                    name={item}
+                    onDelete={() => handleDelete(index)}
+                  />
                 ))}
+                {groceryIngredientsList.map((ingredient) => {
+                  return(
+                    <GroceryListItem
+                      key={ingredient.id}
+                      name={ingredient.name}
+                      onDelete={() => handleDeleteIngredient(ingredient.id)}
+                    />
+                  )
+                })}
               </ul>
               
               <br></br>

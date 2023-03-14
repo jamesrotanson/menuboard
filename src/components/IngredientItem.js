@@ -8,11 +8,17 @@ const IngredientItem = (props) => {
 
     const handleAddToGrocery = () => {
         setPlusActive(!plusActive)
+        
     }
 
     return (
         <li key={props.key} className="Ingredients-list-item">
-            <Button iconBefore={plusActive ? <Check/> : <Plus/>} appearance={plusActive ? "icon-active" : "default"} onClick={handleAddToGrocery}/>
+            <Button 
+                iconBefore={props.added ? <Check/> : <Plus/>} 
+                appearance={props.added ? "icon-active" : "default"}
+                // onClick={handleAddToGrocery}
+                onClick={props.onClick}
+            />
             {props.ingredientQuantity} &nbsp;
             {props.ingredientName} &nbsp;
             {props.ingredientType &&

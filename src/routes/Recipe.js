@@ -107,6 +107,7 @@ const Recipe = () => {
         })
     }
 
+
     const handleCreateRecipe = (event) => {
         console.log('Create my recipe')
         // event.preventDefault()
@@ -198,6 +199,36 @@ const Recipe = () => {
         recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+
+    // Ingredients list
+    const [ingredientsList, setIngredientsList] = useState({
+        name: "", 
+    });
+
+    const ingredientsCollectionRef = collection(db, "ingredients")
+
+    const [ingredientAdded, setIngredientAdded] = useState(true)
+
+    const handleAddToIngredientsList = (ingredient) => {
+
+        console.log("add to ingredients")
+        // console.log(ingredient.name, ingredient.quantity)
+        console.log(ingredient)
+        // Why is this lagging by one event?
+        console.log(ingredientsList)
+
+        addDoc(ingredientsCollectionRef, ingredientsList)
+
+        setIngredientsList({
+            // ...ingredient,
+            name: ingredient.name,
+        })
+
+        setIngredientAdded(!ingredientAdded)
+        
+    }
+
+    
 
 
     
@@ -304,10 +335,12 @@ const Recipe = () => {
                         ingredients={
                             <ul>
                                 {activeRecommendedRecipe.ingredients.map((ingredient, i) => (
-                                    <IngredientItem key={i} 
+                                    <IngredientItem 
+                                        key={i} 
                                         ingredientName={ingredient.name}
                                         ingredientQuantity={ingredient.quantity}
                                         ingredientType={ingredient.type}
+                                        onClick={() => handleAddToIngredientsList(ingredient)}   
                                     />
                                 ))}
                             </ul>
