@@ -19,6 +19,7 @@ import LoadingPage from './LoadingPage'
 import FeedbackCollector from '../components/FeedbackCollector'
 import RecipeCreateModal from '../components/RecipeCreateModal'
 import IngredientItem from '../components/IngredientItem'
+import CreateRecipeModal from '../components/CreateRecipeModal'
 
 const Recipe = () => {
 
@@ -365,7 +366,10 @@ const Recipe = () => {
                         ingredients={
                             <ul>
                                 {activeRecipe.ingredients.map((ingredient, i) => (
-                                    <IngredientItem key={i} ingredientName={ingredient}/>
+                                    <IngredientItem key={i} 
+                                        ingredientName={ingredient}
+                                        
+                                    />
                                 ))}
                             </ul>
                         }
@@ -387,78 +391,44 @@ const Recipe = () => {
                     <RecipeCreateModal mode="edit"/>
                 }
 
-                {showRecipeCreateModal && 
-                    <Modal
+                {showRecipeCreateModal &&
+                    <CreateRecipeModal
                         open={()=> setShowRecipeCreateModal(true)}
                         onOk={() => setShowRecipeCreateModal(false)}
                         onCancel={() => setShowRecipeCreateModal(false)}
-                        footer={null}
-                        maskTransitionName=""
-                    >
-                        <div className="Recipe-create-modal">
-                            <h2> New recipe</h2>
-                            <form className="Form" onSubmit={handleCreateRecipe}>
-                                <div className='Form-input-container'>
-                                    <label htmlFor="name">Recipe name</label>
-                                    <input 
-                                        type="text" 
-                                        placeholder="Name"
-                                        className='Form-input'
-                                        value={recipeForm.title}
-                                        onChange={(event) => setRecipeForm({...recipeForm, title: event.target.value})}
-                                    />
-                                </div>
-                                <div className='Form-input-container'>
-                                    <label htmlFor="name">Recipe description</label>
-                                    <textarea 
-                                        type="text" 
-                                        placeholder="Name"
-                                        value={recipeForm.description}
-                                        onChange={(event) => setRecipeForm({...recipeForm, description: event.target.value})}
-                                    />
-                                </div>
-                                <div className='Form-input-container'>
-                                    <label htmlFor="name">Ingredients</label>
-                                    {
-                                        recipeForm.ingredients.map((ingredient, i) => (
-                                            <input 
-                                                type="text" 
-                                                key={i}
-                                                placeholder="Name"
-                                                className='Form-input'
-                                                value={ingredient}
-                                                onChange={(event) => handleIngredient(event, i)}
-                                            />
-                                        ))
-                                    }
-                                    <Button type="button" name="Add ingredient" iconBefore={<Plus/>} appearance="default" onClick={handleIngredientCount}/>
-                                </div>
-                                <div className='Form-input-container'>
-                                    <label htmlFor="name">Steps</label>
-                                    {
-                                        recipeForm.steps.map((step, i) => (
-                                            <input 
-                                                type="text" 
-                                                key={i}
-                                                placeholder="Name"
-                                                className='Form-input'
-                                                value={step}
-                                                onChange={(event) => handleStep(event, i)}
-                                            />
-                                        ))
-                                    }
-                                    <Button type="button" name="Add steps" appearance="default" iconBefore={<Plus/>} onClick={handleStepCount}/>
-                                </div>
-
-                                <div className='Button-group'>
-                                    <Button type="submit" name="Create" appearance="primary" onClick={() => handleCreateRecipe()}/>
-                                    <Button type="button" name="Cancel" appearance="default" onClick={() => setShowRecipeCreateModal(false)}/>
-                                </div>
-                            </form>
-                        </div>
-                    </Modal>
-                }
-                
+                        onSubmit={handleCreateRecipe}
+                        recipeNameValue={recipeForm.title}
+                        recipeNameOnChange={(event) => setRecipeForm({...recipeForm, title: event.target.value})}
+                        recipeDescriptionValue={recipeForm.description}
+                        recipeDescriptionOnChange={(event) => setRecipeForm({...recipeForm, description: event.target.value})}
+                        recipeIngredients={
+                            recipeForm.ingredients.map((ingredient, i) => (
+                                <input 
+                                    type="text" 
+                                    key={i}
+                                    placeholder="Name"
+                                    className='Form-input'
+                                    value={ingredient}
+                                    onChange={(event) => handleIngredient(event, i)}
+                                />
+                            ))
+                        }
+                        handleIngredientCount={handleIngredientCount}
+                        recipeSteps={
+                            recipeForm.steps.map((step, i) => (
+                                <input 
+                                    type="text" 
+                                    key={i}
+                                    placeholder="Name"
+                                    className='Form-input'
+                                    value={step}
+                                    onChange={(event) => handleStep(event, i)}
+                                />
+                            ))
+                        }
+                        handleStepCount={handleStepCount}
+                    />
+                } 
 
                 <FeedbackCollector/>
             </div>

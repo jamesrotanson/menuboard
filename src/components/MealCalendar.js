@@ -9,6 +9,8 @@ import Avatar1 from "../images/memoji-01.png"
 import Avatar2 from "../images/memoji-02.png"
 import AvatarGroup from "./AvatarGroup";
 import RecipeModal from "./RecipeModal";
+import Modal from "antd/es/modal/Modal";
+import CreateRecipeModal from "./CreateRecipeModal";
 
 const MealCalendar = () => {
   const [events, setEvents] = useState(
@@ -189,6 +191,12 @@ const MealCalendar = () => {
     )
   }
 
+  const [showRecipeCreateModal, setShowRecipeCreateModal] = useState(false)
+
+  const handleOpenRecipeCreateModal = () => {
+    setShowRecipeCreateModal(true)
+  }
+
   return (
     <div>
       {/* RECIPE DETAIL */}
@@ -200,6 +208,15 @@ const MealCalendar = () => {
           imageUrl={activeRecipe.event.extendedProps.imageUrl} 
           plannedDate={activeRecipe.event.date}
         /> 
+      }
+
+      {showRecipeCreateModal &&
+        <CreateRecipeModal
+          open={()=> setShowRecipeCreateModal(true)}
+          onOk={() => setShowRecipeCreateModal(false)}
+          onCancel={() => setShowRecipeCreateModal(false)}
+          // recipeNameValue=
+        />
       }
 
       <FullCalendar
@@ -215,7 +232,7 @@ const MealCalendar = () => {
           right: "dayGridMonth,dayGridWeek,dayGridDay",
         }}
         aspectRatio={2}
-        select={handleSelectRecipe}
+        select={handleOpenRecipeCreateModal}
         editable={true}
         selectable={true}
         // dayMaxEvents={true}
