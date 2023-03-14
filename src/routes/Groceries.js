@@ -138,7 +138,6 @@ const Groceries = () => {
                   className="Form-input Form-input-subtle"
                   placeholder='Add to list'
                 />
-                
               </form>
               
               <ul className="Grocery-list">

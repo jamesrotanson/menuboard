@@ -17,7 +17,6 @@ import RecipesData from '../data/recipes.json'
 import SearchBar from '../components/SearchBar'
 import LoadingPage from './LoadingPage'
 import FeedbackCollector from '../components/FeedbackCollector'
-import RecipeCreateModal from '../components/RecipeCreateModal'
 import IngredientItem from '../components/IngredientItem'
 import CreateRecipeModal from '../components/CreateRecipeModal'
 
@@ -385,10 +384,9 @@ const Recipe = () => {
                     : null
                 }
 
-                {/* <RecipeCreateModal showRecipeCreateModal={showRecipeCreateModal} setShowRecipeCreateModal={setShowRecipeCreateModal}/> */}
                 
                 {editRecipeModal && 
-                    <RecipeCreateModal mode="edit"/>
+                    <CreateRecipeModal/>
                 }
 
                 {showRecipeCreateModal &&
@@ -406,8 +404,8 @@ const Recipe = () => {
                                 <input 
                                     type="text" 
                                     key={i}
-                                    placeholder="Name"
-                                    className='Form-input'
+                                    placeholder="Add to list"
+                                    className='Form-input Form-input-subtle'
                                     value={ingredient}
                                     onChange={(event) => handleIngredient(event, i)}
                                 />

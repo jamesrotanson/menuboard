@@ -37,6 +37,7 @@ const CreateRecipeModal = (props) => {
                     onChange={props.recipeDescriptionOnChange}
                 />
             </div>
+            
             <div className='Form-input-container'>
                 <label htmlFor="name">Ingredients</label>
                 {props.recipeIngredients}
