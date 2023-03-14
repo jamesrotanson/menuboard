@@ -1192,12 +1192,15 @@ button {
   overflow: scroll;
   padding: 108px 24px 24px 24px;
   box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.06);
+  border-left: rgba(0,0,0,0.16);
+  z-index: 95;
 }
 
 .Plan-sidebar .Recipe-card {
   /* flex-direction: row; */
   margin-bottom: 8px;
   justify-content: flex-start;
+  width: 100%;
 }
 
 .Plan-sidebar .Button-delete  {
