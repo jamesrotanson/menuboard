@@ -14,8 +14,8 @@ const CreateRecipeModal = (props) => {
     >
         <div className="Recipe-create-modal">
         <h2> New recipes</h2>
-        <input type="date" value="today"/>
-        <div>Tuesday 15 March 2023</div>
+        {/* <input type="date" value="today"/>
+        <div>Tuesday 15 March 2023</div> */}
         <form className='Form' onSubmit={props.onSubmit}>
             <div className='Form-input-container'>
                 <label htmlFor="name">Recipe name</label>
