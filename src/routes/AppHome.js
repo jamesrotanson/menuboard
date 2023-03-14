@@ -8,6 +8,7 @@ import ConnectAppsActions from '../components/ConnectAppsActions';
 import LoadingPage from './LoadingPage';
 import RecipeModal from '../components/RecipeModal';
 import FeedbackCollector from '../components/FeedbackCollector';
+import IngredientItem from '../components/IngredientItem';
 
 
 const AppHome = () => {
@@ -90,9 +91,30 @@ const AppHome = () => {
                 {showRecipeModal ? 
                     <RecipeModal
                         onCancel={handleRecipeModalCancel}
-                        recipeName={activeRecipe.name}
-                        recipeImageUrl={activeRecipe.imageUrl}
-
+                        name={activeRecipe.name}
+                        imageUrl={activeRecipe.imageUrl}
+                        cost={activeRecipe.cost}
+                        time={activeRecipe.time}
+                        difficulty={activeRecipe.difficulty}
+                        cuisine={activeRecipe.cuisine}
+                        ingredients={
+                            <ul>
+                                {activeRecipe.ingredients.map((ingredient, i) => (
+                                    <IngredientItem key={i} 
+                                        ingredientName={ingredient.name}
+                                        ingredientQuantity={ingredient.quantity}
+                                        ingredientType={ingredient.type}
+                                    />
+                                ))}
+                            </ul>
+                        }
+                        steps={
+                            <ol>
+                                {activeRecipe.steps.map((step, i) => (
+                                    <li key={i}>{step}</li>
+                                ))}
+                            </ol>
+                        }
                     /> 
                     : null
                 }

@@ -69,13 +69,13 @@ const RecipeCard = (props, recipe) => {
   
 
   return (
-    <li key={props.id} className="Recipe-card">
+    <li key={props.id} className="Recipe-card" >
         {props.imageUrl ? 
           <img src={props.imageUrl} alt="Recipe thumbnail" className="Recipe-thumbnail" onClick={props.onClick} onLoad={handleImageLoaded}/>
           :
           <img src={require("../images/food-illos.png")} alt="Recipe thumbnail" className="Recipe-thumbnail" onClick={props.onClick}/>
         }
-        <div>
+        <div className='Recipe-card-content'>
           <h4 onClick={props.onClick}>{props.name}</h4>
           <small> {props.cost && "Est. "}  {props.time} · {props.cost} {props.cost && "/servings"}</small>
           <div className="Button-group">
