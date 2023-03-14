@@ -1062,6 +1062,10 @@ button {
   background-color: #0fb55c;
 }
 
+.fc .fc-button {
+  font-size: 12px !important;
+}
+
 .fc-event-title-container {
   background-color: #0fb55c;
   padding: 8px;

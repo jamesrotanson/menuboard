@@ -161,7 +161,20 @@ const MealCalendar = () => {
   //   return check;
   // }
 
-  
+  const [scheduledRecipe, setScheduledRecipe] = useState({
+    start: "",
+    end: "", 
+    filledIn: false, 
+  })
+
+  const handleSelectRecipe = (recipe) => {
+    console.log('Create')
+    setScheduledRecipe({
+      start: recipe.startStr,
+      end: recipe.endStr,
+      filledIn: true
+    })
+  }
 
   const renderEventContent = (recipe) => {
     return (
@@ -196,11 +209,16 @@ const MealCalendar = () => {
         events={events}
         dateClick={handleDateClick}
         eventContent={renderEventContent}
-        header={{
+        headerToolbar={{
           left: "prev,next,today",
           center: "title",
           right: "dayGridMonth,dayGridWeek,dayGridDay",
         }}
+        aspectRatio={2}
+        select={handleSelectRecipe}
+        editable={true}
+        selectable={true}
+        // dayMaxEvents={true}
       />
     </div>
    

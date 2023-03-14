@@ -38,9 +38,8 @@ const MealPlan = () => {
               </div>
               <Button appearance="secondary" name="My list" iconBefore={<CalendarPlus/>} onClick={handleToggleSidebar}/>
             </div>
-            <SearchBar placeholder="Search recipes" onChange={""} appearance="default"/>   
-            <br></br>
-            <br></br>
+            {/* <SearchBar placeholder="Search recipes" onChange={""} appearance="default"/>    */}
+
             
             <MealCalendar/>
             <FeedbackCollector/>
