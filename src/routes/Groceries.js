@@ -9,7 +9,7 @@ import {
     onSnapshot
 } from "firebase/firestore"
 import Twemoji from 'react-twemoji';
-import {Minus, Plus, ShoppingCart, Storefront, Trash, } from 'phosphor-react';
+import {Plus, ShoppingCart, Storefront, Trash, } from 'phosphor-react';
 import Button from '../components/Button';
 import SearchBar from '../components/SearchBar';
 import ConnectAppsActions from '../components/ConnectAppsActions';
@@ -27,24 +27,6 @@ const Groceries = () => {
   const [items, setItems] = useState([]);
   const [input, setInput] = useState('');
 
-  const [itemQuantity, setItemQuantity] = useState(1)
-
-  
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setItems([...items, input]);
-    setInput('');
-  };
-
-  const handleDelete = (index) => {
-    const updatedItems = [...items];
-    updatedItems.splice(index, 1);
-    setItems(updatedItems);
-  };
-
-
-
   // Quick add
   const frequentGroceriesData = [
     {id: 1, name: "Egg", emoji: "🥚", color: "#FFF3EB"},
@@ -56,7 +38,7 @@ const Groceries = () => {
     {id: 7, name: "Fish", emoji: "🐟", color: "#DAEFFF"},
     {id: 8, name: "Milk", emoji: "🥛", color: "#BED0FF"},
     {id: 9, name: "Bread", emoji: "🍞", color: "#E2C7BB"},
-    // {id: 10, name: "More", emoji: "🧺", color: "#F9F9F9"},
+    {id: 10, name: "More", emoji: "🧺", color: "#F9F9F9"},
   ];
 
   const frequentGroceryList = frequentGroceriesData.map((frequentGroceryItem) => 
@@ -84,6 +66,16 @@ const Groceries = () => {
       }))
     })
   }, [])
+
+  // Add to grocery list
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setItems([...items, input]);
+    setInput('');
+  };
+
+
+  
   
 
   // Remove recipe
@@ -91,6 +83,13 @@ const Groceries = () => {
     console.log(id)
     deleteDoc(doc(db, "ingredients", id))
   }
+
+  const handleDelete = (index) => {
+    const updatedItems = [...items];
+    updatedItems.splice(index, 1);
+    setItems(updatedItems);
+  };
+
   return (
     <div>
       {loading ? <LoadingPage/> : 
@@ -117,10 +116,14 @@ const Groceries = () => {
               
               <p>Search for grocery items to add to your list. In the future, we will automatically add frequent ingredients based on your planned meals. </p>
               <br></br> */}
+
+              <h4>Frequently added</h4>
+              <br></br>
               <div className='Grocery-category-list'>
                 {frequentGroceryList}
               </div>
               <br></br>
+              
 
               <h4>Add ingredients here</h4>
               <br></br>
@@ -133,7 +136,7 @@ const Groceries = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   className="Form-input Form-input-subtle"
-                  placeholder='Type grocery items like apples, milk, or Doritos'
+                  placeholder='Add to list'
                 />
                 
               </form>
@@ -152,7 +155,7 @@ const Groceries = () => {
               </ul>
 
               <br></br>
-              <h4>Added from your  on your planned meals</h4>
+              <h4>From your planned meals</h4>
               <br></br>
               <ul className="Grocery-list">
                 {groceryIngredientsList.map((ingredient) => {
@@ -170,15 +173,15 @@ const Groceries = () => {
               <br></br>
               <br></br>
               <br></br>
-              {/* <Button name="Order now" appearance="primary" iconBefore={<ShoppingCart/>}/> */}
-              <div className='flex'>
+              
+              {/* <div className='flex'>
                 <Storefront size={32}/>
                 <h3> Connect to marketplace</h3>
               </div>
               <p>Connect to your local grocery stores to get your grocery list instantly delivered</p>
               <br></br>
               <br></br>
-              <ConnectAppsActions/>
+              <ConnectAppsActions/> */}
             </div>
 
 

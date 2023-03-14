@@ -44,8 +44,8 @@ h3 {
 h4 {
   margin-top: 8px;
   margin-bottom: 0;
-  color: rgba(0,0,0,0.64);
-  font-size: 1.08em;
+  color: rgba(0,0,0,0.88);
+  font-size: 0.96em;
 }
 
 h5 {
@@ -988,7 +988,7 @@ button {
   list-style-type: none;
   background-color: white;
   border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.06);
   flex-direction: column;
   align-items: flex-start;
@@ -1192,9 +1192,7 @@ button {
 
 .Plan-sidebar .Recipe-card {
   /* flex-direction: row; */
-  gap: 16px;
   margin-bottom: 8px;
-  padding: 12px;
   justify-content: flex-start;
 }
 
@@ -1223,7 +1221,7 @@ button {
   align-items: flex-start;
   padding: 0px;
   gap: 4px;
-  justify-content: space-between;
+  justify-content: flex-start;
   overflow: scroll;
   width:100%;
   flex-wrap: wrap;
@@ -1315,6 +1313,11 @@ button {
   padding: 4px;
   align-items: center;
   border-radius: 8px;
+}
+
+.Grocery-cart-item:hover {
+  background-color: rgba(0,0,0,0.04);
+  transition: 0.3s all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 
@@ -1862,11 +1865,11 @@ button {
   .Grocery-category-list {
     width: auto;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   .Grocery-category-tile {
-    width: 28%;
+    /* width: 28%; */
   }
 
   .Device-icon-container {
