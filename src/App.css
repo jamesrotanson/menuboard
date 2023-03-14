@@ -161,6 +161,7 @@ img {
   width: 100%;
   margin-bottom: 20px;
   margin-top: 124px;
+  gap: 8px;
 }
 
 .Page-title {
@@ -369,7 +370,7 @@ img {
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.08);
   border-radius: 44px;
   width: auto;
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
 }
 
 .Search-input {
@@ -1043,9 +1044,25 @@ button {
 
 /* PLAN SIDEBAR */
 .Plan-page-container {
-  margin-right: 368px;
+  display: flex;
+  flex-direction: row;
+  /* margin-right: 368px; */
   height: 100vh;
   overflow: scroll;
+  width: 100%;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.Plan-page-container .Page-container {
+  display:block;
+  width: auto;
+  height: 100vh;
+  overflow: scroll;
+  margin-bottom: 0;
+  padding-left: 24px;
+  padding-right: 24px;
+  
 }
 
 .Plan-page-container::-webkit-scrollbar {
@@ -1057,11 +1074,11 @@ button {
   background-color: white;
   width: 320px;
   height: 100%;
-  position: absolute;
+  /* position: absolute; */
   right: 0;
   top: 0;
   overflow: scroll;
-  padding: 80px 24px 24px 24px;
+  padding: 108px 24px 24px 24px;
   box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.06);
 }
 
@@ -1510,6 +1527,7 @@ button {
     /* justify-content: center; */
     /* align-items: center; */
     /* text-align: center; */
+    
   }
 
   .Page-cover-container-hero {
@@ -1617,8 +1635,11 @@ button {
     margin-bottom: 2px;
   }
 
-  .Plan-page-container {
-    margin-right: 0;
+
+  .Plan-page-container .Page-container {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
   }
 
   .Plan-sidebar {

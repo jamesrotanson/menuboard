@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import MealCalendar from '../components/MealCalendar';
 import Button from '../components/Button';
-import { Export } from 'phosphor-react';
+import { CalendarPlus } from 'phosphor-react';
 import SearchBar from '../components/SearchBar';
 import LoadingPage from './LoadingPage';
 import { useSelector } from 'react-redux';
-import RecipeCard from '../components/RecipeCard';
 import UnscheduledSidebar from '../components/UnscheduledSidebar';
 import FeedbackCollector from '../components/FeedbackCollector';
 
@@ -18,8 +17,14 @@ const MealPlan = () => {
   const recipeList = useSelector((state) => state.recipe.recipeList)
   const unscheduledRecipeList = useSelector((state) => state.recipe.unscheduledRecipeList)
 
+  const [planSidebarVisible, setPlanSidebarVisible] = useState(true)
+
+  const handleToggleSidebar = () => {
+    setPlanSidebarVisible(!planSidebarVisible)
+  }
+
   return (
-    <div>
+    <>
       {loading ? <LoadingPage/> : 
       <div className='Plan-page-container'>
         <div className='Page-container'>
@@ -31,17 +36,24 @@ const MealPlan = () => {
                   {/* <p>Plan your weekly meals by drag and dropping recipes, food delivery, and dining out options for the week</p> */}
                 </div>
               </div>
-              <SearchBar placeholder="Search recipes and ingredients" onChange={""} appearance="default"/>   
-            
+              <Button appearance="secondary" name="My list" iconBefore={<CalendarPlus/>} onClick={handleToggleSidebar}/>
             </div>
+            <SearchBar placeholder="Search recipes" onChange={""} appearance="default"/>   
+            <br></br>
+            <br></br>
+            
             <MealCalendar/>
             <FeedbackCollector/>
           </div>
         </div>
+        
+        {planSidebarVisible &&
           <UnscheduledSidebar/>
-        </div>
+        }
+          
+      </div>
       }
-    </div>
+    </>
   );
   
 };
