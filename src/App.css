@@ -395,6 +395,89 @@ input {
   /* text-transform: capitalize; */
 }
 
+.Checkbox {
+  display: block;
+  position: relative;
+  padding-top: 24px;
+  padding-left: 24px;
+  margin-bottom: 0;
+  margin-top: 0;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+}
+
+.Checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.Checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: #ffff;
+  border: 2px solid rgba(0,0,0,0.16);
+  border-radius: 4px;
+}
+
+.Checkbox:hover input ~ .Checkmark {
+  background-color: #eee;
+}
+
+.Checkbox input:checked ~ .Checkmark {
+  background-color: #009b3c;
+}
+
+.Checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.Checkbox input:checked ~ .Checkmark:after {
+  display: block;
+}
+
+.Checkbox .Checkmark:after {
+  left: 6px;
+  top: 3px;
+  width: 3px;
+  height: 6px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  border-bottom-right-radius: 1px;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* .Checkbox {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0,0,0,0.08);
+} */
+
+input[type="checkbox"] + label:before {
+  border: 1px solid #333;
+  content: "\00a0";
+  display: inline-block;
+  font: 16px/1em sans-serif;
+  height: 16px;
+  margin: 0 .25em 0 0;
+  padding: 0;
+  vertical-align: top;
+  width: 16px;
+}
+
 .Form {
   display: flex;
   flex-direction: column;
@@ -414,6 +497,15 @@ input {
   width: auto;
   padding: 8px 16px;
   margin-bottom: 8px;
+}
+
+.Form-input-subtle {
+  border: 0px solid;
+  margin: 0;
+  padding: 8px 0;
+  border-radius: 4px;
+  outline: none;
+  background-color: rgba(0,0,0,0);
 }
 
 .Form .Button-group {
@@ -653,7 +745,7 @@ button {
 .Button-delete {
   background-color: white;
   cursor: pointer;
-  color: grey;
+  color: rgba(0,0,0,0.72);
   padding: 12px 20px;
   border: 1px solid rgba(0,0,0,0.12);
   font-weight: 600;
@@ -668,6 +760,10 @@ button {
   color: rgb(181, 10, 10);
   transition: 0.2s all ease-in-out;
   border: 1px solid rgb(255, 65, 65)
+}
+
+.Button-icon {
+  padding: 6px;
 }
 
 
@@ -1136,26 +1232,39 @@ button {
 .Grocery-category-tile {
   border-radius: 16px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border: 1.5px solid rgba(0,0,0,0);
+  /* flex-direction: column;
   align-items: center;
   padding: 24px 8px;
   gap: 8px;
   width: 70px;
-  cursor: pointer;
+  cursor: pointer; */ 
+}
+
+.Grocery-category-tile:hover {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1.5px solid rgba(0,0,0,0.08);
+  transition: 0.3s all cubic-bezier(0.075, 0.82, 0.165, 1)
 }
 
 .Grocery-category-tile p {
   margin-top: 0;
   margin-bottom: 0;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 12px;
   text-align: left;
 }
 
 .Grocery-category-tile .twemoji {
-  height: 32px;
-  width: 32px;
+  height: 16px;
+  width: 16px;
   align-items: flex-end;
 }
 
@@ -1176,30 +1285,38 @@ button {
 .Grocery-form-add-container {
   display: flex;
   flex-direction: row;
-  padding-top: 24px;
-  padding-bottom: 8px;
-  gap: 16px;
-  justify-content: center;
+  padding-left: 24px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  gap: 8px;
   align-items: center;
+  border-radius: 8px;
 }
 
+.Grocery-form-add-container:hover {
+  background-color: rgba(0,0,0,0.04);
+  transition: 0.3s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
 .Grocery-form-add-container input {
-  width: 80%;
+  flex-grow: 1;
+  /* width: 80%; */
   /* margin-bottom: 16px; */
+}
+
+.Grocery-list {
+  margin: 0;
 }
 
 .Grocery-cart-item {
   display: flex;
   gap: 8px;
-  padding: 4px 8px 4px 16px;
+  padding: 4px;
   align-items: center;
-  border-radius: 24px;
+  border-radius: 8px;
 }
 
-.Grocery-cart-item:hover {
-  background-color: rgba(0, 0, 0, 0.032);
-  transition: 0.2s all cubic-bezier(0.075, 0.82, 0.165, 1)
-}
 
 .Grocery-cart-item p {
   margin-top: 0;

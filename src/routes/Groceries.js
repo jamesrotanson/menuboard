@@ -43,40 +43,31 @@ const Groceries = () => {
     setItems(updatedItems);
   };
 
-  const handleAddQty = () => {
-    setItemQuantity(itemQuantity + 1)
-  }
-
-  const handleReduceQty = () => {
-    
-    if(itemQuantity === 0){
-      setItemQuantity(itemQuantity === 0)
-    }
-    setItemQuantity(itemQuantity - 1)
-  }
 
 
-  const groceryCategoryData = [
+  // Quick add
+  const frequentGroceriesData = [
     {id: 1, name: "Egg", emoji: "🥚", color: "#FFF3EB"},
-    {id: 2, name: "Meat", emoji: "🥩", color: "#FCDCDB"},
-    {id: 3, name: "Spices", emoji: "🌶", color: "#FFCAD1"},
-    {id: 4, name: "Fruits", emoji: "🍊", color: "#FFD195"},
+    {id: 2, name: "Steak", emoji: "🥩", color: "#FCDCDB"},
+    {id: 3, name: "Chilli", emoji: "🌶", color: "#FFCAD1"},
+    {id: 4, name: "Orange", emoji: "🍊", color: "#FFD195"},
     {id: 5, name: "Cheese", emoji: "🧀", color: "#FFF0CD"},
     {id: 6, name: "Broccoli", emoji: "🥦", color: "#D3FFDA"},
-    {id: 7, name: "Seafood", emoji: "🐟", color: "#DAEFFF"},
+    {id: 7, name: "Fish", emoji: "🐟", color: "#DAEFFF"},
     {id: 8, name: "Milk", emoji: "🥛", color: "#BED0FF"},
-    {id: 9, name: "Pastries", emoji: "🍞", color: "#E2C7BB"},
-    {id: 10, name: "More", emoji: "🧺", color: "#F9F9F9"},
+    {id: 9, name: "Bread", emoji: "🍞", color: "#E2C7BB"},
+    // {id: 10, name: "More", emoji: "🧺", color: "#F9F9F9"},
   ];
 
-  const groceryCategoryList = groceryCategoryData.map((groceryCategory) => 
-    <li className="Grocery-category-tile" style={{background: groceryCategory.color}}>
-      <Twemoji options={{ className: 'twemoji' }}>
-        <p>{groceryCategory.emoji}</p>
-      </Twemoji>
-      <p>{groceryCategory.name}</p>
-    </li>
-  );
+  const frequentGroceryList = frequentGroceriesData.map((frequentGroceryItem) => 
+    <li className="Grocery-category-tile" style={{background: frequentGroceryItem.color}}>
+    <Twemoji options={{ className: 'twemoji' }}>
+      <p>{frequentGroceryItem.emoji}</p>
+    </Twemoji>
+    <p>{frequentGroceryItem.name}</p>
+  </li>
+  )
+
 
   // Get ingredients from database
 
@@ -96,15 +87,10 @@ const Groceries = () => {
   
 
   // Remove recipe
-  // const handleDeleteIngredient = (id) => {
-  //     deleteDoc(doc(db, "ingredients", id))
-  // }
-
   const handleDeleteIngredient = (id) => {
     console.log(id)
     deleteDoc(doc(db, "ingredients", id))
   }
-
   return (
     <div>
       {loading ? <LoadingPage/> : 
@@ -115,7 +101,7 @@ const Groceries = () => {
             <div className="Page-title">
               <div>
                 <h2>Groceries</h2>
-                <p>Automatically create grocery list based on your planned meals and favourite recipes</p>
+                {/* <p>Automatically create grocery list based on your planned meals and favourite recipes</p> */}
               </div>
             </div>
           </div>
@@ -123,37 +109,36 @@ const Groceries = () => {
           <div className='Grocery-container'>
             {/* GROCERY AREA */}
             <div className='Grocery-area'>
-              <br></br>
-              <h3>Popular categories</h3>
-              <div className='Grocery-category-list'>
-                {groceryCategoryList}
-              </div>
-              <br></br>
-              <br></br>
-              <br></br>
-              <br></br>
+              {/* <br></br>
               <div className='flex'>
                 <ShoppingCart size={32}/>
                 <h3> Your grocery list</h3>
               </div>
               
               <p>Search for grocery items to add to your list. In the future, we will automatically add frequent ingredients based on your planned meals. </p>
+              <br></br> */}
+              <div className='Grocery-category-list'>
+                {frequentGroceryList}
+              </div>
               <br></br>
-              <ul>
-                
-              </ul>
 
-              <form onSubmit={handleSubmit} className="Grocery-form-add-container">
+              <h4>Add ingredients here</h4>
+              <br></br>
+              <form onSubmit={handleSubmit} 
+                className="Grocery-form-add-container"
+              >
+                <Button type="submit" appearance="default Button-icon" iconBefore={<Plus/>} />
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  className="Form-input"
+                  className="Form-input Form-input-subtle"
                   placeholder='Type grocery items like apples, milk, or Doritos'
                 />
-                <Button type="submit" appearance="secondary" name="Add item" iconBefore={<Plus/>} />
+                
               </form>
-              <ul>
+              
+              <ul className="Grocery-list">
                 {/* {groceryList} */}
                 {items.map((item, index) => (
                   <GroceryListItem
@@ -162,6 +147,14 @@ const Groceries = () => {
                     onDelete={() => handleDelete(index)}
                   />
                 ))}
+
+                
+              </ul>
+
+              <br></br>
+              <h4>Added from your  on your planned meals</h4>
+              <br></br>
+              <ul className="Grocery-list">
                 {groceryIngredientsList.map((ingredient) => {
                   return(
                     <GroceryListItem
