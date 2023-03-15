@@ -36,13 +36,13 @@ const CreateRecipeModal = (props) => {
                         />
                     </div>
                     
-                    {/* <textarea 
+                    <textarea 
                         type="text" 
-                        placeholder="What's this recipe about?"
+                        placeholder="Share a little more about this dish. What or who inspired you to cook it? What makes it special to you? What's your favourite way to eat it? Use @ to tag others"
                         className='Form-input-subtle'
                         value={props.recipeDescriptionValue}
                         onChange={props.recipeDescriptionOnChange}
-                    /> */}
+                    />
 
                     <div className='Form-input-container'>
                         <label htmlFor="imageUrl">Cover image</label>

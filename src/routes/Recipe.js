@@ -282,7 +282,7 @@ const Recipe = () => {
                         <br></br>
                         <div className='flex'>
                             <div className='Page-title'>
-                                <h4>My recipes</h4>  
+                                <h3>My recipes</h3>  
                             
                             </div>
                             <Button

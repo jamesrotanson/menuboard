@@ -172,6 +172,7 @@ img {
   display: flex;
   flex-grow: 1;
   margin-bottom:0;
+  align-items: center;
 }
 
 .flex {
@@ -541,6 +542,7 @@ textarea {
   margin-bottom: 8px;
   font-family: "Inter";
   min-height: 80px;
+  line-height: 22px;
 }
 
 label {
@@ -1121,6 +1123,25 @@ button {
 
 
 /* FULL CALENDAR */
+.fc-view-harness {
+  /* border: 1px solid rgba(0,0,0,0.12); */
+  border-radius: 12px;
+  box-shadow: 0px 0px 8px rgb(0 0 0 / 10%), 0px 4px 4px rgb(0 0 0 / 4%);
+}
+.fc-theme-standard .fc-scrollgrid {
+  border-top: 0px solid rgba(0,0,0,0) !important;
+  border-left: 0px solid rgba(0,0,0,0.08) !important;
+  border-right: 0px solid rgba(0,0,0,0.08) !important;
+}
+
+.fc-theme-standard th {
+  border: 0px solid rgba(0,0,0,0) !important;
+  border-bottom: 0.5px solid rgba(0,0,0,0.12) !important;
+}
+
+.fc-theme-standard td {
+  /* border-color: black !important; */
+}
 
 .fc-h-event {
   background-color: white !important;
@@ -1128,7 +1149,7 @@ button {
 }
 
 .fc .fc-highlight {
-  background-color: rgba(0, 155, 60, 0.08) !important;
+  background-color: rgba(0, 155, 60, 0.04) !important;
 }
 
 .fc .fc-col-header-cell-cushion {
@@ -1146,7 +1167,6 @@ button {
 
 
 .fc-scrollgrid-sync-inner{
-
   padding-top: 8px !important;
   padding-bottom: 8px !important;
 }
@@ -1156,24 +1176,17 @@ button {
   transition: 0.2s all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.fc-daygrid-day-frame:hover {
-  background-color: rgba(0, 0, 0, 0.04) !important;
-}
-
-.fc-daygrid-day-frame:focus {
-  background-color: rgba(0, 155, 60, 0.08) !important;
-}
-
-.fc .fc-button, .fc .fc-button-primary {
+.fc .fc-button {
   font-size: 12px !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   opacity: 1.0 !important;
-  padding: 8px 16px !important;
+  padding: 8px 12px !important;
   border-radius: 24px !important;
   margin-right: 2px !important;
   margin-left: 2px !important;
-  border-color: rgba(0,0,0,0.08) !important;
+  /* border-color: rgba(0,0,0,0.08) !important; */
   cursor: pointer !important;
+  box-shadow: 0px 0px 8px rgb(0 0 0 / 10%), 0px 4px 4px rgb(0 0 0 / 4%);
 }
 
 .fc .fc-button:focus, .fc .fc-button-primary:focus {
@@ -1198,6 +1211,18 @@ button {
   padding: 8px;
 }
 
+.fc-daygrid-day-frame:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.fc-daygrid-day-frame:focus {
+  background-color: rgba(0, 155, 60, 0.04) !important;
+}
+
+.fc-day-today:hover, .fc-day-today:active, .fc-day-today:focus {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
 .fc-col-header-cell-cushion {
   font-size: 12px;
   font-weight: 700;
@@ -1215,7 +1240,8 @@ button {
 .fc .fc-button-primary {
   background-color: white !important; 
   color: rgba(0,0,0,0.5) !important;
-  border-color: rgba(0,0,0,0.12) !important;
+  border-color: rgba(0,0,0,0) !important;
+  box-shadow: 0px 0px 8px rgb(0 0 0 / 10%), 0px 4px 4px rgb(0 0 0 / 4%);
 }
 
 .fc-h-event .fc-event-main {
@@ -1803,7 +1829,7 @@ button {
     /* justify-content: center; */
     /* align-items: center; */
     /* text-align: center; */
-    
+    margin-top: 96px;
   }
 
   .Page-cover-container-hero {
@@ -1848,9 +1874,7 @@ button {
     width: 100% !important;
   }
 
-  .Recipe-card-content {
-    padding: 0 0 0 4px;
-  }
+  
 
   .Modal-content-container {
     /* width: 380px; */
@@ -1892,24 +1916,28 @@ button {
   }
 
   .fc-col-header-cell-cushion {
-    font-size: 8px;
+    font-size: 10px;
   }
 
   .Calendar-event {
-    height: 72px;
     justify-content: flex-start;
     overflow: hidden;
   }
   .Calendar-event-thumbnail {
-    height: 32px;
+    /* height: 32px; */
   }
 
   .Calendar-event-info {
-    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+    padding: 8px;
+    white-space: normal;
+    box-sizing: content-box;
   }
 
   .Calendar-event-info h4 {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     margin-top: 2px;
   }
@@ -1969,6 +1997,10 @@ button {
     height: 96px;
     overflow: hidden;
     border-radius: 8px;
+  }
+
+  .Plan-sidebar .Recipe-card-content {
+      padding: 0 0 0 4px;
   }
 
 

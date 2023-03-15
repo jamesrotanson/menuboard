@@ -268,16 +268,21 @@ const MealCalendar = (props) => {
 
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
-        // initialView={mobileCheck() ? "dayGridWeek" : "dayGrid"}
-        initialView="dayGridWeek"
+        initialView={window.innerWidth < 960 ?  "dayGrid" : "dayGridWeek" }
+        views={{
+          dayGrid: {
+            type: 'dayGrid',
+            duration: {days: 5}
+          }
+        }}
         events={events}
         dateClick={handleDateClick}
         eventContent={renderEventContent}
         headerToolbar={{
-          left: "prev,next,today",
-          center: "title",
+          // left: "prev,today,next",
+          left: "title",
           // left: "dayGridMonth,dayGridWeek,dayGridDay",
-          right: "toggleSidebarButton"
+          right: "prev,today,next,toggleSidebarButton"
         }}
         aspectRatio={1.6}
         select={handleOpenRecipeCreateModal}
