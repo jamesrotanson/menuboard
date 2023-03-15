@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { CalendarCheck, Heart, Pencil, Trash } from 'phosphor-react';
+import { CalendarBlank, CalendarCheck, Heart, Pencil, Trash } from 'phosphor-react';
 import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { deleteRecipe, scheduleRecipe } from '../reducers/recipeReducer';
@@ -79,14 +79,14 @@ const RecipeCard = (props, recipe) => {
           <h4 onClick={props.onClick}>{props.name}</h4>
           <small> {props.cost && "Est. "}  {props.time} · {props.cost} {props.cost && "/servings"}</small>
           <div className="Button-group">
-            <Button 
-              onClick={handleAddToPlan} 
-              onKeyDown={handleAddToPlan}
-              appearance={isAddedToPlan ? "primary" : "secondary"} 
-              iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
-              name={isAddedToPlan ? "Added" : "Add"}
-            />
-            <div className="Button-group">
+              <Button 
+                onClick={handleAddToPlan} 
+                onKeyDown={handleAddToPlan}
+                appearance={isAddedToPlan ? "primary" : "default"} 
+                iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <CalendarBlank size={16}/>} 
+                name={isAddedToPlan ? "Added" : "Add to plan"}
+              />
+              <div className="Button-group">
               {props.nonEditable ? <Button 
                 onClick={props.onEdit}
                 onKeyDown={props.onEdit}

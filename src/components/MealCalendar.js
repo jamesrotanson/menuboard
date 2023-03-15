@@ -227,7 +227,7 @@ const MealCalendar = (props) => {
           open={()=> setShowRecipeCreateModal(true)}
           onOk={() => setShowRecipeCreateModal(false)}
           onCancel={() => setShowRecipeCreateModal(false)}
-          onSubmit={handleCreateRecipe}
+          handleCreate={handleCreateRecipe}
           recipeNameValue={recipeForm.title}
           recipeNameOnChange={(event) => setRecipeForm({...recipeForm, title: event.target.value})}
           recipeDescriptionValue={recipeForm.description}

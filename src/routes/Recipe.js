@@ -237,81 +237,75 @@ const Recipe = () => {
             <div className="Page-small">
                 <div className="Page-header">
                     <div className='Page-title'>
-                        <h2>Recipes</h2>
+                        <h2 className='flex-grow'>My recipes</h2>
+                        <Button
+                            appearance="primary"
+                            name="New recipe" 
+                            iconBefore={<NotePencil/>} 
+                            onClick={handleOpenRecipeCreateModal}
+                        />
                     </div>
                     <SearchBar placeholder="Search recipes" onChange={handleSearch} appearance="default"/> 
-
+                    
                 </div>
 
                 
 
-                <div className='Tabs-controls'>
-                    <div className={tabState === 1 ? "Tab Tab-active" : "Tab"} onClick={() => toggleTabs(1)}>Recommended for you</div>
-                    <div className={tabState === 2 ? "Tab Tab-active" : "Tab"} onClick={() => toggleTabs(2)}>My recipes</div>
-                </div>
+                {/* <div className='Tabs-controls'>
+                    <div className={tabState === 1 ? "Tab Tab-active" : "Tab"} onClick={() => toggleTabs(1)}>My recipes</div>
+                    <div className={tabState === 2 ? "Tab Tab-active" : "Tab"} onClick={() => toggleTabs(2)}>Recommended for you</div>
+                </div> */}
+                <ul className='Recipe-card-list'>       
+                    {recipes.map((recipe, i) => (
 
+                            <RecipeCard 
+                                key={recipe.id}
+                                name={recipe.title}
+                                imageUrl={recipe.imageUrl}
+                                cost={recipe.cost}
+                                time={recipe.time}
+                                onClick={() => handleRecipeModalOpen(recipe)}
+                                onDelete={() => removeRecipe(recipe.id)}
+                                onEdit={() => handleRecipeEditModal()}
+                                nonEditable={true}
+                            />
+
+                        ))
+                    }
+                </ul>
+
+                <br></br>
+                <br></br>
+                <h3>Because you like Japanese food</h3>                    
+                <ul className='Recipe-card-list'>
+                    {
+                        filteredRecipes.map((recipe) => {
+                            return(
+                                <RecipeCard 
+                                    key={recipe.id}
+                                    name={recipe.name}
+                                    imageUrl={recipe.imageUrl}
+                                    cost={recipe.cost}
+                                    time={recipe.time}
+                                    onClick={() => handleViewRecommendedRecipeModal(recipe)}
+                                    // onClick={() => handleRecipeModalOpen(recipe)}
+                                    // onDelete={() => handleDeleteRecipe(recipe.id)}
+                                />
+                            )
+                        })
+                    }
+                </ul>
 
                 <div className="Tabs-content">
-
-                    <div className={tabState === 1 ? 'Tab-content Tab-content-active' : "Tab-content"}>
-                        <br></br>
-                        <br></br>
-                        <h4>Because you like Japanese food</h4>                    
-                        <ul className='Recipe-card-list'>
-                            {
-                                filteredRecipes.map((recipe) => {
-                                    return(
-                                        <RecipeCard 
-                                            key={recipe.id}
-                                            name={recipe.name}
-                                            imageUrl={recipe.imageUrl}
-                                            cost={recipe.cost}
-                                            time={recipe.time}
-                                            onClick={() => handleViewRecommendedRecipeModal(recipe)}
-                                            // onClick={() => handleRecipeModalOpen(recipe)}
-                                            // onDelete={() => handleDeleteRecipe(recipe.id)}
-                                        />
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
 
                     <div className={tabState === 2 ? 'Tab-content Tab-content-active' : "Tab-content"}>
                         <br></br>
                         <br></br>
-                        <div className='flex'>
-                            <div className='Page-title'>
-                                <h3>My recipes</h3>  
-                            
-                            </div>
-                            <Button
-                                appearance="primary"
-                                name="New recipe" 
-                                iconBefore={<NotePencil/>} 
-                                onClick={handleOpenRecipeCreateModal}
-                            />
-                        </div>
-                        <br></br>   
-                            <ul className='Recipe-card-list'>
-                                
-                            {recipes.map((recipe, i) => (
-    
-                                    <RecipeCard 
-                                        key={recipe.id}
-                                        name={recipe.title}
-                                        imageUrl={recipe.imageUrl}
-                                        cost={recipe.cost}
-                                        time={recipe.time}
-                                        onClick={() => handleRecipeModalOpen(recipe)}
-                                        onDelete={() => removeRecipe(recipe.id)}
-                                        onEdit={() => handleRecipeEditModal()}
-                                        nonEditable={true}
-                                    />
-           
-                                ))
-                            }
-                            </ul>
+                    </div>
+
+                    <div className={tabState === 1 ? 'Tab-content Tab-content-active' : "Tab-content"}>
+                        <br></br>
+                        <br></br>
                     </div>
                 </div>
                 

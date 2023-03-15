@@ -4,13 +4,20 @@ import Button from './Button'
 import { Plus } from 'phosphor-react'
 
 const CreateRecipeModal = (props) => {
+    
   return (
     <Modal
         open={props.open}
         onOk={props.onOk}
         onCancel={props.onCancel}
+        title={
+            <div className='Button-group'>
+                <Button type="button" name="Cancel" appearance="default" onClick={props.onCancel}/>
+                <Button type="submit" name="Create" appearance="primary" onClick={props.handleCreate}/>
+            </div>
+        } 
         width={880}
-        header={null}
+        // header={null}
         footer={null}
         maskTransitionName=""
         style={{ top: 40 }}
@@ -73,10 +80,7 @@ const CreateRecipeModal = (props) => {
                         {props.recipeSteps}
                         <Button type="button" name="Add steps" appearance="default" iconBefore={<Plus/>} onClick={props.handleStepCount}/>
                     </div>
-                    <div className='Button-group'>
-                        <Button type="button" name="Cancel" appearance="default" onClick={props.onCancel}/>
-                        <Button type="submit" name="Create" appearance="primary" onClick={props.handleCreate}/>
-                    </div>
+                    
                 </form>
                 </div>
             </div>
