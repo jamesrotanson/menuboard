@@ -38,7 +38,7 @@ const UnscheduledSidebar = (props) => {
       {props.visible && 
         <div className='Plan-sidebar'>
             <div className='Page-title'>
-              <h3 class="flex-grow">Unscheduled meals</h3>
+              <h3 class="flex-grow">Saved recipes</h3>
               <Button appearance="default Button-icon" iconBefore={<X/>} onClick={props.closeSidebar}/>
             </div>
             <SearchBar placeholder="Search recipes" onChange={handleSearch} appearance="default"/> 

@@ -22,7 +22,6 @@ const MealPlan = () => {
 
   const handleToggleSidebar = () => {
     setPlanSidebarVisible(!planSidebarVisible)
-    toast.success("Recipe created successfully");
   }
 
   return (

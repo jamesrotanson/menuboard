@@ -1131,9 +1131,24 @@ button {
   background-color: rgba(0, 155, 60, 0.08) !important;
 }
 
+.fc .fc-col-header-cell-cushion {
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  padding: 8px !important;
+  line-height: 14px;
+}
+
 .fc-day-today .fc-col-header-cell-cushion{
-  /* background-color: rgba(0, 155, 60, 0.08) !important; */
-  color: #009b3c !important;
+  color: #009b3c;
+  background-color: rgba(0, 155, 60, 0.12);
+}
+
+
+.fc-scrollgrid-sync-inner{
+
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
 }
 
 .fc-daygrid-day-frame {
@@ -1172,6 +1187,7 @@ button {
   background-color: rgba(0,0,0,0.04) !important;
   transition: 0.2s all ease-in-out !important;
 }
+
 
 .fc-event-title-container {
   background-color: #0fb55c;
@@ -1832,6 +1848,10 @@ button {
     width: 100% !important;
   }
 
+  .Recipe-card-content {
+    padding: 0 0 0 4px;
+  }
+
   .Modal-content-container {
     /* width: 380px; */
     width: calc(100% - 48px);
@@ -1875,6 +1895,11 @@ button {
     font-size: 8px;
   }
 
+  .Calendar-event {
+    height: 72px;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
   .Calendar-event-thumbnail {
     height: 32px;
   }

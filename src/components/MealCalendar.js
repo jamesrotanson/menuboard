@@ -283,7 +283,7 @@ const MealCalendar = (props) => {
         // dayMaxEvents={true}
         customButtons={{
           toggleSidebarButton: {
-            text: 'Show unscheduled',
+            text: 'Saved recipes',
             click: props.toggleSidebar,
           },
         }}
