@@ -124,6 +124,10 @@ img {
   padding-bottom: 80px;
 }
 
+.Page-container::-webkit-scrollbar {
+  display: none;
+}
+
 .Page-cover-container {
   width: 100%;
   height: 240px;
@@ -764,6 +768,9 @@ button {
 
 .Button-icon {
   padding: 6px;
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
 }
 
 
@@ -1059,11 +1066,42 @@ button {
 /* FULL CALENDAR */
 
 .fc-h-event {
-  background-color: #0fb55c;
+  background-color: white !important;
+  border: white !important;
 }
 
-.fc .fc-button {
+.fc .fc-highlight {
+  background-color: rgba(0, 155, 60, 0.08) !important;
+}
+
+.fc-daygrid-day-frame {
+  cursor: pointer !important;
+  transition: 0.2s all cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.fc-daygrid-day-frame:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.fc-daygrid-day-frame:focus {
+  background-color: rgba(0, 155, 60, 0.08) !important;
+}
+
+.fc .fc-button, .fc .fc-button-primary {
   font-size: 12px !important;
+  font-weight: 600 !important;
+  opacity: 1.0 !important;
+  padding: 8px 16px !important;
+  border-radius: 24px !important;
+  margin-right: 2px !important;
+  margin-left: 2px !important;
+  border-color: rgba(0,0,0,0.08) !important;
+  cursor: pointer !important;
+}
+
+.fc .fc-button:hover, .fc .fc-button-primary:hover {
+  background-color: rgba(0,0,0,0.04) !important;
+  transition: 0.2s all ease-in-out !important;
 }
 
 .fc-event-title-container {
@@ -1303,7 +1341,6 @@ button {
   transition: 0.3s all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-
 .Grocery-form-add-container input {
   flex-grow: 1;
   /* width: 80%; */
@@ -1326,7 +1363,6 @@ button {
   background-color: rgba(0,0,0,0.04);
   transition: 0.3s all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-
 
 .Grocery-cart-item p {
   margin-top: 0;

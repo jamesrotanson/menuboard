@@ -14,9 +14,28 @@ const CreateRecipeModal = (props) => {
     >
         <div className="Recipe-create-modal">
         <h2> New recipes</h2>
-        {/* <input type="date" value="today"/>
-        <div>Tuesday 15 March 2023</div> */}
+        <input type="date" 
+            value={props.recipeDateValue}
+            onChange={props.recipeDateOnChange}
+        />
+        {/* <div>Tuesday 15 March 2023</div> */}
         <form className='Form' onSubmit={props.onSubmit}>
+            {/* <input 
+                type="file"
+                accept="image/png, image/jpeg, image/*"
+                id="img"
+                name="img"
+                value={props.uploadedImageUrl}
+                onChange={props.uploadedImageOnChange}
+            /> */}
+            <input 
+                type="text" 
+                placeholder='Paste image url here'
+                className='Form-input'
+                value={props.uploadedImageUrl}
+                onChange={props.uploadedImageOnChange}
+            />
+            <img alt="uploaded recipe" src={props.uploadedImageUrl}/>
             <div className='Form-input-container'>
                 <label htmlFor="name">Recipe name</label>
                 <input 

@@ -4,9 +4,11 @@ import RecipeCard from '../components/RecipeCard';
 import RecipeModal from './RecipeModal';
 import IngredientItem from './IngredientItem';
 import SearchBar from './SearchBar';
+import { X } from 'phosphor-react';
+import Button from './Button';
 
 
-const UnscheduledSidebar = () => {
+const UnscheduledSidebar = (props) => {
 
     const unscheduledRecipeList = useSelector((state) => state.recipe.unscheduledRecipeList)
     
@@ -33,8 +35,12 @@ const UnscheduledSidebar = () => {
 
     return (
       <>
+      {props.visible && 
         <div className='Plan-sidebar'>
-            <h3>Unscheduled meals</h3>
+            <div className='Page-title'>
+              <h3 class="flex-grow">Unscheduled meals</h3>
+              <Button appearance="default Button-icon" iconBefore={<X/>} onClick={props.closeSidebar}/>
+            </div>
             <SearchBar placeholder="Search recipes" onChange={handleSearch} appearance="default"/> 
             <ul>
               {filteredUnscheduledRecipeList && unscheduledRecipeList.length > 0
@@ -77,6 +83,7 @@ const UnscheduledSidebar = () => {
               />
             }
         </div>
+        }
       </>
   )
 }

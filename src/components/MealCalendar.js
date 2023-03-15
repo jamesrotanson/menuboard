@@ -15,128 +15,155 @@ import interactionPlugin from "@fullcalendar/interaction";
 import RecipeModal from "./RecipeModal";
 import Modal from "antd/es/modal/Modal";
 import CreateRecipeModal from "./CreateRecipeModal";
+import IngredientItem from "./IngredientItem";
 
-const MealCalendar = () => {
+const MealCalendar = (props) => {
   const [events, setEvents] = useState(
-    [
-      { 
-        title: "Miso soup",
-        date: "2023-01-31", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Breakfast',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Miso_Soup_001.jpg'
-        },
-        editable: true, 
-        daysOfWeek: [ 1, 2, 4, 6 ],
+    {
+      title: "",
+      date: "",
+      extendedProps: {
+        type: "",
+        imageUrl: "",
       },
-      { 
-        title: "Scrambled egg",
-        date: "2023-02-01", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Breakfast',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Scrambed_eggs.jpg'
-        },
-        editable: true,
-        daysOfWeek: [ 3,5,7 ],
-      },
-      { 
-        title: "Chicken noodle",
-        date: "2023-02-01", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Lunch',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/82/Mi_ayam_jamur.JPG'
-        },
-        editable: true,
-        daysOfWeek: [ 2, 4,7 ],
-      },
-      {
-        title: "Fried rice",
-        date: "2023-02-02", 
-        backgroundColor: "white", 
-        borderColor: "white", 
-        extendedProps: {
-          type: 'Lunch',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Nasi_goreng_seafood.png'
-        },
-        editable: true
-      },
-      { 
-        title: "Japanese Curry",
-        date: "2023-02-03", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Lunch',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Katsu_curry_by_luckypines.jpg'
-        },
-        editable: true, 
-      },
-      { 
-        title: "Sushi",
-        date: "2023-01-30", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Lunch',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg'
-        },
-        editable: true, 
-        daysOfWeek: [ 1 , 3 ],
-      },
-      { 
-        title: "Salad",
-        date: "2023-02-04", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Lunch',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg'
-        },
-        editable: true, 
-      },
-      { 
-        title: "Sweet and sour pork",
-        date: "2023-01-31", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Dinner',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/81/Sweet-and-sour_pork.jpg'
-        },
-        editable: true, 
-      },
-      { 
-        title: "Spaghetti",
-        date: "2023-01-30", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Dinner',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Spaghetti_and_meatballs_1.jpg'
-        },
-        editable: true, 
-        daysOfWeek: [ 5 , 6 ],
-      },
-      { 
-        title: "Bibimbap",
-        date: "2023-02-12", 
-        backgroundColor: "white",
-        borderColor: "white",
-        extendedProps: {
-          type: 'Dinner',
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Dolsot-bibimbap.jpg'
-        },
-        editable: true, 
-      },
+      editable: true,
+      ingredients: [],
+      steps: [],
+      imageUrl: ""
+    }
+  )
+  // const [events, setEvents] = useState(
+  //   [
+  //     {
+  //       title: "",
+  //       date: "",
+  //       extendedProps: {
+  //         type: "",
+  //         imageUrl: "",
+  //       },
+  //       editable: true,
+  //       ingredients: [],
+  //       steps: []
+  //     }
+  //     { 
+  //       title: "Miso soup",
+  //       date: "2023-01-31", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Breakfast',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Miso_Soup_001.jpg'
+  //       },
+  //       editable: true, 
+  //       daysOfWeek: [ 1, 2, 4, 6 ],
+  //       ingredients:[]
+  //     },
+  //     { 
+  //       title: "Scrambled egg",
+  //       date: "2023-02-01", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Breakfast',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Scrambed_eggs.jpg'
+  //       },
+  //       editable: true,
+  //       daysOfWeek: [ 3,5,7 ],
+  //     },
+  //     { 
+  //       title: "Chicken noodle",
+  //       date: "2023-02-01", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Lunch',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/82/Mi_ayam_jamur.JPG'
+  //       },
+  //       editable: true,
+  //       daysOfWeek: [ 2, 4,7 ],
+  //     },
+  //     {
+  //       title: "Fried rice",
+  //       date: "2023-02-02", 
+  //       backgroundColor: "white", 
+  //       borderColor: "white", 
+  //       extendedProps: {
+  //         type: 'Lunch',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Nasi_goreng_seafood.png'
+  //       },
+  //       editable: true
+  //     },
+  //     { 
+  //       title: "Japanese Curry",
+  //       date: "2023-02-03", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Lunch',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Katsu_curry_by_luckypines.jpg'
+  //       },
+  //       editable: true, 
+  //     },
+  //     { 
+  //       title: "Sushi",
+  //       date: "2023-01-30", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Lunch',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Various_sushi%2C_beautiful_October_night_at_midnight.jpg'
+  //       },
+  //       editable: true, 
+  //       daysOfWeek: [ 1 , 3 ],
+  //     },
+  //     { 
+  //       title: "Salad",
+  //       date: "2023-02-04", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Lunch',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/9/94/Salad_platter.jpg'
+  //       },
+  //       editable: true, 
+  //     },
+  //     { 
+  //       title: "Sweet and sour pork",
+  //       date: "2023-01-31", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Dinner',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/81/Sweet-and-sour_pork.jpg'
+  //       },
+  //       editable: true, 
+  //     },
+  //     { 
+  //       title: "Spaghetti",
+  //       date: "2023-01-30", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Dinner',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Spaghetti_and_meatballs_1.jpg'
+  //       },
+  //       editable: true, 
+  //       daysOfWeek: [ 5 , 6 ],
+  //     },
+  //     { 
+  //       title: "Bibimbap",
+  //       date: "2023-02-12", 
+  //       backgroundColor: "white",
+  //       borderColor: "white",
+  //       extendedProps: {
+  //         type: 'Dinner',
+  //         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Dolsot-bibimbap.jpg'
+  //       },
+  //       editable: true, 
+  //     },
       
-    ]
-  );
+  //   ]
+  // );
 
 
   const [showModal, setShowModal] = useState(false);
@@ -150,7 +177,7 @@ const MealCalendar = () => {
   };
 
 
-  // OPEN RECIPE DETAIL
+  // Open recipe detail
   const [showRecipeModal, setShowRecipeModal] = useState(false);
   const handleOpenRecipe = (recipe) => {
     setShowRecipeModal(true)
@@ -161,33 +188,47 @@ const MealCalendar = () => {
     setShowRecipeModal(false)
   }
 
-  const [scheduledRecipe, setScheduledRecipe] = useState({
-    start: "",
-    end: "", 
-    filledIn: false, 
-  })
-
-  const handleSelectRecipe = (recipe) => {
-    console.log('Create')
-    setScheduledRecipe({
-      start: recipe.startStr,
-      end: recipe.endStr,
-      filledIn: true
-    })
-  }
-
   const renderEventContent = (recipe) => {
     return (
       <div className="Calendar-event" onClick={() => handleOpenRecipe(recipe)}>
-        <img className="Calendar-event-thumbnail" src={recipe.event.extendedProps.imageUrl} alt="Recipe thumbnail"/>
+        <img className="Calendar-event-thumbnail" 
+          src={recipe.event.extendedProps.imageUrl} 
+          // imageUrl={activeRecipe.event.extendedProps.imageUrl} 
+          alt="Recipe thumbnail"/>
         <div className="Calendar-event-info">
           <h4>{recipe.event.title}</h4>
-          <small>{recipe.event.extendedProps.type}</small>
+          <small>{recipe.event.description}</small>
           {/* <AvatarGroup size="small"/> */}
         </div>
       </div>
     )
   }
+
+
+  // Define database 
+  const recipesCollectionRef = collection(db, "recipes")
+
+  const [recipeForm, setRecipeForm] = useState({
+    title: "",
+    description: "", 
+    ingredients: [], 
+    steps: [],
+    date: "", 
+    imageUrl: ""
+  })
+
+  useEffect(() => {
+    onSnapshot(recipesCollectionRef, snapshot => {
+        setEvents(snapshot.docs.map(doc => {
+            return {
+                id: doc.id, 
+                ...doc.data()
+            }
+        }))
+    })
+  }, [])
+
+
 
   // Create recipe
   const [showRecipeCreateModal, setShowRecipeCreateModal] = useState(false)
@@ -196,14 +237,6 @@ const MealCalendar = () => {
     setShowRecipeCreateModal(true)
   }
 
-  const [recipeForm, setRecipeForm] = useState({
-    title: "",
-    description: "", 
-    ingredients: [], 
-    steps: []
-  })
-
-  const recipesCollectionRef = collection(db, "recipes")
 
   const handleCreateRecipe =() => {
     addDoc(recipesCollectionRef, recipeForm)
@@ -212,11 +245,15 @@ const MealCalendar = () => {
         title: "",
         desc: "", 
         ingredients: [],
-        steps: []
+        steps: [],
+        date: "",
+        imageUrl: "",
     })
 
     setShowRecipeCreateModal(false) 
+
   }
+  
 
   const handleIngredient = (event, i) => {
       const ingredientsArray = [...recipeForm.ingredients]
@@ -254,6 +291,12 @@ const MealCalendar = () => {
       })
   }
 
+  const [planSidebarVisible, setPlanSidebarVisible] = useState(true)
+  
+  const handleToggleSidebar = () => {
+    setPlanSidebarVisible(!planSidebarVisible)
+  }
+
   return (
     <div>
       {/* RECIPE DETAIL */}
@@ -264,6 +307,7 @@ const MealCalendar = () => {
           name={activeRecipe.event.title}
           imageUrl={activeRecipe.event.extendedProps.imageUrl} 
           plannedDate={activeRecipe.event.date}
+          // description={activeRecipe.event.description}
         /> 
       }
 
@@ -277,6 +321,8 @@ const MealCalendar = () => {
           recipeNameOnChange={(event) => setRecipeForm({...recipeForm, title: event.target.value})}
           recipeDescriptionValue={recipeForm.description}
           recipeDescriptionOnChange={(event) => setRecipeForm({...recipeForm, description: event.target.value})}
+          uploadedImageUrl={recipeForm.imageUrl}
+          uploadedImageOnChange={(event) => setRecipeForm({...recipeForm, imageUrl: event.target.value})}
           recipeIngredients={
               recipeForm.ingredients.map((ingredient, i) => (
                   <input 
@@ -303,6 +349,9 @@ const MealCalendar = () => {
               ))
           }
           handleStepCount={handleStepCount}
+          recipeDateValue={recipeForm.date}
+          recipeDateOnChange={(event) => setRecipeForm({...recipeForm, date: event.target.value})}
+          
         />
       }
 
@@ -316,13 +365,20 @@ const MealCalendar = () => {
         headerToolbar={{
           left: "prev,next,today",
           center: "title",
-          right: "dayGridMonth,dayGridWeek,dayGridDay",
+          // left: "dayGridMonth,dayGridWeek,dayGridDay",
+          right: "toggleSidebarButton"
         }}
         aspectRatio={2}
         select={handleOpenRecipeCreateModal}
         editable={true}
         selectable={true}
         // dayMaxEvents={true}
+        customButtons={{
+          toggleSidebarButton: {
+            text: 'Show unscheduled',
+            click: props.toggleSidebar,
+          },
+        }}
       />
     </div>
    

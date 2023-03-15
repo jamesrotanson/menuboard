@@ -17,7 +17,7 @@ const MealPlan = () => {
   const recipeList = useSelector((state) => state.recipe.recipeList)
   const unscheduledRecipeList = useSelector((state) => state.recipe.unscheduledRecipeList)
 
-  const [planSidebarVisible, setPlanSidebarVisible] = useState(true)
+  const [planSidebarVisible, setPlanSidebarVisible] = useState(false)
 
   const handleToggleSidebar = () => {
     setPlanSidebarVisible(!planSidebarVisible)
@@ -31,24 +31,27 @@ const MealPlan = () => {
           <div className="Page-medium">
             <div className="Page-header">
               <div className="Page-title">
-                <div>
+                {/* <div>
                   <h2>Plan</h2>
-                  {/* <p>Plan your weekly meals by drag and dropping recipes, food delivery, and dining out options for the week</p> */}
-                </div>
+                  <p>Plan your weekly meals by drag and dropping recipes, food delivery, and dining out options for the week</p>
+                </div> */}
               </div>
-              <Button appearance="secondary" name="My list" iconBefore={<CalendarPlus/>} onClick={handleToggleSidebar}/>
+              {/* <Button appearance="secondary" name="My list" iconBefore={<CalendarPlus/>} onClick={handleToggleSidebar}/> */}
             </div>
             {/* <SearchBar placeholder="Search recipes" onChange={""} appearance="default"/>    */}
 
             
-            <MealCalendar/>
+            <MealCalendar toggleSidebar={handleToggleSidebar}/>
             <FeedbackCollector/>
           </div>
         </div>
         
-        {planSidebarVisible &&
-          <UnscheduledSidebar/>
-        }
+        {/* {planSidebarVisible && */}
+          <UnscheduledSidebar 
+            visible={planSidebarVisible}
+            closeSidebar={handleToggleSidebar}
+          />
+        {/* } */}
           
       </div>
       }
