@@ -16,6 +16,7 @@ import RecipeModal from "./RecipeModal";
 import Modal from "antd/es/modal/Modal";
 import CreateRecipeModal from "./CreateRecipeModal";
 import IngredientItem from "./IngredientItem";
+import { toast } from "react-hot-toast";
 
 const MealCalendar = (props) => {
   const [events, setEvents] = useState(
@@ -183,6 +184,8 @@ const MealCalendar = (props) => {
         // ...ingredient,
         name: ingredient,
     })
+
+    toast.success("Ingredient added to grocery list!");
 
   }
 
