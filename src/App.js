@@ -13,7 +13,8 @@ import "@fontsource/inter";
 import "@fontsource/inter/700.css"
 import "@fontsource/inter/500.css"
 import { createStore } from 'redux';
-import rootReducer from './reducers'
+import rootReducer from './reducers';
+import { Toaster } from 'react-hot-toast';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,17 @@ const App = () => {
       <div className='App-container'>
         {/* <MainNavigation/> */}
         <AppRouter/>
+        <Toaster
+          position="bottom-center"
+          reverseOrder={false}
+          toastOptions={{
+            className: "Toaster",
+            iconTheme: {
+              primary: '#009b3c',
+              secondary: '#FFFAEE',
+            },
+          }}
+        />
       </div>
     </Provider>
   );

@@ -7,6 +7,7 @@ import LoadingPage from './LoadingPage';
 import { useSelector } from 'react-redux';
 import UnscheduledSidebar from '../components/UnscheduledSidebar';
 import FeedbackCollector from '../components/FeedbackCollector';
+import { toast } from 'react-hot-toast';
 
 
 const MealPlan = () => {
@@ -21,6 +22,7 @@ const MealPlan = () => {
 
   const handleToggleSidebar = () => {
     setPlanSidebarVisible(!planSidebarVisible)
+    toast.success("Recipe created successfully");
   }
 
   return (

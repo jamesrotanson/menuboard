@@ -19,6 +19,7 @@ import LoadingPage from './LoadingPage'
 import FeedbackCollector from '../components/FeedbackCollector'
 import IngredientItem from '../components/IngredientItem'
 import CreateRecipeModal from '../components/CreateRecipeModal'
+import { toast } from 'react-hot-toast'
 
 const Recipe = () => {
 
@@ -225,14 +226,10 @@ const Recipe = () => {
         })
 
         setIngredientAdded(!ingredientAdded)
+        toast.success("Ingredient added to grocery list!");
         
     }
 
-    
-
-
-    
-        
     return (
         <div>
         {loading ? <LoadingPage/> :

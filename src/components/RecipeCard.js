@@ -79,34 +79,36 @@ const RecipeCard = (props, recipe) => {
           <h4 onClick={props.onClick}>{props.name}</h4>
           <small> {props.cost && "Est. "}  {props.time} · {props.cost} {props.cost && "/servings"}</small>
           <div className="Button-group">
-          <Button 
-            onClick={handleAddToPlan} 
-            onKeyDown={handleAddToPlan}
-            appearance={isAddedToPlan ? "primary" : "secondary"} 
-            iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
-            name={isAddedToPlan ? "Added" : "Add"}
-          />
-          {props.nonEditable ? <Button 
-            onClick={props.onEdit}
-            onKeyDown={props.onEdit}
-            role="button" 
-            tabIndex={0}
-            appearance="default" 
-            // iconBefore={<Pencil/>} 
-            name="Edit"
-          /> : null}
-          {props.nonEditable ? 
             <Button 
-              onKeyDown={props.onDelete}
-              onClick={props.onDelete}
-              role="button" 
-              tabIndex={0}
-              appearance="delete" 
-              // iconBefore={<Trash/>} 
-              name="Delete"
+              onClick={handleAddToPlan} 
+              onKeyDown={handleAddToPlan}
+              appearance={isAddedToPlan ? "primary" : "secondary"} 
+              iconBefore={isAddedToPlan ? <CalendarCheck size={16}/> : <Heart size={16}/>} 
+              name={isAddedToPlan ? "Added" : "Add"}
             />
-            : null
-           }
+            <div className="Button-group">
+              {props.nonEditable ? <Button 
+                onClick={props.onEdit}
+                onKeyDown={props.onEdit}
+                role="button" 
+                tabIndex={0}
+                appearance="default Button-icon" 
+                iconBefore={<Pencil/>} 
+                // name="Edit"
+              /> : null}
+              {props.nonEditable ? 
+                <Button 
+                  onKeyDown={props.onDelete}
+                  onClick={props.onDelete}
+                  role="button" 
+                  tabIndex={0}
+                  appearance="delete Button-icon" 
+                  iconBefore={<Trash/>} 
+                  // name="Delete"
+                />
+              : null
+            }
+           </div>
           
           </div>
         </div>
